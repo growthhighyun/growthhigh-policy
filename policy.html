@@ -1,0 +1,2895 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026 정부지원사업 검토 서식 — GROWTH'HIGH</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ───── 그로스하이 표준형 검토서 — 공통 스타일 ───── */
+
+:root {
+  --bg: #FFFFFF;
+  --surface: #FAFAF7;
+  --surface-alt: #F4F2EC;
+  --ink: #0A0A0A;
+  --ink-muted: #4A4A4A;
+  --ink-subtle: #8A8A8A;
+  --line: #E8E6DD;
+  --line-strong: #C9C5B4;
+
+  --brand: #0A1828;
+  --brand-soft: #E5E8ED;
+
+  --urgent: #C73E2C;
+  --urgent-soft: #FBEAE7;
+  --warning: #A8771E;
+  --warning-soft: #FAF3E0;
+  --success: #2E6B4F;
+  --success-soft: #E5F0EA;
+  --info-soft: #EEF2F7;
+  --closed: #6B6B6B;
+  --closed-soft: #EEEEEC;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.65;
+  font-feature-settings: "ss01", "ss02";
+  -webkit-font-smoothing: antialiased;
+  letter-spacing: -0.01em;
+}
+
+.doc {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 48px 40px 80px;
+}
+
+/* ─── Brand Header ─── */
+.brand-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding-bottom: 20px;
+  border-bottom: 2px solid var(--ink);
+  margin-bottom: 56px;
+}
+
+.logo {
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  color: var(--ink);
+  line-height: 1;
+}
+
+.logo .apostrophe { color: var(--urgent); font-weight: 800; }
+
+.logo .tagline {
+  display: block;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-subtle);
+  margin-top: 4px;
+}
+
+.doc-meta {
+  text-align: right;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--ink-subtle);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  line-height: 1.6;
+}
+
+.doc-meta strong {
+  display: block;
+  color: var(--ink);
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+/* ─── Title ─── */
+.title-block { margin-bottom: 40px; }
+
+.label-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+
+.label-tag {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--brand);
+  background: var(--brand-soft);
+  padding: 5px 11px;
+  border-radius: 2px;
+}
+
+.label-tag.alt { background: var(--surface-alt); color: var(--ink-muted); }
+
+.doc-title {
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.035em;
+  margin-bottom: 14px;
+  color: var(--ink);
+}
+
+.doc-subtitle {
+  font-size: 14px;
+  color: var(--ink-muted);
+  font-weight: 500;
+  letter-spacing: -0.005em;
+}
+
+/* ─── D-day Strip (status colors) ─── */
+.dday-strip {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 16px 20px;
+  margin-bottom: 64px;
+  border-left: 4px solid;
+}
+
+.dday-strip.urgent { background: var(--urgent-soft); border-left-color: var(--urgent); }
+.dday-strip.warning { background: var(--warning-soft); border-left-color: var(--warning); }
+.dday-strip.closed { background: var(--closed-soft); border-left-color: var(--closed); }
+
+.dday-badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  position: relative;
+  padding-left: 18px;
+}
+
+.dday-strip.urgent .dday-badge { color: var(--urgent); }
+.dday-strip.warning .dday-badge { color: var(--warning); }
+.dday-strip.closed .dday-badge { color: var(--closed); }
+
+.dday-badge::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.dday-strip.urgent .dday-badge::before { background: var(--urgent); animation: pulse 2s infinite; }
+.dday-strip.warning .dday-badge::before { background: var(--warning); animation: pulse 2.5s infinite; }
+.dday-strip.closed .dday-badge::before { background: var(--closed); }
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: translateY(-50%) scale(1); }
+  50% { opacity: 0.4; transform: translateY(-50%) scale(1.5); }
+}
+
+.dday-text {
+  font-size: 14px;
+  color: var(--ink);
+  flex: 1;
+  line-height: 1.5;
+}
+
+.dday-text strong { font-weight: 700; }
+
+/* ─── Section ─── */
+section { margin-bottom: 64px; }
+
+.section-header {
+  margin-bottom: 28px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--ink);
+}
+
+.section-en {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--ink-subtle);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.section-en .num { color: var(--urgent); margin-right: 6px; }
+
+.section-title {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+/* ─── A. Meta Grid ─── */
+.meta-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  overflow: hidden;
+  margin-bottom: 18px;
+}
+
+.meta-cell {
+  padding: 18px 22px;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.meta-cell:nth-child(2n) { border-right: none; }
+.meta-cell:nth-last-child(-n+2) { border-bottom: none; }
+
+.meta-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-subtle);
+  margin-bottom: 6px;
+}
+
+.meta-value {
+  font-size: 15px;
+  color: var(--ink);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.source-link {
+  font-size: 13px;
+  color: var(--ink-muted);
+  padding: 4px 0;
+}
+
+.source-link a {
+  color: var(--brand);
+  text-decoration: none;
+  border-bottom: 1px solid var(--brand-soft);
+  transition: border-color 0.2s;
+  font-weight: 500;
+}
+
+.source-link a:hover { border-bottom-color: var(--brand); }
+
+/* ─── B. Core Cards ─── */
+.core-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-bottom: 36px;
+}
+
+.core-card {
+  padding: 22px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  transition: all 0.25s ease;
+  position: relative;
+}
+
+.core-card:hover { transform: translateY(-2px); border-color: var(--ink); }
+
+.core-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--ink);
+}
+
+.card-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--ink-subtle);
+  letter-spacing: 0.1em;
+  margin-bottom: 10px;
+}
+
+.card-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 14px;
+  letter-spacing: -0.01em;
+}
+
+.card-headline {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 12px;
+  color: var(--ink);
+  letter-spacing: -0.025em;
+}
+
+.card-body {
+  font-size: 13px;
+  color: var(--ink-muted);
+  line-height: 1.65;
+  letter-spacing: -0.005em;
+}
+
+/* ─── Tables ─── */
+.table-block { margin-bottom: 36px; }
+
+.block-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.block-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: -0.005em;
+}
+
+.block-en {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--ink-subtle);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+table.tracks {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  font-size: 13px;
+}
+
+table.tracks thead { background: var(--surface); }
+
+table.tracks th {
+  text-align: left;
+  padding: 13px 18px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  border-bottom: 1px solid var(--line);
+}
+
+table.tracks td {
+  padding: 13px 18px;
+  border-bottom: 1px solid var(--line);
+  color: var(--ink);
+  font-weight: 500;
+}
+
+table.tracks tr:last-child td { border-bottom: none; }
+table.tracks tr:hover td { background: var(--surface); }
+
+table.tracks .track-name { font-weight: 700; }
+
+.new-tag {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  font-weight: 700;
+  color: var(--warning);
+  background: var(--warning-soft);
+  padding: 2px 6px;
+  margin-left: 6px;
+  letter-spacing: 0.08em;
+  vertical-align: 1px;
+}
+
+/* ─── Highlight Boxes ─── */
+.highlight-box {
+  padding: 22px 26px;
+  border-left: 3px solid;
+  margin-bottom: 14px;
+}
+
+.highlight-box.warning { background: var(--warning-soft); border-left-color: var(--warning); }
+.highlight-box.urgent { background: var(--urgent-soft); border-left-color: var(--urgent); }
+.highlight-box.success { background: var(--success-soft); border-left-color: var(--success); }
+.highlight-box.info { background: var(--info-soft); border-left-color: var(--brand); }
+
+.highlight-title {
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 14px;
+  letter-spacing: -0.01em;
+}
+
+.highlight-box.warning .highlight-title { color: var(--warning); }
+.highlight-box.urgent .highlight-title { color: var(--urgent); }
+.highlight-box.success .highlight-title { color: var(--success); }
+.highlight-box.info .highlight-title { color: var(--brand); }
+
+.highlight-en {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-left: 8px;
+}
+
+.highlight-box.warning .highlight-en { color: var(--warning); }
+.highlight-box.urgent .highlight-en { color: var(--urgent); }
+.highlight-box.success .highlight-en { color: var(--success); }
+
+.highlight-list {
+  list-style: none;
+  display: grid;
+  gap: 10px;
+}
+
+.highlight-list li {
+  font-size: 13.5px;
+  line-height: 1.65;
+  color: var(--ink);
+  padding-left: 22px;
+  position: relative;
+}
+
+.highlight-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 12px;
+  height: 1px;
+}
+
+.highlight-box.warning .highlight-list li::before { background: var(--warning); }
+.highlight-box.urgent .highlight-list li::before { background: var(--urgent); }
+.highlight-box.success .highlight-list li::before { background: var(--success); }
+.highlight-box.info .highlight-list li::before { background: var(--brand); }
+
+.highlight-list li strong { font-weight: 700; }
+
+/* ─── C. Checklist ─── */
+.checklist-group {
+  background: var(--bg);
+  border: 1px solid var(--line);
+  padding: 22px 26px;
+  margin-bottom: 14px;
+}
+
+.group-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--ink-muted);
+  margin-bottom: 14px;
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.group-title::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--line);
+}
+
+.checklist {
+  list-style: none;
+  display: grid;
+  gap: 10px;
+}
+
+.checklist li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--ink);
+}
+
+.check {
+  width: 16px;
+  height: 16px;
+  border: 1.5px solid var(--line-strong);
+  flex-shrink: 0;
+  margin-top: 4px;
+  cursor: pointer;
+  transition: all 0.15s;
+  background: var(--bg);
+}
+
+.check:hover { border-color: var(--ink); }
+
+.check.checked {
+  background: var(--ink);
+  border-color: var(--ink);
+  position: relative;
+}
+
+.check.checked::after {
+  content: '';
+  position: absolute;
+  left: 4px;
+  top: 1px;
+  width: 4px;
+  height: 8px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.checklist li.bonus { color: var(--brand); font-weight: 500; }
+
+.new-inline {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  font-weight: 700;
+  color: var(--warning);
+  background: var(--warning-soft);
+  padding: 2px 6px;
+  margin-left: 6px;
+  letter-spacing: 0.08em;
+  vertical-align: 1px;
+}
+
+/* ─── PDF Link ─── */
+.pdf-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--brand);
+  text-decoration: none;
+  margin: 18px 0;
+  padding-bottom: 2px;
+  border-bottom: 1px solid var(--brand-soft);
+  font-weight: 500;
+  transition: border-color 0.2s;
+}
+
+.pdf-link:hover { border-bottom-color: var(--brand); }
+
+/* ─── Details ─── */
+details.more {
+  background: var(--surface);
+  margin-top: 18px;
+  border: 1px solid var(--line);
+}
+
+details.more summary {
+  padding: 16px 22px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  user-select: none;
+  letter-spacing: -0.005em;
+}
+
+details.more summary::-webkit-details-marker { display: none; }
+
+details.more summary::before {
+  content: '+';
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--ink-subtle);
+  transition: all 0.2s;
+  display: inline-block;
+  width: 16px;
+  line-height: 1;
+}
+
+details.more[open] summary::before { content: '−'; color: var(--ink); }
+
+details.more .more-content {
+  padding: 8px 22px 22px;
+  border-top: 1px solid var(--line);
+}
+
+details.more h4 {
+  font-size: 13px;
+  font-weight: 700;
+  margin: 18px 0 10px;
+  color: var(--ink);
+  letter-spacing: -0.005em;
+}
+
+details.more h4:first-child { margin-top: 8px; }
+
+details.more h4 .en {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  font-weight: 500;
+  color: var(--ink-subtle);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-left: 8px;
+}
+
+details.more ul { list-style: none; padding-left: 0; }
+
+details.more ul li {
+  font-size: 13px;
+  color: var(--ink-muted);
+  line-height: 1.7;
+  padding-left: 14px;
+  position: relative;
+}
+
+details.more ul li::before {
+  content: '–';
+  position: absolute;
+  left: 0;
+  color: var(--ink-subtle);
+}
+
+details.more p {
+  font-size: 13px;
+  color: var(--ink-muted);
+  line-height: 1.65;
+  margin: 6px 0;
+}
+
+/* ─── Footer ─── */
+.doc-footer {
+  margin-top: 80px;
+  padding-top: 24px;
+  border-top: 2px solid var(--ink);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.footer-brand {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+
+.footer-brand .apostrophe { color: var(--urgent); }
+
+.footer-meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--ink-subtle);
+  letter-spacing: 0.06em;
+  text-align: right;
+}
+
+/* ─── Mobile ─── */
+@media (max-width: 720px) {
+  .doc { padding: 32px 20px 60px; }
+  .doc-title { font-size: 28px; }
+  .meta-grid { grid-template-columns: 1fr; }
+  .meta-cell { border-right: none; }
+  .meta-cell:not(:last-child) { border-bottom: 1px solid var(--line); }
+  .core-cards { grid-template-columns: 1fr; }
+  table.tracks { font-size: 12px; }
+  table.tracks th, table.tracks td { padding: 10px 12px; }
+  .brand-header { flex-direction: column; gap: 12px; align-items: flex-start; }
+  .doc-meta { text-align: left; }
+}
+
+/* ─── Print ─── */
+@media print {
+  body { background: white; }
+  .doc { padding: 0; max-width: 100%; }
+  .core-card:hover { transform: none; }
+  .dday-badge::before { animation: none; }
+  details.more[open] summary { display: none; }
+  details.more .more-content { padding: 0; border: none; }
+}
+
+
+/* Index 전용 추가 스타일 */
+  .hero {
+    margin-bottom: 64px;
+    padding: 48px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .hero-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-subtle);
+    margin-bottom: 14px;
+  }
+  .hero-eyebrow .num { color: var(--urgent); margin-right: 6px; }
+  .hero-title {
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.04em;
+    margin-bottom: 18px;
+    color: var(--ink);
+  }
+  .hero-desc {
+    font-size: 16px;
+    color: var(--ink-muted);
+    line-height: 1.65;
+    max-width: 680px;
+  }
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-top: 36px;
+    padding-top: 28px;
+    border-top: 1px solid var(--line);
+  }
+  .stat-cell { display: flex; flex-direction: column; gap: 4px; }
+  .stat-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+    line-height: 1;
+  }
+  .stat-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-subtle);
+  }
+
+  /* Card grid */
+  .program-list { display: grid; gap: 18px; }
+  .program-card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    padding: 28px 30px;
+    transition: all 0.25s ease;
+    position: relative;
+  }
+  .program-card:hover {
+    border-color: var(--ink);
+    transform: translateY(-2px);
+  }
+  .program-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 4px; height: 100%;
+    background: var(--ink);
+    transform-origin: top;
+    transform: scaleY(0);
+    transition: transform 0.25s ease;
+  }
+  .program-card:hover::before { transform: scaleY(1); }
+  .card-row {
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+  }
+  .card-status {
+    flex-shrink: 0;
+    width: 80px;
+    text-align: center;
+  }
+  .card-dday {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+  .card-status.urgent .card-dday { color: var(--urgent); }
+  .card-status.warning .card-dday { color: var(--warning); }
+  .card-status.closed .card-dday { color: var(--closed); }
+  .card-status-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+  .card-status.urgent .card-status-label { color: var(--urgent); }
+  .card-status.warning .card-status-label { color: var(--warning); }
+  .card-status.closed .card-status-label { color: var(--closed); }
+  .card-body { flex: 1; min-width: 0; }
+  .card-tags {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+  }
+  .card-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--brand);
+    background: var(--brand-soft);
+    padding: 3px 8px;
+    border-radius: 2px;
+  }
+  .card-tag.alt {
+    background: var(--surface-alt);
+    color: var(--ink-muted);
+  }
+  .card-title {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    line-height: 1.3;
+    margin-bottom: 8px;
+    color: var(--ink);
+  }
+  .card-summary {
+    font-size: 13.5px;
+    color: var(--ink-muted);
+    line-height: 1.6;
+    margin-bottom: 14px;
+  }
+  .card-meta {
+    display: flex;
+    gap: 20px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-subtle);
+    letter-spacing: 0.04em;
+    flex-wrap: wrap;
+  }
+  .card-meta strong {
+    color: var(--ink);
+    font-weight: 600;
+    margin-right: 4px;
+  }
+  .card-arrow {
+    flex-shrink: 0;
+    align-self: center;
+    font-size: 18px;
+    color: var(--ink-subtle);
+    transition: all 0.2s;
+  }
+  .program-card:hover .card-arrow {
+    color: var(--ink);
+    transform: translateX(4px);
+  }
+
+  /* Section divider */
+  .list-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--ink);
+  }
+  .list-title {
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  .list-en {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--ink-subtle);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  /* Section spacer */
+  section + section { margin-top: 56px; }
+
+  /* Mobile */
+  @media (max-width: 720px) {
+    .hero-title { font-size: 32px; }
+    .hero-stats { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .stat-num { font-size: 22px; }
+    .card-row { flex-direction: column; gap: 16px; }
+    .card-status { width: 100%; text-align: left; display: flex; gap: 10px; align-items: center; }
+    .card-status-label { margin-top: 0; }
+    .card-arrow { display: none; }
+  }
+
+
+  /* ─── 화면 전환 (단일 통합 파일 전용) ─── */
+  .view { display: none; }
+  .view.active { display: block; animation: fadeIn 0.3s ease; }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .back-bar {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 24px 40px 0;
+  }
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    text-decoration: none;
+    padding: 8px 14px;
+    border: 1px solid var(--line);
+    background: var(--surface);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .back-link:hover {
+    border-color: var(--ink);
+    color: var(--ink);
+    background: var(--bg);
+  }
+  .back-link::before { content: '←'; font-size: 14px; }
+
+  @media (max-width: 720px) {
+    .back-bar { padding: 16px 20px 0; }
+  }
+
+  @media print {
+    .view { display: block !important; page-break-after: always; }
+    .back-bar { display: none; }
+  }
+
+</style>
+</head>
+<body>
+
+<!-- Index View -->
+<div class="view active" id="view-index">
+  <div class="doc">
+<header class="brand-header">
+    <div class="logo">GROWTH<span class="apostrophe">'</span>HIGH<span class="tagline">Scale-up Studio</span></div>
+  </header>
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero-eyebrow"><span class="num">★</span>GROWTH'HIGH × 2026 정부지원사업 큐레이션</div>
+    <h1 class="hero-title">보이는 성장의 시작,<br>2026 정부지원사업</h1>
+    <p class="hero-desc">
+      스케일업 파트너 그로스하이가 직접 검토한 2026년 정부지원사업입니다.
+      자격·지원 한도·마감일·핵심 체크포인트를 한 페이지로 압축해, 사업화 자금이나 R&amp;D 트랙을 검토하는 단계에서
+      빠르게 적합도를 판단할 수 있도록 정리했습니다. 카드를 누르면 사업별 상세 검토서로 이동합니다.
+    </p>
+    <div class="hero-stats">
+      <div class="stat-cell">
+        <div class="stat-num">8</div>
+        <div class="stat-label">큐레이션 사업 / Programs</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">7</div>
+        <div class="stat-label">분야 / Sectors</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Active Programs -->
+  <section>
+    <div class="list-header">
+      <div class="list-title">진행 중인 사업</div>
+      <div class="list-en">Active Programs · 2</div>
+    </div>
+
+    <div class="program-list">
+
+      <a href="#didimdol-rd" data-target="didimdol-rd" class="program-card">
+        <div class="card-row">
+          <div class="card-status urgent">
+            <div class="card-dday">D−1</div>
+            <div class="card-status-label">URGENT</div>
+          </div>
+          <div class="card-body">
+            <div class="card-tags">
+              <span class="card-tag">R&amp;D</span>
+              <span class="card-tag alt">자유공모</span>
+              <span class="card-tag alt">중소벤처기업부</span>
+            </div>
+            <h3 class="card-title">2026년 창업성장기술개발사업 (디딤돌) 제3차</h3>
+            <p class="card-summary">업력 7년 이하 매출 20억 미만 기업 대상 R&amp;D 자금. 5개 트랙 中 1개 선택 (글로벌/전략기술/연구개발특구/초격차/민관협력OI).</p>
+            <div class="card-meta">
+              <span><strong>지원</strong>최대 2억원</span>
+              <span><strong>비율</strong>75%</span>
+              <span><strong>마감</strong>4.29(수) 18:00</span>
+            </div>
+          </div>
+          <div class="card-arrow">→</div>
+        </div>
+      </a>
+
+      <a href="#export-voucher" data-target="export-voucher" class="program-card">
+        <div class="card-row">
+          <div class="card-status warning">
+            <div class="card-dday">D−8</div>
+            <div class="card-status-label">WARNING</div>
+          </div>
+          <div class="card-body">
+            <div class="card-tags">
+              <span class="card-tag">수출 · 바우처</span>
+              <span class="card-tag alt">2차 모집</span>
+              <span class="card-tag alt">중소벤처기업부</span>
+            </div>
+            <h3 class="card-title">2026년 수출바우처 사업 참여기업 2차 모집</h3>
+            <p class="card-summary">15개 분야 8,000여 수출 서비스 메뉴. 6단계 차등 + 매출액별 보조율(50~70%). <strong>중동 22개국 직수출 실적 보유 시 우선선정</strong>.</p>
+            <div class="card-meta">
+              <span><strong>지원</strong>최대 1억원</span>
+              <span><strong>비율</strong>50~70%</span>
+              <span><strong>마감</strong>5.6(수) 17:00</span>
+            </div>
+          </div>
+          <div class="card-arrow">→</div>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- Closed Programs -->
+  <section>
+    <div class="list-header">
+      <div class="list-title">마감 완료 사업</div>
+      <div class="list-en">Closed · Reference · 6</div>
+    </div>
+
+    <div class="program-list">
+
+      <a href="#small-business-leap" data-target="small-business-leap" class="program-card">
+        <div class="card-row">
+          <div class="card-status closed">
+            <div class="card-dday">CLOSED</div>
+            <div class="card-status-label">REF</div>
+          </div>
+          <div class="card-body">
+            <div class="card-tags">
+              <span class="card-tag">소상공인 · 사업화</span>
+              <span class="card-tag alt">통합공고</span>
+              <span class="card-tag alt">소상공인시장진흥공단</span>
+            </div>
+            <h3 class="card-title">2026년 소상공인 도약 지원 사업 (통합공고)</h3>
+            <p class="card-summary">로컬기업 육성(80%) + 강한소상공인 성장지원(<strong>국비 100%</strong>) 통합 첫해 공고. 사업화 540 + 성장지원 1,000개사. 2개 동시 신청 가능.</p>
+            <div class="card-meta">
+              <span><strong>지원</strong>최대 1억원</span>
+              <span><strong>비율</strong>80~100%</span>
+              <span><strong>마감</strong>4.24(금) 16:00 종료</span>
+            </div>
+          </div>
+          <div class="card-arrow">→</div>
+        </div>
+      </a>
+
+      <a href="#testbed-seoul" data-target="testbed-seoul" class="program-card">
+        <div class="card-row">
+          <div class="card-status closed">
+            <div class="card-dday">CLOSED</div>
+            <div class="card-status-label">REF</div>
+          </div>
+          <div class="card-body">
+            <div class="card-tags">
+              <span class="card-tag">R&amp;D · 실증</span>
+              <span class="card-tag alt">서울 딥테크</span>
+              <span class="card-tag alt">서울경제진흥원</span>
+            </div>
+            <h3 class="card-title">2026년 테스트베드 서울 1차</h3>
+            <p class="card-summary">서울 소재 중소기업 + TRL 7단계 이상 실증과제. 자유/수요 과제형. AI 및 AI+X 60% 이상 우선 선정. 2차 5~6월 예정 (해외 5개 추가).</p>
+            <div class="card-meta">
+              <span><strong>지원</strong>최대 2억원</span>
+              <span><strong>기간</strong>1년</span>
+              <span><strong>마감</strong>3.11(수) 16:00 종료</span>
+            </div>
+          </div>
+          <div class="card-arrow">→</div>
+        </div>
+      </a>
+
+      <a href="#startup-jump" data-target="startup-jump" class="program-card">
+        <div class="card-row">
+          <div class="card-status closed">
+            <div class="card-dday">CLOSED</div>
+            <div class="card-status-label">REF</div>
+          </div>
+          <div class="card-body">
+            <div class="card-tags">
+              <span class="card-tag">창업 · 도약기</span>
+              <span class="card-tag alt">권역별 주관</span>
+              <span class="card-tag alt">중소벤처기업부</span>
+            </div>
+            <h3 class="card-title">2026년 창업도약패키지 (일반형)</h3>
+            <p class="card-summary">업력 3~7년 도약기 창업기업. 12개 권역 주관기관 中 1개. 자부담 4단계(지방우대 차등). 패스트트랙(졸업기업) + 마이데이터 간소화.</p>
+            <div class="card-meta">
+              <span><strong>지원</strong>최대 2억원</span>
+              <span><strong>비율</strong>70~90%</span>
+              <span><strong>마감</strong>2.13(금) 16:00 종료</span>
+            </div>
+          </div>
+          <div class="card-arrow">→</div>
+        </div>
+      </a>
+
+      <a href="#innovation-voucher" data-target="innovation-voucher" class="program-card">
+        <div class="card-row">
+          <div class="card-status closed">
+            <div class="card-dday">CLOSED</div>
+            <div class="card-status-label">REF</div>
+          </div>
+          <div class="card-body">
+            <div class="card-tags">
+              <span class="card-tag">컨설팅 · 바우처</span>
+              <span class="card-tag alt">제조 소기업</span>
+              <span class="card-tag alt">중소벤처기업부</span>
+            </div>
+            <h3 class="card-title">2026년 중소기업 혁신바우처 1차</h3>
+            <p class="card-summary">제조업 C10~C34 소기업(매출 140억↓). 컨설팅·기술지원·마케팅 3분야 8프로그램. 매출 차등 보조율(45~85%). 2차는 26.2월 별도 공고 예정.</p>
+            <div class="card-meta">
+              <span><strong>지원</strong>최대 5천만원</span>
+              <span><strong>비율</strong>45~85%</span>
+              <span><strong>마감</strong>25.12.2(화) 18:00 종료</span>
+            </div>
+          </div>
+          <div class="card-arrow">→</div>
+        </div>
+      </a>
+
+      <a href="#tech-innovation" data-target="tech-innovation" class="program-card">
+        <div class="card-row">
+          <div class="card-status closed">
+            <div class="card-dday">CLOSED</div>
+            <div class="card-status-label">REF</div>
+          </div>
+          <div class="card-body">
+            <div class="card-tags">
+              <span class="card-tag">R&amp;D</span>
+              <span class="card-tag alt">통합공고</span>
+              <span class="card-tag alt">중소벤처기업부</span>
+            </div>
+            <h3 class="card-title">2025년 중소기업기술혁신개발사업</h3>
+            <p class="card-summary">기업주도형 R&amp;D · 혁신역량 단계별 지원. 수출지향형(20억) / 시장확대형(6억) / 시장대응형(5억). 26년 차기공고 대기 中.</p>
+            <div class="card-meta">
+              <span><strong>지원</strong>최대 20억원</span>
+              <span><strong>비율</strong>65~75%</span>
+              <span><strong>마감</strong>25.5.21(수) 18:00 종료</span>
+            </div>
+          </div>
+          <div class="card-arrow">→</div>
+        </div>
+      </a>
+
+      <a href="#small-craftsman-sales" data-target="small-craftsman-sales" class="program-card">
+        <div class="card-row">
+          <div class="card-status closed">
+            <div class="card-dday">CLOSED</div>
+            <div class="card-status-label">REF</div>
+          </div>
+          <div class="card-body">
+            <div class="card-tags">
+              <span class="card-tag">소공인 · 판로개척</span>
+              <span class="card-tag alt">바우처 매칭</span>
+              <span class="card-tag alt">소상공인시장진흥공단</span>
+            </div>
+            <h3 class="card-title">2025년 소공인 판로개척 지원사업</h3>
+            <p class="card-summary">상시근로자 10인 미만 제조업(C10~C34) 소공인. 5개 바우처 항목(전시·마케팅·매장입점·브랜드·기타). 290개사 선정. 26년 차기공고 대기.</p>
+            <div class="card-meta">
+              <span><strong>지원</strong>국비 1,800만</span>
+              <span><strong>비율</strong>80%</span>
+              <span><strong>마감</strong>25.2.21(금) 18:00 종료</span>
+            </div>
+          </div>
+          <div class="card-arrow">→</div>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <footer class="doc-footer">
+    <div class="footer-brand">GROWTH<span class="apostrophe">'</span>HIGH — 스케일업 파트너</div>
+    <div class="footer-meta">2026 정부지원사업 큐레이션<br>Curated by GROWTH'HIGH · 2026.04.28 · growthhigh.co.kr</div>
+  </footer>
+  </div>
+</div>
+
+<!-- didimdol-rd View -->
+<div class="view" id="view-didimdol-rd">
+  <div class="back-bar">
+    <a href="#index" class="back-link" data-target="index">목록으로</a>
+  </div>
+  <div class="doc">
+<header class="brand-header">
+    <div class="logo">GROWTH<span class="apostrophe">'</span>HIGH<span class="tagline">Scale-up Studio</span></div>
+    <div class="doc-meta"><strong>지원사업 검토 서식</strong>v1.0 STANDARD · 2026.04.28</div>
+  </header>
+
+  <div class="title-block">
+    <div class="label-row">
+      <span class="label-tag">R&amp;D</span>
+      <span class="label-tag alt">자유공모</span>
+      <span class="label-tag alt">중소벤처기업부</span>
+    </div>
+    <h1 class="doc-title">2026년 창업성장기술개발사업<br>(디딤돌) 제3차</h1>
+    <div class="doc-subtitle">중소벤처기업부 공고 제2026-214호 · 전문기관 중소기업기술정보진흥원</div>
+  </div>
+
+  <div class="dday-strip urgent">
+    <div class="dday-badge">D−1</div>
+    <div class="dday-text"><strong>마감임박</strong> · 2026.4.9(목) ~ <strong>4.29(수) 18:00 정각 마감</strong> · 마감 후 수정 불가</div>
+  </div>
+
+  <section>
+    <div class="section-header">
+      <div class="section-en"><span class="num">A</span>Project Overview</div>
+      <h2 class="section-title">사업 개요</h2>
+    </div>
+    <div class="meta-grid">
+      <div class="meta-cell"><div class="meta-label">대상 업종 / Industry</div><div class="meta-value">제조업 · 지식서비스업 · 게임개발업</div></div>
+      <div class="meta-cell"><div class="meta-label">신청 형태 / Type</div><div class="meta-value">단일기업 (자유공모)</div></div>
+      <div class="meta-cell"><div class="meta-label">지원 한도 / Funding Cap</div><div class="meta-value">최대 2억원 · 최장 1년 6개월</div></div>
+      <div class="meta-cell"><div class="meta-label">정부지원 비율 / Gov. Ratio</div><div class="meta-value">75% 이내 (자부담 25%↑)</div></div>
+      <div class="meta-cell"><div class="meta-label">총 예산 / Total Budget</div><div class="meta-value">278억원</div></div>
+      <div class="meta-cell"><div class="meta-label">총 과제수 / Awards</div><div class="meta-value">418개 (5개 트랙 中 택1)</div></div>
+    </div>
+    <div class="source-link">
+      <a href="https://www.iris.go.kr" target="_blank">→ 공고문 원본 보기 (IRIS)</a>
+      &nbsp; · &nbsp; 신청처: 범부처통합연구지원시스템(IRIS)
+    </div>
+  </section>
+
+  <section>
+    <div class="section-header">
+      <div class="section-en"><span class="num">B</span>Program Essentials</div>
+      <h2 class="section-title">사업 핵심</h2>
+    </div>
+    <div class="core-cards">
+      <div class="core-card">
+        <div class="card-num">B.01</div>
+        <div class="card-label">대상 기업 / Eligibility</div>
+        <div class="card-headline">업력 7년 이하<br>매출 20억 미만</div>
+        <div class="card-body">신산업 분야는 10년 이하까지 가능 (AI · 바이오 · 반도체 등 28개 분야). 부채비율 1,000% 미만 + 자본전액잠식 해소 필요.</div>
+      </div>
+      <div class="core-card">
+        <div class="card-num">B.02</div>
+        <div class="card-label">지원 규모 / Scale</div>
+        <div class="card-headline">최대 2억원<br>정부지원 75%</div>
+        <div class="card-body">기간 최대 1년 6개월. 자부담 25% 이상 (그중 10% 이상은 현금). 자체 R&amp;D 주제 가능.</div>
+      </div>
+      <div class="core-card">
+        <div class="card-num">B.03</div>
+        <div class="card-label">신청 방식 / Method</div>
+        <div class="card-headline">5개 트랙 中 1개<br>중복신청 불가</div>
+        <div class="card-body">글로벌 R&amp;D / 전략기술 R&amp;D / 연구개발특구 / 초격차 / 민관협력OI. 어느 트랙으로 갈지 사전 결정 필수.</div>
+      </div>
+    </div>
+
+    <div class="table-block">
+      <div class="block-header">
+        <div class="block-title">5개 트랙 비교</div>
+        <div class="block-en">Track Comparison</div>
+      </div>
+      <table class="tracks">
+        <thead><tr><th>트랙</th><th>예산</th><th>과제수</th><th>진입조건</th></tr></thead>
+        <tbody>
+          <tr><td class="track-name">글로벌 R&amp;D</td><td>100억</td><td>150개</td><td>글로벌 진출계획 보유</td></tr>
+          <tr><td class="track-name">전략기술 R&amp;D <span class="new-tag">NEW</span></td><td>100억</td><td>150개</td><td>12대 국가전략기술 분야</td></tr>
+          <tr><td class="track-name">연구개발특구</td><td>45억</td><td>68개</td><td>특구진흥재단 추천 필요</td></tr>
+          <tr><td class="track-name">초격차</td><td>26.6억</td><td>40개</td><td>초격차 1000+ 선정 + 창업진흥원 추천</td></tr>
+          <tr><td class="track-name">민관협력OI</td><td>6.6억</td><td>10개</td><td>민관협력OI 플랫폼 추천</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="highlight-box warning">
+      <div class="highlight-title">26년 주요 변경사항<span class="highlight-en">2026 Updates</span></div>
+      <ul class="highlight-list">
+        <li>도약 R&amp;D 내 <strong>전략기술 R&amp;D 트랙 신설</strong></li>
+        <li><strong>비수도권 소재 가점 2점 신설</strong></li>
+        <li>정부 표창 가점 인정범위 확대 (대통령/국무총리/장관 포상)</li>
+        <li>부채비율 1,000% 미만 + 자본전액잠식 해소 시 예외 조항 신설</li>
+        <li>신산업 10년 이내 기업도 기존인력 인건비 현금 계상 가능</li>
+        <li>사전검토 미사용 서류는 협약시 제출로 간소화</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-header">
+      <div class="section-en"><span class="num">C</span>Eligibility Checklist</div>
+      <h2 class="section-title">자격 체크리스트</h2>
+    </div>
+
+    <div class="checklist-group">
+      <div class="group-title">공통 자격 / Common</div>
+      <ul class="checklist">
+        <li><span class="check"></span><span>중소기업기본법상 중소기업</span></li>
+        <li><span class="check"></span><span><strong>업력 7년 이하</strong> (신산업분야 10년 이하)</span></li>
+        <li><span class="check"></span><span><strong>매출액 20억원 미만</strong></span></li>
+        <li><span class="check"></span><span>부채비율 1,000% 미만 + 자본전액잠식 해소</span></li>
+        <li><span class="check"></span><span>3책5공 제도 위반 없음 (연구자 동시 5개/책임자 3개 이내)</span></li>
+      </ul>
+    </div>
+
+    <div class="checklist-group">
+      <div class="group-title">트랙별 추가 요건 / Track-specific</div>
+      <ul class="checklist">
+        <li><span class="check"></span><span>글로벌/전략기술 → 본사 소재지가 공고 권역(수도권/비수도권)과 일치</span></li>
+        <li><span class="check"></span><span>초격차/민관협력OI/연구개발특구 → 해당기관 <strong>사전 추천</strong> 보유</span></li>
+      </ul>
+    </div>
+
+    <div class="checklist-group">
+      <div class="group-title">가점 사항 / Bonus Points</div>
+      <ul class="checklist">
+        <li class="bonus"><span class="check"></span><span>최근 3년 이내 정부 표창 (대통령/국무총리/장관 포상 등) <span class="new-inline">EXPANDED</span></span></li>
+        <li class="bonus"><span class="check"></span><span><strong>비수도권 소재 기업 2점</strong> <span class="new-inline">NEW</span></span></li>
+      </ul>
+    </div>
+
+    <a href="#" class="pdf-link">→ 공고문 PDF 원본 보기</a>
+
+    <details class="more">
+      <summary>더보기 — 신청서류 / 평가절차 / 기술료 / 문의</summary>
+      <div class="more-content">
+        <h4>제출서류<span class="en">Documents</span></h4>
+        <ul>
+          <li>연구개발계획서 본문1 (20p 이내) + 본문2 (온라인 직접입력)</li>
+          <li>신용상태 조회·정보활용 동의서</li>
+          <li>개인정보 수집·이용 동의서</li>
+          <li>외부기술도입비 현물산정 신청서 (해당시)</li>
+          <li>가·감점 증빙서류 (해당시)</li>
+          <li><strong>⚠ 접수마감일 이후 추가/수정 불가</strong></li>
+        </ul>
+        <h4>평가절차<span class="en">Evaluation</span></h4>
+        <p>사업공고 → 신청·접수 → 신청자격 검토 → <strong>선정평가(서면+대면)</strong> → 이의신청 → 최종선정 → 협약</p>
+        <ul>
+          <li>선정평가: 26.5월~6월</li>
+          <li>협약: 26.7월</li>
+          <li>이의신청 1회만 가능</li>
+        </ul>
+        <h4>기술료<span class="en">Royalty</span></h4>
+        <ul>
+          <li>최종 "완료" 과제만 납부 의무</li>
+          <li>매출기반 약정 경상기술료, <strong>종료 후 5년간</strong></li>
+          <li>한도: 실사용 정부출연금의 <strong>10% 이내</strong></li>
+          <li>산식: 매출액 × 기술기여도 × 요율(2.5%)</li>
+        </ul>
+        <h4>문의<span class="en">Contact</span></h4>
+        <ul>
+          <li>사업총괄: 중소벤처기업부 기술개발과 (1357)</li>
+          <li>전문기관: 중소기업기술정보진흥원 창업성장사업실</li>
+          <li>시스템: IRIS 콜센터 (1877-2041)</li>
+        </ul>
+      </div>
+    </details>
+  </section>
+
+  <footer class="doc-footer">
+    <div class="footer-brand">GROWTH<span class="apostrophe">'</span>HIGH — Scale-up Studio</div>
+    <div class="footer-meta">Source: 중소벤처기업부 공고 제2026-214호<br>Issued: 2026.04.28 · v1.0 Standard</div>
+  </footer>
+  </div>
+</div>
+
+<!-- tech-innovation View -->
+<div class="view" id="view-tech-innovation">
+  <div class="back-bar">
+    <a href="#index" class="back-link" data-target="index">목록으로</a>
+  </div>
+  <div class="doc">
+<header class="brand-header">
+    <div class="logo">GROWTH<span class="apostrophe">'</span>HIGH<span class="tagline">Scale-up Studio</span></div>
+    <div class="doc-meta"><strong>지원사업 검토 서식</strong>v1.0 STANDARD · 2026.04.28</div>
+  </header>
+
+  <div class="title-block">
+    <div class="label-row">
+      <span class="label-tag">R&amp;D</span>
+      <span class="label-tag alt">통합공고</span>
+      <span class="label-tag alt">중소벤처기업부</span>
+    </div>
+    <h1 class="doc-title">2025년 중소기업기술혁신개발사업<br>(시장확대형·시장대응형·수출지향형)</h1>
+    <div class="doc-subtitle">중소벤처기업부 공고 제2025-24호 · 시행계획 통합공고</div>
+  </div>
+
+  <div class="dday-strip closed">
+    <div class="dday-badge">CLOSED</div>
+    <div class="dday-text"><strong>마감 완료</strong> · 1차 25.2.3~2.17 · <strong>2차 25.5.8~5.21 18:00</strong> · 사후 참고용 (26년 차기공고 대기)</div>
+  </div>
+
+  <section>
+    <div class="section-header">
+      <div class="section-en"><span class="num">A</span>Project Overview</div>
+      <h2 class="section-title">사업 개요</h2>
+    </div>
+    <div class="meta-grid">
+      <div class="meta-cell"><div class="meta-label">대상 업종 / Industry</div><div class="meta-value">중소기업기본법 중소기업 (제조 · 지식서비스)</div></div>
+      <div class="meta-cell"><div class="meta-label">신청 형태 / Type</div><div class="meta-value">단일기업 · 자유공모(품목지정)</div></div>
+      <div class="meta-cell"><div class="meta-label">지원 한도 / Funding Cap</div><div class="meta-value">최대 20억원 · 최장 4년 (수출지향형)</div></div>
+      <div class="meta-cell"><div class="meta-label">정부지원 비율 / Gov. Ratio</div><div class="meta-value">65~75% 이내 (자부담 25~35%↑)</div></div>
+      <div class="meta-cell"><div class="meta-label">총 예산 / Total Budget</div><div class="meta-value">421억원 (316개 과제 내외)</div></div>
+      <div class="meta-cell"><div class="meta-label">접수 마감 / Deadline</div><div class="meta-value">2025.5.21(수) 18:00 종료</div></div>
+    </div>
+    <div class="source-link">
+      <a href="https://www.iris.go.kr" target="_blank">→ 공고문 원본 보기 (IRIS)</a>
+      &nbsp; · &nbsp; 신청처: 범부처통합연구지원시스템(IRIS)
+    </div>
+  </section>
+
+  <section>
+    <div class="section-header">
+      <div class="section-en"><span class="num">B</span>Program Essentials</div>
+      <h2 class="section-title">사업 핵심</h2>
+    </div>
+    <div class="core-cards">
+      <div class="core-card">
+        <div class="card-num">B.01</div>
+        <div class="card-label">대상 기업 / Eligibility</div>
+        <div class="card-headline">중소기업기본법<br>중소기업</div>
+        <div class="card-body">기업주도형 R&amp;D. 혁신역량 단계별 지원으로 Scale-Up. 세부과제별 자격 상이 (붙임2 확인 필수).</div>
+      </div>
+      <div class="core-card">
+        <div class="card-num">B.02</div>
+        <div class="card-label">지원 규모 / Scale</div>
+        <div class="card-headline">최대 20억원<br>정부지원 65~75%</div>
+        <div class="card-body">수출지향형 4년 20억 / 시장확대형 3년 6억 / 시장대응형 2년 5억. 자부담 중 10%+ 현금 의무.</div>
+      </div>
+      <div class="core-card">
+        <div class="card-num">B.03</div>
+        <div class="card-label">신청 방식 / Method</div>
+        <div class="card-headline">3개 내역사업<br>15+ 세부과제</div>
+        <div class="card-body">수출지향형 / 시장확대형 / 시장대응형 트리거. 동시수행 1개 한도 (졸업제 예외 시 2개).</div>
+      </div>
+    </div>
+
+    <div class="table-block">
+      <div class="block-header">
+        <div class="block-title">3개 내역사업 비교</div>
+        <div class="block-en">Track Comparison</div>
+      </div>
+      <table class="tracks">
+        <thead><tr><th>내역사업</th><th>지원한도</th><th>기간</th><th>정부비율</th></tr></thead>
+        <tbody>
+          <tr><td class="track-name">수출지향형</td><td>최대 20억<br>(연차 5억 이내)</td><td>최대 4년</td><td>65% 이내</td></tr>
+          <tr><td class="track-name">시장확대형</td><td>최대 6억<br>(연차 3억 이내)</td><td>최대 3년</td><td>75% 이내</td></tr>
+          <tr><td class="track-name">시장대응형</td><td>최대 5억<br>(연차 2.5억 이내)</td><td>최대 2년</td><td>75% 이내</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="highlight-box info">
+      <div class="highlight-title">25년 주요 변경사항<span class="highlight-en">2025 Updates</span></div>
+      <ul class="highlight-list">
+        <li>중점지원 분야 확대: <strong>국가전략기술·탄소중립 13대 분야 124개 품목</strong></li>
+        <li>新디지털 전환 11대 분야 54개 품목으로 확장</li>
+        <li><strong>동시수행 1개 한도</strong> 신설 (졸업제 예외 시 최대 2개)</li>
+        <li>보안과제 자체 점검 후 신청 의무화</li>
+        <li>수출지향형 內 함께달리기·이어달리기·VC추천 등 다양화</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-header">
+      <div class="section-en"><span class="num">C</span>Eligibility Checklist</div>
+      <h2 class="section-title">자격 체크리스트</h2>
+    </div>
+
+    <div class="checklist-group">
+      <div class="group-title">공통 자격 / Common</div>
+      <ul class="checklist">
+        <li><span class="check"></span><span><strong>「중소기업기본법」제2조 중소기업</strong></span></li>
+        <li><span class="check"></span><span>3책5공 제도 충족 (책임자 동시수행 3개·연구자 5개 이내)</span></li>
+        <li><span class="check"></span><span>동시수행 과제 1개 이내 (졸업제 예외 시 2개)</span></li>
+        <li><span class="check"></span><span>보안등급 자체 점검 완료</span></li>
+      </ul>
+    </div>
+
+    <div class="checklist-group">
+      <div class="group-title">트랙별 추가 요건 / Track-specific</div>
+      <ul class="checklist">
+        <li><span class="check"></span><span>수출지향형 → <strong>전년도 직수출 실적 보유</strong> (해외진출R&amp;D는 별도 기준)</span></li>
+        <li><span class="check"></span><span>시장확대형 → 전략기술 분야 / 후불형은 자력 R&amp;D 후 사후 정산</span></li>
+        <li><span class="check"></span><span>소부장 트랙 → 별도 품목 적합성 검토</span></li>
+      </ul>
+    </div>
+
+    <div class="checklist-group">
+      <div class="group-title">지원 제외 / Exclusion</div>
+      <ul class="checklist">
+        <li><span class="check"></span><span>최근 5년 內 부정행위 적발 기업</span></li>
+        <li><span class="check"></span><span>국세·지방세 체납, 휴·폐업 기업</span></li>
+        <li><span class="check"></span><span>유사 과제 중복지원 (타 부처 R&amp;D 포함)</span></li>
+      </ul>
+    </div>
+
+    <a href="#" class="pdf-link">→ 공고문 PDF 원본 보기</a>
+
+    <details class="more">
+      <summary>더보기 — 일정 / 평가 / 문의</summary>
+      <div class="more-content">
+        <h4>일정<span class="en">Timeline</span></h4>
+        <ul>
+          <li>1차(상반기): 25.2.3 ~ 2.17 18:00 → 평가 2~4월 → 협약 4월</li>
+          <li>2차(하반기): 25.5.8 ~ 5.21 18:00 → 평가 6~8월 → 협약 9월</li>
+          <li><strong>2026년 차기공고 대기 중</strong> (1차는 통상 1월 공고)</li>
+        </ul>
+        <h4>평가절차<span class="en">Evaluation</span></h4>
+        <p>사업공고 → 신청·접수 → 신청자격 검토 → 선정평가 → 이의신청 → 최종선정 → 협약</p>
+        <h4>중점지원 분야<span class="en">Strategic</span></h4>
+        <ul>
+          <li>국가전략기술·탄소중립: 13대 분야 124개 품목</li>
+          <li>미래혁신 선도: 9대 분야 57개 품목</li>
+          <li>新디지털 전환: 11대 분야 54개 품목</li>
+        </ul>
+        <h4>문의<span class="en">Contact</span></h4>
+        <ul>
+          <li>사업총괄: 중소벤처기업부 기술개발과 (1357)</li>
+          <li>전문기관: 중소기업기술정보진흥원</li>
+          <li>시스템: IRIS 콜센터 (1877-2041)</li>
+        </ul>
+      </div>
+    </details>
+  </section>
+
+  <footer class="doc-footer">
+    <div class="footer-brand">GROWTH<span class="apostrophe">'</span>HIGH — Scale-up Studio</div>
+    <div class="footer-meta">Source: 중소벤처기업부 공고 제2025-24호<br>Issued: 2026.04.28 · v1.0 Standard</div>
+  </footer>
+  </div>
+</div>
+
+<!-- startup-jump View -->
+<div class="view" id="view-startup-jump">
+  <div class="back-bar">
+    <a href="#index" class="back-link" data-target="index">목록으로</a>
+  </div>
+  <div class="doc">
+<header class="brand-header">
+    <div class="logo">GROWTH<span class="apostrophe">'</span>HIGH<span class="tagline">Scale-up Studio</span></div>
+    <div class="doc-meta"><strong>지원사업 검토 서식</strong>v1.0 STANDARD · 2026.04.28</div>
+  </header>
+
+  <div class="title-block">
+    <div class="label-row">
+      <span class="label-tag">창업 · 도약기</span>
+      <span class="label-tag alt">권역별 주관</span>
+      <span class="label-tag alt">중소벤처기업부</span>
+    </div>
+    <h1 class="doc-title">2026년 창업도약패키지<br>(일반형)</h1>
+    <div class="doc-subtitle">중소벤처기업부 공고 제2026-39호 · 도약기 창업기업 사업화 자금</div>
+  </div>
+
+  <div class="dday-strip closed">
+    <div class="dday-badge">CLOSED</div>
+    <div class="dday-text"><strong>마감 완료</strong> · 2026.1.23(금) ~ <strong>2.13(금) 16:00 종료</strong> · 사후 참고용 (투자연계형은 5월 별도 공고 예정)</div>
+  </div>
+
+  <section>
+    <div class="section-header">
+      <div class="section-en"><span class="num">A</span>Project Overview</div>
+      <h2 class="section-title">사업 개요</h2>
+    </div>
+    <div class="meta-grid">
+      <div class="meta-cell"><div class="meta-label">대상 업종 / Industry</div><div class="meta-value">제조 · 서비스 등 전 분야</div></div>
+      <div class="meta-cell"><div class="meta-label">신청 형태 / Type</div><div class="meta-value">12개 권역 주관기관 中 1개 선택</div></div>
+      <div class="meta-cell"><div class="meta-label">지원 한도 / Funding Cap</div><div class="meta-value">평균 1.2억 · 최대 2억원</div></div>
+      <div class="meta-cell"><div class="meta-label">정부지원 비율 / Gov. Ratio</div><div class="meta-value">70~90% (지방우대 차등)</div></div>
+      <div class="meta-cell"><div class="meta-label">협약 기간 / Period</div><div class="meta-value">10개월 (26.4월~27.1월)</div></div>
+      <div class="meta-cell"><div class="meta-label">선정 규모 / Awards</div><div class="meta-value">300개사 내외</div></div>
+    </div>
+    <div class="source-link">
+      <a href="https://www.k-startup.go.kr" target="_blank">→ 공고문 원본 보기 (K-Startup)</a>
+      &nbsp; · &nbsp; 신청처: K-Startup 누리집
+    </div>
+  </section>
+
+  <section>
+    <div class="section-header">
+      <div class="section-en"><span class="num">B</span>Program Essentials</div>
+      <h2 class="section-title">사업 핵심</h2>
+    </div>
+    <div class="core-cards">
+      <div class="core-card">
+        <div class="card-num">B.01</div>
+        <div class="card-label">대상 기업 / Eligibility</div>
+        <div class="card-headline">업력 3년 초과<br>7년 미만 도약기</div>
+        <div class="card-body">신산업 분야는 10년 이내까지 가능. 업력 미충족 기업도 23~25년 초기창업패키지 등 졸업기업이면 패스트트랙 신청 가능.</div>
+      </div>
+      <div class="core-card">
+        <div class="card-num">B.02</div>
+        <div class="card-label">지원 규모 / Scale</div>
+        <div class="card-headline">최대 2억원<br>지방우대 90%</div>
+        <div class="card-body">사업화 자금 (시제품 · 지재권 · BM 혁신). 지방우대 비해당 지역 70%, 특별지원 지역 90% 차등.</div>
+      </div>
+      <div class="core-card">
+        <div class="card-num">B.03</div>
+        <div class="card-label">신청 방식 / Method</div>
+        <div class="card-headline">권역별 주관기관<br>1개 선택 필수</div>
+        <div class="card-body">본점 소재지 권역 내 주관기관 中 택1. 타 권역 신청 시 평가 제외. 일반/딥테크/투자연계 中복신청 OK · 동시수행 불가.</div>
+      </div>
+    </div>
+
+    <div class="table-block">
+      <div class="block-header">
+        <div class="block-title">12개 권역 주관기관별 선정규모</div>
+        <div class="block-en">Regional Allocation</div>
+      </div>
+      <table class="tracks">
+        <thead><tr><th>권역</th><th>주관기관</th><th>선정규모</th></tr></thead>
+        <tbody>
+          <tr><td class="track-name">수도권</td><td>경기창조경제혁신센터 / 부천산업진흥원 / 인천테크노파크 / 한국보건산업진흥원</td><td>30~31개</td></tr>
+          <tr><td class="track-name">충청권</td><td>서원대학교 산학협력단 / 한국수자원공사</td><td>26~29개</td></tr>
+          <tr><td class="track-name">동부권</td><td>경남창조경제혁신센터 / 경북대 창업지원단 / 울산경제일자리진흥원</td><td>24~28개</td></tr>
+          <tr><td class="track-name">호남권</td><td>광주정보문화산업진흥원 / 한국탄소산업진흥원</td><td>24~25개</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="table-block">
+      <div class="block-header">
+        <div class="block-title">자부담 차등 (지방우대 4단계)</div>
+        <div class="block-en">Cost-share Tiers</div>
+      </div>
+      <table class="tracks">
+        <thead><tr><th>지역 분류</th><th>대상 시군구</th><th>정부지원</th><th>자부담</th></tr></thead>
+        <tbody>
+          <tr><td class="track-name">특별지원</td><td>40개 시·군</td><td>90%</td><td>10%</td></tr>
+          <tr><td class="track-name">우대지원</td><td>44개 시·군</td><td>85%</td><td>15%</td></tr>
+          <tr><td class="track-name">일반(지방)</td><td>167개 비수도권 中</td><td>80%</td><td>20%</td></tr>
+          <tr><td class="track-name">비해당(수도권 등)</td><td>그 외</td><td>70%</td><td>30%</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="highlight-box warning">
+      <div class="highlight-title">3개 유형 분리 공고<span class="highlight-en">Type Split</span></div>
+      <ul class="highlight-list">
+        <li><strong>일반형</strong>: 전 분야 도약기 · 300개사 · 최대 2억원 (본 공고 · 마감 완료)</li>
+        <li><strong>딥테크 특화형</strong>: 5대 분야 · 75개사 · 최대 3억원 ('26.1.6 별도 공고)</li>
+        <li><strong>투자연계형</strong>: 비수도권 · 50개사 · 최대 2억원 ('26.5월 별도 공고 예정)</li>
+        <li>3개 유형 중복신청 가능, 단 <strong>1개 유형만 수행 가능</strong> (동시수행 불가)</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-header">
+      <div class="section-en"><span class="num">C</span>Eligibility Checklist</div>
+      <h2 class="section-title">자격 체크리스트</h2>
+    </div>
+
+    <div class="checklist-group">
+      <div class="group-title">공통 자격 / Common</div>
+      <ul class="checklist">
+        <li><span class="check"></span><span><strong>업력 3년 초과 ~ 7년 이내</strong> (도약기 창업기업)</span></li>
+        <li><span class="check"></span><span>신산업 창업 분야는 <strong>10년 이내</strong>까지</span></li>
+        <li><span class="check"></span><span>본점 소재지가 신청 권역 내 주관기관 관할에 해당</span></li>
+        <li><span class="check"></span><span>대표자 본인이 직접 신청 (타인 신청 시 탈락)</span></li>
+      </ul>
+    </div>
+
+    <div class="checklist-group">
+      <div class="group-title">패스트트랙 자격 / Fast-track</div>
+      <ul class="checklist">
+        <li><span class="check"></span><span>23~25년 초기창업패키지 졸업기업</span></li>
+        <li><span class="check"></span><span>23~25년 재도전성공패키지 참여기업</span></li>
+        <li><span class="check"></span><span>23~24년 창업중심대학(초기) 참여기업</span></li>
+        <li><span class="check"></span><span>위 졸업/참여기업 中 [붙임5] 자격요건 충족 시 업력 미충족이어도 신청 가능</span></li>
+      </ul>
+    </div>
+
+    <div class="checklist-group">
+      <div class="group-title">지원 제외 / Exclusion</div>
+      <ul class="checklist">
+        <li><span class="check"></span><span>휴·폐업, 부도 상태 기업</span></li>
+        <li><span class="check"></span><span>국세·지방세 체납</span></li>
+        <li><span class="check"></span><span>정부 지원사업 참여제한 中 (부정수급 등)</span></li>
+        <li><span class="check"></span><span>지원제외 업종</span></li>
+      </ul>
+    </div>
+
+    <a href="#" class="pdf-link">→ 공고문 PDF 원본 보기</a>
+
+    <details class="more">
+      <summary>더보기 — 일정 / 제출서류 / 문의</summary>
+      <div class="more-content">
+        <h4>일정<span class="en">Timeline</span></h4>
+        <ul>
+          <li>공고: 26.1.23(금)</li>
+          <li>접수: 26.1.23 ~ 2.13(금) 16:00 (마감 완료)</li>
+          <li>예비선정 통보 → 협약체결 확약서 3일 내 제출</li>
+          <li>협약: 26.4월 ~ 27.1월 (10개월)</li>
+        </ul>
+        <h4>지원 내용<span class="en">Support</span></h4>
+        <ul>
+          <li>사업화 자금: 시제품 제작, 지재권 취득, BM 혁신</li>
+          <li>창업프로그램: 후속투자 유치, 글로벌 시장 진출 등 도약기 맞춤형</li>
+          <li>주관기관별 창업프로그램 별첨3 참고</li>
+        </ul>
+        <h4>제출서류<span class="en">Documents</span></h4>
+        <ul>
+          <li>K-Startup 누리집 온라인 신청서</li>
+          <li>사업계획서</li>
+          <li>실명인증 + 기업인증 (공동인증서 등)</li>
+          <li>공공마이데이터 동의 시 일부 서류 자동 연동</li>
+        </ul>
+        <h4>문의<span class="en">Contact</span></h4>
+        <ul>
+          <li>K-Startup 콜센터 (1357)</li>
+          <li>주관기관별 문의 (12개 권역별 상이)</li>
+        </ul>
+      </div>
+    </details>
+  </section>
+
+  <footer class="doc-footer">
+    <div class="footer-brand">GROWTH<span class="apostrophe">'</span>HIGH — Scale-up Studio</div>
+    <div class="footer-meta">Source: 중소벤처기업부 공고 제2026-39호<br>Issued: 2026.04.28 · v1.0 Standard</div>
+  </footer>
+  </div>
+</div>
+
+<!-- innovation-voucher View -->
+<div class="view" id="view-innovation-voucher">
+  <div class="back-bar">
+    <a href="#index" class="back-link" data-target="index">목록으로</a>
+  </div>
+  <div class="doc">
+<header class="brand-header">
+    <div class="logo">GROWTH<span class="apostrophe">'</span>HIGH<span class="tagline">Scale-up Studio</span></div>
+    <div class="doc-meta"><strong>지원사업 검토 서식</strong>v1.0 STANDARD · 2026.04.28</div>
+  </header>
+
+  <div class="title-block">
+    <div class="label-row">
+      <span class="label-tag">컨설팅 · 바우처</span>
+      <span class="label-tag alt">제조 소기업</span>
+      <span class="label-tag alt">중소벤처기업부</span>
+    </div>
+    <h1 class="doc-title">2026년 중소기업 혁신바우처 사업<br>1차 지원계획</h1>
+    <div class="doc-subtitle">중소벤처기업부 공고 제2025-585호 · 관리기관 중소벤처기업진흥공단</div>
+  </div>
+
+  <div class="dday-strip closed">
+    <div class="dday-badge">CLOSED</div>
+    <div class="dday-text"><strong>마감 완료</strong> · 25.11.12(수) ~ <strong>25.12.2(화) 18:00 종료</strong> · 사후 참고용 (2차 26.2월 별도 공고 예정 — 지역성장바우처 한정)</div>
+  </div>
+
+  <section>
+    <div class="section-header">
+      <div class="section-en"><span class="num">A</span>Project Overview</div>
+      <h2 class="section-title">사업 개요</h2>
+    </div>
+    <div class="meta-grid">
+      <div class="meta-cell"><div class="meta-label">대상 업종 / Industry</div><div class="meta-value">제조업 (C10~C34) · 3년 매출 140억 이하</div></div>
+      <div class="meta-cell"><div class="meta-label">신청 형태 / Type</div><div class="meta-value">단일기업 · 융복합 시 협업체 가능</div></div>
+      <div class="meta-cell"><div class="meta-label">지원 한도 / Funding Cap</div><div class="meta-value">기업당 최대 50백만원</div></div>
+      <div class="meta-cell"><div class="meta-label">정부지원 비율 / Gov. Ratio</div><div class="meta-value">45 ~ 85% (매출 차등)</div></div>
+      <div class="meta-cell"><div class="meta-label">총 예산 / Total Budget</div><div class="meta-value">652억원 (정부안 기준)</div></div>
+      <div class="meta-cell"><div class="meta-label">사용 기간 / Period</div><div class="meta-value">선정 후 ~ '26.7월말 (탄소·중대재해 9월말)</div></div>
+    </div>
+    <div class="source-link">
+      <a href="http://www.mssmiv.com" target="_blank">→ 공고문 원본 보기 (혁신바우처 플랫폼)</a>
+      &nbsp; · &nbsp; 신청처: 혁신바우처플랫폼(mssmiv.com)
+    </div>
+  </section>
+
+  <section>
+    <div class="section-header">
+      <div class="section-en"><span class="num">B</span>Program Essentials</div>
+      <h2 class="section-title">사업 핵심</h2>
+    </div>
+    <div class="core-cards">
+      <div class="core-card">
+        <div class="card-num">B.01</div>
+        <div class="card-label">대상 기업 / Eligibility</div>
+        <div class="card-headline">제조업 소기업<br>매출 140억↓</div>
+        <div class="card-body">한국표준산업분류 C10~C34 제조업이 주업종. 3년 평균(22~24년) 매출액 140억원 이하 소기업. 융복합 컨설팅은 2개사 이상 협업체.</div>
+      </div>
+      <div class="core-card">
+        <div class="card-num">B.02</div>
+        <div class="card-label">지원 규모 / Scale</div>
+        <div class="card-headline">최대 50백만원<br>3분야 8프로그램</div>
+        <div class="card-body">컨설팅(경영기술·AX/DX) · 기술지원(시제품·시설구축·IP·기술사업화·인증) · 마케팅(디자인·홍보광고). 분야별 1개씩 신청 가능.</div>
+      </div>
+      <div class="core-card">
+        <div class="card-num">B.03</div>
+        <div class="card-label">신청 방식 / Method</div>
+        <div class="card-headline">바우처 형태<br>매출별 차등</div>
+        <div class="card-body">정부지원금+기업분담금으로 구성된 온라인 포인트. 매출 3억 이하 85% → 50억 초과 45%. 지방기업 5~15% 추가 우대.</div>
+      </div>
+    </div>
+
+    <div class="table-block">
+      <div class="block-header">
+        <div class="block-title">매출액별 보조율 차등</div>
+        <div class="block-en">Revenue-tier Subsidy</div>
+      </div>
+      <table class="tracks">
+        <thead><tr><th>평균 매출액</th><th>정부지원 비율</th><th>자기부담</th></tr></thead>
+        <tbody>
+          <tr><td class="track-name">3억원 이하</td><td>85%</td><td>15%</td></tr>
+          <tr><td class="track-name">3 ~ 10억원 이하</td><td>75%</td><td>25%</td></tr>
+          <tr><td class="track-name">10 ~ 50억원 이하</td><td>65%</td><td>35%</td></tr>
+          <tr><td class="track-name">50 ~ 140억원 이하</td><td>45%</td><td>55%</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="table-block">
+      <div class="block-header">
+        <div class="block-title">분야별 세부 지원 프로그램</div>
+        <div class="block-en">Service Menu</div>
+      </div>
+      <table class="tracks">
+        <thead><tr><th>분야</th><th>프로그램</th><th>한도(백만원)</th></tr></thead>
+        <tbody>
+          <tr><td class="track-name">컨설팅</td><td>경영기술전략</td><td>15</td></tr>
+          <tr><td class="track-name">컨설팅</td><td>AX·DX 컨설팅</td><td>50</td></tr>
+          <tr><td class="track-name">기술지원</td><td>시제품 제작</td><td>30</td></tr>
+          <tr><td class="track-name">기술지원</td><td>시스템 및 시설구축</td><td>20</td></tr>
+          <tr><td class="track-name">기술지원</td><td>IP기반 기술사업화</td><td>15</td></tr>
+          <tr><td class="track-name">기술지원</td><td>인증·연구장비활용시험</td><td>15</td></tr>
+          <tr><td class="track-name">마케팅</td><td>디자인 및 브랜드 지원</td><td>20</td></tr>
+          <tr><td class="track-name">마케팅</td><td>홍보 및 광고 지원</td><td>20</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="highlight-box info">
+      <div class="highlight-title">바우처 종류<span class="highlight-en">Voucher Types</span></div>
+      <ul class="highlight-list">
+        <li><strong>일반 바우처</strong>: 제조 소기업 (C10~C34, 매출 140억↓) · 본 공고 中</li>
+        <li><strong>중대재해예방·탄소중립 경영혁신 바우처</strong>: 별도 지원대상 (사용기간 9월말까지)</li>
+        <li><strong>재기컨설팅 바우처</strong>: 25.11.12부터 예산 소진 시까지 수시모집</li>
+        <li><strong>지역성장바우처</strong>: 26.2월 이후 별도 공고 예정 (2차)</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-header">
+      <div class="section-en"><span class="num">C</span>Eligibility Checklist</div>
+      <h2 class="section-title">자격 체크리스트</h2>
+    </div>
+
+    <div class="checklist-group">
+      <div class="group-title">공통 자격 / Common</div>
+      <ul class="checklist">
+        <li><span class="check"></span><span>「중소기업기본법」제2조 중소기업</span></li>
+        <li><span class="check"></span><span><strong>제조업(C10~C34) 주업종</strong></span></li>
+        <li><span class="check"></span><span><strong>3년 평균(22~24년) 매출 140억원 이하 소기업</strong></span></li>
+        <li><span class="check"></span><span>대표자 개인공동인증서 + 사업자 명의 공동인증서 보유</span></li>
+      </ul>
+    </div>
+
+    <div class="checklist-group">
+      <div class="group-title">지원 제외 / Exclusion</div>
+      <ul class="checklist">
+        <li><span class="check"></span><span>금융기관 불량거래처 규제中 기업</span></li>
+        <li><span class="check"></span><span>국세·지방세 체납 / 휴·폐업</span></li>
+        <li><span class="check"></span><span>불건전 영상게임기·도박게임장비 제조업 등 (지원제외 업종)</span></li>
+        <li><span class="check"></span><span>혁신바우처 운영기관 또는 그 특수관계 기업</span></li>
+        <li><span class="check"></span><span>혁신바우처 사업 누적 5회 이상 지원받은 기업</span></li>
+        <li><span class="check"></span><span>'25년 동사업 수행中 (바우처 잔액 보유) 기업</span></li>
+        <li><span class="check"></span><span>타 정부지원과 유사·중복 (수출바우처, 해외지사화 등)</span></li>
+      </ul>
+    </div>
+
+    <div class="checklist-group">
+      <div class="group-title">가점 사항 / Bonus Points (각 1점, 최대 5점)</div>
+      <ul class="checklist">
+        <li class="bonus"><span class="check"></span><span>원자재 수입 영향 높은 기업</span></li>
+        <li class="bonus"><span class="check"></span><span>소공인 직접지구</span></li>
+        <li class="bonus"><span class="check"></span><span>중소기업 밀집지역 '위기'단계 입주기업</span></li>
+        <li class="bonus"><span class="check"></span><span>지역혁신공모사업 선정지역 소재기업</span></li>
+        <li class="bonus"><span class="check"></span><span>중소기업 챌린지진단 수진기업</span></li>
+        <li class="bonus"><span class="check"></span><span>진로제시 컨설팅 처방기업</span></li>
+        <li class="bonus"><span class="check"></span><span>특별·우대지역 소재 기업</span></li>
+      </ul>
+    </div>
+
+    <a href="#" class="pdf-link">→ 공고문 PDF 원본 보기</a>
+
+    <details class="more">
+      <summary>더보기 — 평가절차 / 제출서류 / 일정 / 문의</summary>
+      <div class="more-content">
+        <h4>평가절차<span class="en">Evaluation</span></h4>
+        <p>서면심사 → AI 진단·현장평가 → 지역별위원회 → 최종 선정</p>
+        <ul>
+          <li>서면심사 결과 상위기업은 현장평가 생략 가능</li>
+          <li>지역별위원회: 중기부, 중진공, 외부전문가 구성</li>
+        </ul>
+        <h4>일정<span class="en">Timeline</span></h4>
+        <ul>
+          <li>신청: 25.11.12(수) 10시 ~ 25.12.2(화) 18시 (마감 완료)</li>
+          <li>평가·선정: 26.1월</li>
+          <li>협약체결: 26.2월~ (선정 후 30일 이내)</li>
+          <li>바우처 사용: 선정 후 ~ '26.7월말 (일반)</li>
+        </ul>
+        <h4>제출서류<span class="en">Documents</span></h4>
+        <ul>
+          <li>사업 신청서 (온라인 작성)</li>
+          <li>신용정보조회·정보제공 동의서</li>
+          <li>사업계획서 (별첨1 서식)</li>
+          <li>국세·지방세 완납증명서 (기업·대표자)</li>
+          <li>최근 3개년 재무제표증명원 (국세청)</li>
+          <li>사업자등록증명원</li>
+        </ul>
+        <h4>문의<span class="en">Contact</span></h4>
+        <ul>
+          <li>중소벤처기업진흥공단 (관리기관)</li>
+          <li>혁신바우처플랫폼 (mssmiv.com)</li>
+        </ul>
+      </div>
+    </details>
+  </section>
+
+  <footer class="doc-footer">
+    <div class="footer-brand">GROWTH<span class="apostrophe">'</span>HIGH — Scale-up Studio</div>
+    <div class="footer-meta">Source: 중소벤처기업부 공고 제2025-585호<br>Issued: 2026.04.28 · v1.0 Standard</div>
+  </footer>
+  </div>
+</div>
+
+<!-- small-craftsman-sales View -->
+<div class="view" id="view-small-craftsman-sales">
+  <div class="back-bar">
+    <a href="#index" class="back-link" data-target="index">목록으로</a>
+  </div>
+  <div class="doc">
+<header class="brand-header">
+    <div class="logo">GROWTH<span class="apostrophe">'</span>HIGH<span class="tagline">Scale-up Studio</span></div>
+    <div class="doc-meta"><strong>지원사업 검토 서식</strong>v1.0 STANDARD · 2026.04.28</div>
+  </header>
+
+  <div class="title-block">
+    <div class="label-row">
+      <span class="label-tag">소공인 · 판로개척</span>
+      <span class="label-tag alt">바우처 매칭</span>
+      <span class="label-tag alt">소상공인시장진흥공단</span>
+    </div>
+    <h1 class="doc-title">2025년 소공인 판로개척<br>지원사업</h1>
+    <div class="doc-subtitle">중소벤처기업부 공고 제2025-046호 · 소상공인시장진흥공단</div>
+  </div>
+
+  <div class="dday-strip closed">
+    <div class="dday-badge">CLOSED</div>
+    <div class="dday-text"><strong>마감 완료</strong> · 25.1.24(금) ~ <strong>25.2.21(금) 18:00 종료</strong> · 사후 참고용 (26년 차기공고 대기)</div>
+  </div>
+
+  <section>
+    <div class="section-header">
+      <div class="section-en"><span class="num">A</span>Project Overview</div>
+      <h2 class="section-title">사업 개요</h2>
+    </div>
+    <div class="meta-grid">
+      <div class="meta-cell"><div class="meta-label">대상 업종 / Industry</div><div class="meta-value">제조업 (C10~C34) · 상시근로자 10인 미만</div></div>
+      <div class="meta-cell"><div class="meta-label">신청 형태 / Type</div><div class="meta-value">단일 소공인 (바우처 매칭)</div></div>
+      <div class="meta-cell"><div class="meta-label">지원 한도 / Funding Cap</div><div class="meta-value">국비 최대 1,800만원</div></div>
+      <div class="meta-cell"><div class="meta-label">정부지원 비율 / Gov. Ratio</div><div class="meta-value">국비 80% · 자부담 20% 이상</div></div>
+      <div class="meta-cell"><div class="meta-label">사업 기간 / Period</div><div class="meta-value">협약체결일 ~ '25.10.31</div></div>
+      <div class="meta-cell"><div class="meta-label">선정 규모 / Awards</div><div class="meta-value">290개사 내외</div></div>
+    </div>
+    <div class="source-link">
+      <a href="https://www.sbiz24.kr" target="_blank">→ 공고문 원본 보기 (소상공인24)</a>
+      &nbsp; · &nbsp; 신청처: 소상공인24 (sbiz24.kr)
+    </div>
+  </section>
+
+  <section>
+    <div class="section-header">
+      <div class="section-en"><span class="num">B</span>Program Essentials</div>
+      <h2 class="section-title">사업 핵심</h2>
+    </div>
+    <div class="core-cards">
+      <div class="core-card">
+        <div class="card-num">B.01</div>
+        <div class="card-label">대상 기업 / Eligibility</div>
+        <div class="card-headline">상시근로자<br>10인 미만 제조</div>
+        <div class="card-body">한국표준산업분류 중분류 기준 '제조업'(C10~C34)을 주된 사업으로 영위하는 소상공인. 성장의지·잠재력 있는 유망 소공인 대상.</div>
+      </div>
+      <div class="core-card">
+        <div class="card-num">B.02</div>
+        <div class="card-label">지원 규모 / Scale</div>
+        <div class="card-headline">국비 1,800만<br>국비 80%</div>
+        <div class="card-body">자부담 450만원 이상 매칭. 국비 한도 내 바우처 항목 자유 선택 (전시·마케팅·매장입점·브랜드강화·기타).</div>
+      </div>
+      <div class="core-card">
+        <div class="card-num">B.03</div>
+        <div class="card-label">신청 방식 / Method</div>
+        <div class="card-headline">바우처 선택형<br>5개 항목</div>
+        <div class="card-body">선택한 바우처에 따라 사업비 구성 후 계획서에 정확히 기재 필수. 법인은 대표자가 직접 회원가입·신청 의무.</div>
+      </div>
+    </div>
+
+    <div class="table-block">
+      <div class="block-header">
+        <div class="block-title">판로개척 지원항목 (5개 바우처)</div>
+        <div class="block-en">Voucher Items</div>
+      </div>
+      <table class="tracks">
+        <thead><tr><th>항목</th><th>내용</th><th>국비(80%)</th><th>자부담(20%)</th></tr></thead>
+        <tbody>
+          <tr><td class="track-name">전시회 참가</td><td>국내·외 전시·박람회 참가비 (집기·부스임차비 등)</td><td rowspan="5">1,800만원<br>이내</td><td rowspan="5">450만원<br>이상</td></tr>
+          <tr><td class="track-name">마케팅</td><td>국내·외 온/오프라인 광고지원, 홍보물 제작</td></tr>
+          <tr><td class="track-name">매장입점</td><td>백화점·아울렛·팝업스토어 입점 집기·수수료</td></tr>
+          <tr><td class="track-name">브랜드강화</td><td>브랜드 디자인 개선, 브랜딩 설계</td></tr>
+          <tr><td class="track-name">기타</td><td>인증 지원, 통번역, 국제운송비, 무역보험</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="highlight-box info">
+      <div class="highlight-title">신청 유의사항<span class="highlight-en">Important Notes</span></div>
+      <ul class="highlight-list">
+        <li>법인의 경우 <strong>법인 대표자가 직접 회원가입 및 신청</strong> 필수</li>
+        <li>마이데이터 정보 제공 동의 시 필수서류 제출 간소화</li>
+        <li>사업비는 공급가액 기준 (부가세는 자기부담금 외 별도 부담)</li>
+        <li>협약기간 전/후 카드결제·송금 내역은 지원 불가</li>
+        <li>선정소공인 대상 역량강화교육 등 추가 프로그램 지원 예정</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-header">
+      <div class="section-en"><span class="num">C</span>Eligibility Checklist</div>
+      <h2 class="section-title">자격 체크리스트</h2>
+    </div>
+
+    <div class="checklist-group">
+      <div class="group-title">공통 자격 / Common</div>
+      <ul class="checklist">
+        <li><span class="check"></span><span><strong>「소상공인기본법」상 소상공인</strong></span></li>
+        <li><span class="check"></span><span><strong>상시근로자 10인 미만</strong></span></li>
+        <li><span class="check"></span><span><strong>제조업(C10~C34)</strong> 주업종</span></li>
+        <li><span class="check"></span><span>중소기업현황정보시스템에서 소상공인확인서 발급 가능</span></li>
+        <li><span class="check"></span><span>대표자 본인 명의로 회원가입·신청</span></li>
+      </ul>
+    </div>
+
+    <div class="checklist-group">
+      <div class="group-title">지원 제외 / Exclusion</div>
+      <ul class="checklist">
+        <li><span class="check"></span><span>공고 마감일 현재 부도·휴·폐업 中</span></li>
+        <li><span class="check"></span><span>국세·지방세 체납, 금융기관 채무불이행 확인</span></li>
+        <li><span class="check"></span><span>정부사업 참여제한 中 (부정수급 등)</span></li>
+        <li><span class="check"></span><span>지원제외 업종 (붙임3 참조)</span></li>
+        <li><span class="check"></span><span>유사 사업 중복지원</span></li>
+      </ul>
+    </div>
+
+    <a href="#" class="pdf-link">→ 공고문 PDF 원본 보기</a>
+
+    <details class="more">
+      <summary>더보기 — 평가절차 / 제출서류 / 일정 / 문의</summary>
+      <div class="more-content">
+        <h4>평가절차<span class="en">Evaluation</span></h4>
+        <p>평가 (서류 + 발표) → 사업 선정 → 협약 체결 → 사업 수행 → 정산</p>
+        <h4>일정<span class="en">Timeline</span></h4>
+        <ul>
+          <li>공고: 25.1.24(금)</li>
+          <li>접수: 25.1.24 ~ 2.21(금) 18:00 (마감 완료)</li>
+          <li>사업기간: 협약체결일 ~ 25.10.31 (일정 변동 가능)</li>
+        </ul>
+        <h4>제출서류<span class="en">Documents</span></h4>
+        <ul>
+          <li>사업 신청서 (소상공인24 온라인)</li>
+          <li>수행계획서</li>
+          <li>부가가치세 신고서 등 필수서류</li>
+          <li><strong>마이데이터 동의 시 일부 서류 자동 연동</strong></li>
+        </ul>
+        <h4>주의사항<span class="en">Notice</span></h4>
+        <ul>
+          <li>마감 이후 추가접수 절대 불가 (시스템 오류 포함)</li>
+          <li>필수서류 미제출 시 서류평가 대상에서 제외</li>
+          <li>대표자 외 신청으로 인한 마이데이터 오류는 서류 미제출로 간주</li>
+        </ul>
+        <h4>문의<span class="en">Contact</span></h4>
+        <ul>
+          <li>소상공인시장진흥공단</li>
+          <li>소상공인24 (sbiz24.kr)</li>
+        </ul>
+      </div>
+    </details>
+  </section>
+
+  <footer class="doc-footer">
+    <div class="footer-brand">GROWTH<span class="apostrophe">'</span>HIGH — Scale-up Studio</div>
+    <div class="footer-meta">Source: 중소벤처기업부 공고 제2025-046호<br>Issued: 2026.04.28 · v1.0 Standard</div>
+  </footer>
+  </div>
+</div>
+
+<!-- export-voucher View -->
+<div class="view" id="view-export-voucher">
+  <div class="back-bar">
+    <a href="#index" class="back-link" data-target="index">목록으로</a>
+  </div>
+  <div class="doc">
+<header class="brand-header">
+    <div class="logo">GROWTH<span class="apostrophe">'</span>HIGH<span class="tagline">Scale-up Studio</span></div>
+    <div class="doc-meta"><strong>지원사업 검토 서식</strong>v1.0 STANDARD · 2026.04.28</div>
+  </header>
+
+  <div class="title-block">
+    <div class="label-row">
+      <span class="label-tag">수출 · 바우처</span>
+      <span class="label-tag alt">2차 모집</span>
+      <span class="label-tag alt">중소벤처기업부</span>
+    </div>
+    <h1 class="doc-title">2026년 수출지원기반활용사업<br>(수출바우처) 2차 모집</h1>
+    <div class="doc-subtitle">중소벤처기업부 공고 제2026-273호 · 운영기관 중소벤처기업진흥공단 (수정공고)</div>
+  </div>
+
+  <div class="dday-strip warning">
+    <div class="dday-badge">D−8</div>
+    <div class="dday-text"><strong>모집중</strong> · 2026.4.17(금) ~ <strong>5.6(수) 17:00 정각 마감</strong> · 마감 후 추가 접수 불가</div>
+  </div>
+
+  <section>
+    <div class="section-header">
+      <div class="section-en"><span class="num">A</span>Project Overview</div>
+      <h2 class="section-title">사업 개요</h2>
+    </div>
+    <div class="meta-grid">
+      <div class="meta-cell"><div class="meta-label">대상 업종 / Industry</div><div class="meta-value">「중소기업기본법」제2조 중소기업 (제조 中心)</div></div>
+      <div class="meta-cell"><div class="meta-label">신청 형태 / Type</div><div class="meta-value">단일기업 · 6단계 트랙 中 1개</div></div>
+      <div class="meta-cell"><div class="meta-label">지원 한도 / Funding Cap</div><div class="meta-value">30 ~ 100백만원 (수출액 차등)</div></div>
+      <div class="meta-cell"><div class="meta-label">정부지원 비율 / Gov. Ratio</div><div class="meta-value">50 ~ 70% (매출액 차등)</div></div>
+      <div class="meta-cell"><div class="meta-label">사용 기간 / Period</div><div class="meta-value">2026.3.1 ~ 12.31 (10개월)</div></div>
+      <div class="meta-cell"><div class="meta-label">선정 규모 / Awards</div><div class="meta-value">OOO개사 내외</div></div>
+    </div>
+    <div class="source-link">
+      <a href="https://www.exportvoucher.com" target="_blank">→ 공고문 원본 보기 (수출바우처 홈페이지)</a>
+      &nbsp; · &nbsp; 신청처: 수출바우처 홈페이지 (exportvoucher.com)
+    </div>
+  </section>
+
+  <section>
+    <div class="section-header">
+      <div class="section-en"><span class="num">B</span>Program Essentials</div>
+      <h2 class="section-title">사업 핵심</h2>
+    </div>
+    <div class="core-cards">
+      <div class="core-card">
+        <div class="card-num">B.01</div>
+        <div class="card-label">대상 기업 / Eligibility</div>
+        <div class="card-headline">중소기업기본법<br>중소기업</div>
+        <div class="card-body">내수 및 수출 중소기업 全 분야. 수출액 규모에 따라 6단계 트랙 차등. 단순 유통기업·무역상사는 참여 불가.</div>
+      </div>
+      <div class="core-card">
+        <div class="card-num">B.02</div>
+        <div class="card-label">지원 규모 / Scale</div>
+        <div class="card-headline">최대 100백만원<br>50~70%</div>
+        <div class="card-body">15개 분야 8,000여 수출 서비스 메뉴 中 자유 선택. 마케팅·디자인·인증·전시·지재권·물류 등 즉시 활용 가능한 바우처.</div>
+      </div>
+      <div class="core-card">
+        <div class="card-num">B.03</div>
+        <div class="card-label">신청 방식 / Method</div>
+        <div class="card-headline">중동 우선선정<br>패스트트랙</div>
+        <div class="card-body">중동 22개국 직수출 실적 보유 기업 우선선정. 신청 마감부터 선정까지 1개월 이내 (현장평가 생략).</div>
+      </div>
+    </div>
+
+    <div class="table-block">
+      <div class="block-header">
+        <div class="block-title">6단계 지원트랙 (수출액 기준)</div>
+        <div class="block-en">Export-tier Tracks</div>
+      </div>
+      <table class="tracks">
+        <thead><tr><th>트랙</th><th>지원 대상</th><th>지원한도</th></tr></thead>
+        <tbody>
+          <tr><td class="track-name">내수기업</td><td>전년도 수출액 1,000불 미만</td><td>30백만원</td></tr>
+          <tr><td class="track-name">튼튼한 내수기업 <span class="new-tag">우대</span></td><td>내수단계 中 혁신형 중소기업</td><td>45백만원</td></tr>
+          <tr><td class="track-name">수출초보</td><td>수출액 1,000불~10만불 미만</td><td>30백만원</td></tr>
+          <tr><td class="track-name">수출유망</td><td>수출액 10~100만불 미만</td><td>45백만원</td></tr>
+          <tr><td class="track-name">수출성장</td><td>수출액 100~500만불 미만</td><td>70백만원</td></tr>
+          <tr><td class="track-name">수출강소</td><td>수출액 500만불 이상</td><td>100백만원</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="table-block">
+      <div class="block-header">
+        <div class="block-title">매출액별 국고 보조율 차등</div>
+        <div class="block-en">Revenue-tier Subsidy</div>
+      </div>
+      <table class="tracks">
+        <thead><tr><th>매출액</th><th>보조율</th><th>자부담</th></tr></thead>
+        <tbody>
+          <tr><td class="track-name">100억원 미만</td><td>70%</td><td>30%</td></tr>
+          <tr><td class="track-name">100~300억원 미만</td><td>60%</td><td>40%</td></tr>
+          <tr><td class="track-name">300억원 이상</td><td>50%</td><td>50%</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="highlight-box urgent">
+      <div class="highlight-title">중동 피해기업 우선선정<span class="highlight-en">Middle East Priority</span></div>
+      <ul class="highlight-list">
+        <li><strong>중동 22개국 직수출 실적 보유 시 우선선정</strong> (UAE·카타르·오만·바레인·쿠웨이트·사우디·요르단 등)</li>
+        <li>최근 3년('23.1 ~ '26.3) 중동 지역 직수출 실적 보유 기업 → 별도 증빙 제출 불요</li>
+        <li>대외 불확실성 대응 추경예산 반영 · 신속지원 체계 도입</li>
+      </ul>
+    </div>
+
+    <div class="highlight-box warning">
+      <div class="highlight-title">26년 주요 변경사항<span class="highlight-en">2026 Updates</span></div>
+      <ul class="highlight-list">
+        <li><strong>해외규격 인증 中간정산 신설</strong> (장기 소요 인증 비용 선금 지원 가능)</li>
+        <li>국제운송 위기대응형 확대: 무상샘플 운송비·풀필먼트·해외 창고 임대료·선적전 검사비용 신규 지원</li>
+        <li>물류바우처 연계 시 최대 75백만원까지 이용 가능 (기본 60백만원)</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-header">
+      <div class="section-en"><span class="num">C</span>Eligibility Checklist</div>
+      <h2 class="section-title">자격 체크리스트</h2>
+    </div>
+
+    <div class="checklist-group">
+      <div class="group-title">공통 자격 / Common</div>
+      <ul class="checklist">
+        <li><span class="check"></span><span><strong>「중소기업기본법」제2조 중소기업</strong></span></li>
+        <li><span class="check"></span><span>중소기업확인서 보유 (중소기업현황정보시스템 발급)</span></li>
+        <li><span class="check"></span><span>수출바우처 홈페이지용 공인인증서 보유 (범용 또는 용도제한)</span></li>
+        <li><span class="check"></span><span>'24-'25년 표준재무제표증명원 보유</span></li>
+      </ul>
+    </div>
+
+    <div class="checklist-group">
+      <div class="group-title">지원 제외 / Exclusion</div>
+      <ul class="checklist">
+        <li><span class="check"></span><span>휴·폐업 또는 국세·지방세 체납</span></li>
+        <li><span class="check"></span><span>채무불이행자 (회생·파산·재기지원 인정 시 예외)</span></li>
+        <li><span class="check"></span><span><strong>타 부처/지방정부 수출바우처 협약 미종료</strong> (산업부·농식품부·해수부·KOTRA 등)</span></li>
+        <li><span class="check"></span><span>최근 2년 수출바우처 협약 사용률 70% 미만 (2년 참여제한)</span></li>
+        <li><span class="check"></span><span>단순 유통기업·무역상사 (재무제표상 상품매출 100% 시 제조 입증서류 필요)</span></li>
+        <li><span class="check"></span><span>사행산업·도박기구 제조업 등 부적절 업종</span></li>
+        <li><span class="check"></span><span>동일 법인 복수 사업자 동시 신청 불가</span></li>
+        <li><span class="check"></span><span>특수관계기업 동시 선정 불가</span></li>
+      </ul>
+    </div>
+
+    <div class="checklist-group">
+      <div class="group-title">감점 사항 / Penalty</div>
+      <ul class="checklist">
+        <li><span class="check"></span><span>최근 2년 수출바우처 사용률 70~85% 미만 → <strong>2년간 선정 시 5점 감점</strong></span></li>
+      </ul>
+    </div>
+
+    <a href="#" class="pdf-link">→ 공고문 PDF 원본 보기</a>
+
+    <details class="more">
+      <summary>더보기 — 일정 / 제출서류 / 운영방향 / 문의</summary>
+      <div class="more-content">
+        <h4>일정<span class="en">Timeline</span></h4>
+        <ul>
+          <li>신청: 26.4.17(금) ~ 5.6(수) 17:00</li>
+          <li>평가·선정: 신청 마감 후 1개월 이내 (패스트트랙)</li>
+          <li>사용기간: 26.3.1 ~ 12.31 (10개월) · 전시회는 27.1.31까지 정산 가능</li>
+        </ul>
+        <h4>제출서류<span class="en">Documents</span></h4>
+        <ul>
+          <li>① 사업신청서 (홈페이지 작성)</li>
+          <li>② 신용정보조회·정보제공 동의서</li>
+          <li>③ 사업계획서 (바우처 활용계획)</li>
+          <li>④ 사업자등록증명원</li>
+          <li>⑤ '24-'25년 표준재무제표증명원</li>
+          <li>⑥ 국세·지방세 완납 증명서</li>
+          <li>⑦ 중소기업확인서</li>
+          <li>⑧~⑪ 서비스 수출실적 증빙 (선택)</li>
+        </ul>
+        <h4>운영방향<span class="en">Operations</span></h4>
+        <ul>
+          <li>추경예산 반영 + 신속지원 체계 (1개월 이내 선정)</li>
+          <li>현장평가 생략 패스트트랙</li>
+          <li>15개 분야 8,000여 수출 서비스 메뉴</li>
+        </ul>
+        <h4>문의<span class="en">Contact</span></h4>
+        <ul>
+          <li>중소벤처기업진흥공단 (운영기관)</li>
+          <li>수출바우처 홈페이지 (exportvoucher.com)</li>
+          <li>인증서 발급: 한국전자인증·한국무역정보통신·한국정보인증·코스콤</li>
+        </ul>
+      </div>
+    </details>
+  </section>
+
+  <footer class="doc-footer">
+    <div class="footer-brand">GROWTH<span class="apostrophe">'</span>HIGH — Scale-up Studio</div>
+    <div class="footer-meta">Source: 중소벤처기업부 공고 제2026-273호<br>Issued: 2026.04.28 · v1.0 Standard</div>
+  </footer>
+  </div>
+</div>
+
+<!-- testbed-seoul View -->
+<div class="view" id="view-testbed-seoul">
+  <div class="back-bar">
+    <a href="#index" class="back-link" data-target="index">목록으로</a>
+  </div>
+  <div class="doc">
+<header class="brand-header">
+    <div class="logo">GROWTH<span class="apostrophe">'</span>HIGH<span class="tagline">Scale-up Studio</span></div>
+    <div class="doc-meta"><strong>지원사업 검토 서식</strong>v1.0 STANDARD · 2026.04.28</div>
+  </header>
+
+  <div class="title-block">
+    <div class="label-row">
+      <span class="label-tag">R&amp;D · 실증</span>
+      <span class="label-tag alt">서울 딥테크</span>
+      <span class="label-tag alt">서울경제진흥원</span>
+    </div>
+    <h1 class="doc-title">2026년 서울형 R&amp;D<br>테스트베드 서울 1차</h1>
+    <div class="doc-subtitle">서울경제진흥원 · 서울R&amp;D지원센터</div>
+  </div>
+
+  <div class="dday-strip closed">
+    <div class="dday-badge">CLOSED</div>
+    <div class="dday-text"><strong>마감 완료</strong> · 26.1.30 ~ <strong>3.11(수) 16:00 종료</strong> · 사후 참고용 (2차 26.5~6월 예정 — 국내 15 + 해외 5 과제)</div>
+  </div>
+
+  <section>
+    <div class="section-header">
+      <div class="section-en"><span class="num">A</span>Project Overview</div>
+      <h2 class="section-title">사업 개요</h2>
+    </div>
+    <div class="meta-grid">
+      <div class="meta-cell"><div class="meta-label">대상 업종 / Industry</div><div class="meta-value">AI · 로봇 · 디지털헬스 · 핀테크 · IoT 等 全 분야</div></div>
+      <div class="meta-cell"><div class="meta-label">신청 형태 / Type</div><div class="meta-value">단독 원칙 · 공동연구개발 선택 가능</div></div>
+      <div class="meta-cell"><div class="meta-label">지원 한도 / Funding Cap</div><div class="meta-value">과제당 최대 2억원</div></div>
+      <div class="meta-cell"><div class="meta-label">연구개발 기간 / Period</div><div class="meta-value">최대 1년 (협약체결일~12개월)</div></div>
+      <div class="meta-cell"><div class="meta-label">총 예산 / Total Budget</div><div class="meta-value">86억원 (1·2차 통합)</div></div>
+      <div class="meta-cell"><div class="meta-label">선정 규모 / Awards</div><div class="meta-value">1차 국내 23개 내외</div></div>
+    </div>
+    <div class="source-link">
+      <a href="https://seoul.rnbd.kr/" target="_blank">→ 공고문 원본 보기 (서울R&amp;D지원센터 종합관리시스템)</a>
+      &nbsp; · &nbsp; 신청처: seoul.rnbd.kr
+    </div>
+  </section>
+
+  <section>
+    <div class="section-header">
+      <div class="section-en"><span class="num">B</span>Program Essentials</div>
+      <h2 class="section-title">사업 핵심</h2>
+    </div>
+    <div class="core-cards">
+      <div class="core-card">
+        <div class="card-num">B.01</div>
+        <div class="card-label">대상 기업 / Eligibility</div>
+        <div class="card-headline">서울 소재<br>중소기업</div>
+        <div class="card-body">접수마감일 기준 서울시 소재 관할 세무서에 사업자등록한 중소기업기본법 제2조 중소기업. 공동연구개발기관은 산·학·연·병 (지역제한 없음).</div>
+      </div>
+      <div class="core-card">
+        <div class="card-num">B.02</div>
+        <div class="card-label">지원 규모 / Scale</div>
+        <div class="card-headline">최대 2억원<br>1년 실증</div>
+        <div class="card-body">혁신기술·제품 사업화를 위한 실증기회 + 비용 지원. <strong>TRL 7단계 이상</strong> 과제만 지원 (실증장소 즉시 설치 가능해야).</div>
+      </div>
+      <div class="core-card">
+        <div class="card-num">B.03</div>
+        <div class="card-label">신청 방식 / Method</div>
+        <div class="card-headline">자유 / 수요<br>2개 과제형</div>
+        <div class="card-body">자유과제형 (실증기관 자율 제안, 최대 2개 선택) · 수요과제형 (공고된 수요 반영, 실증기관 단일). AI/AI+X 분야 60% 이상 우선 선정.</div>
+      </div>
+    </div>
+
+    <div class="table-block">
+      <div class="block-header">
+        <div class="block-title">제안 방식 비교</div>
+        <div class="block-en">Proposal Types</div>
+      </div>
+      <table class="tracks">
+        <thead><tr><th>구분</th><th>자유과제형</th><th>수요과제형</th></tr></thead>
+        <tbody>
+          <tr><td class="track-name">제안 방식</td><td>혁신기술 자율 제안</td><td>공고된 수요과제 (붙임3)<br>실증기관 요구 반영</td></tr>
+          <tr><td class="track-name">실증기관 선택</td><td>최대 2개 기관 가능</td><td>선택 불가 (지정)</td></tr>
+          <tr><td class="track-name">민간 실증기관</td><td>대학·종합병원·대중견기업·인증기관·금융기관</td><td>—</td></tr>
+          <tr><td class="track-name">공공 실증기관</td><td>서울시·자치구·서울 공공기관·지방공기업·출자출연·교육연구기관</td><td>—</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="highlight-box warning">
+      <div class="highlight-title">26년 주요 변경사항<span class="highlight-en">2026 Updates</span></div>
+      <ul class="highlight-list">
+        <li><strong>모집 정례화</strong>: 1차 (국내, 1월) / 2차 (국내·해외, 5월)</li>
+        <li><strong>규제 적합성 정밀 진단(규제 스크리닝) 신설</strong>: 법적·제도적 실증 가능성 사전 검증</li>
+        <li><strong>혁신제품 추진단 운영</strong>: 한국조달연구원 협력 → 혁신제품 지정 + 조달시장 진입 원스톱</li>
+      </ul>
+    </div>
+
+    <div class="highlight-box info">
+      <div class="highlight-title">AI 우대 가점<span class="highlight-en">AI Bonus</span></div>
+      <ul class="highlight-list">
+        <li>서울시 'AI 및 AI+X' 분야 혁신기술 집중투자 → AI/AI+X 융복합 기술 적용 과제 가점</li>
+        <li>'약자와의 동행' 부합 과제 (사회적 약자 관련) 가점 부여</li>
+        <li>고영향 인공지능 과제는 「인공지능 신뢰성 검·인증」 신청 의무</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-header">
+      <div class="section-en"><span class="num">C</span>Eligibility Checklist</div>
+      <h2 class="section-title">자격 체크리스트</h2>
+    </div>
+
+    <div class="checklist-group">
+      <div class="group-title">공통 자격 / Common</div>
+      <ul class="checklist">
+        <li><span class="check"></span><span><strong>접수마감일 기준 서울시 소재</strong> 사업자등록 중소기업</span></li>
+        <li><span class="check"></span><span><strong>TRL 7단계 이상</strong> 증빙자료 제출 (시제품·시험성적서·인증서·MVP 영상 등)</span></li>
+        <li><span class="check"></span><span>실증대상의 최소 기능 제품(MVP) 보유</span></li>
+        <li><span class="check"></span><span>지급이행보증보험증권 발행 가능 (선정 후 30일 이내)</span></li>
+      </ul>
+    </div>
+
+    <div class="checklist-group">
+      <div class="group-title">실증기관 요건 / Test-bed</div>
+      <ul class="checklist">
+        <li><span class="check"></span><span>민간 실증기관: 접수마감 전 <strong>'실증기관 수요확인서' 제출 필수</strong> (붙임4)</span></li>
+        <li><span class="check"></span><span>공공 실증기관: 수요확인서 제출 불필요</span></li>
+        <li><span class="check"></span><span>실증 장소는 반드시 서울시 소재</span></li>
+        <li><span class="check"></span><span>실증기관과 연구개발기관은 동일 법인 불가 (이해충돌 방지)</span></li>
+      </ul>
+    </div>
+
+    <div class="checklist-group">
+      <div class="group-title">지원 제외 / Exclusion</div>
+      <ul class="checklist">
+        <li><span class="check"></span><span>중앙정부·타 지자체 R&amp;D 등에 동일 과제 중복지원</span></li>
+        <li><span class="check"></span><span>기존 타 실증사업 선정 유사 과제</span></li>
+        <li><span class="check"></span><span>국세·지방세 체납·채무불이행 (예외 인정 별도)</span></li>
+        <li><span class="check"></span><span>부채비율·자본잠식 (창업 3년 미만 등 예외 별도)</span></li>
+      </ul>
+    </div>
+
+    <div class="checklist-group">
+      <div class="group-title">가점 사항 / Bonus Points</div>
+      <ul class="checklist">
+        <li class="bonus"><span class="check"></span><span>AI 및 AI+X 기술 적용 과제 <span class="new-inline">우대</span></span></li>
+        <li class="bonus"><span class="check"></span><span>'약자와의 동행' 관련 과제 <span class="new-inline">우대</span></span></li>
+        <li class="bonus"><span class="check"></span><span>SBA 지원시설 입주 또는 입주 예정 기업</span></li>
+        <li class="bonus"><span class="check"></span><span>서울시 유망 중소기업 인증 보유</span></li>
+      </ul>
+    </div>
+
+    <a href="#" class="pdf-link">→ 공고문 PDF 원본 보기</a>
+
+    <details class="more">
+      <summary>더보기 — 일정 / 평가절차 / 제출서류 / 문의</summary>
+      <div class="more-content">
+        <h4>일정<span class="en">Timeline</span></h4>
+        <ul>
+          <li>공고: 26.1.30 ~ 3.11</li>
+          <li>온라인 접수 등록: 26.2.12 09:00 ~ 3.11(수) 16:00 (마감 완료)</li>
+          <li>평가: 4월 → 선정·협약: 5월</li>
+          <li><strong>2차 공고 5~6월 예정</strong> (국내 15 + 해외 5 과제)</li>
+        </ul>
+        <h4>지원 분야<span class="en">Sectors</span></h4>
+        <ul>
+          <li>인공지능, 로봇, 디지털헬스케어, 핀테크, IoT, 스마트시티, 메타버스 등 全 분야</li>
+          <li><strong>'26년 서울형 R&amp;D 전체 선정 과제 中 AI 및 AI+X 60% 이상 선정 예정</strong></li>
+        </ul>
+        <h4>평가절차<span class="en">Evaluation</span></h4>
+        <p>서면평가 → 규제 스크리닝 (신설) → 실증기관 의견검토 → 발표평가 → 최종 선정 → 협약</p>
+        <h4>제출서류<span class="en">Documents</span></h4>
+        <ul>
+          <li>사업신청서 + 사업계획서 (서울R&amp;D 종합관리시스템)</li>
+          <li>TRL 7단계 이상 증빙자료 中 1개 이상</li>
+          <li>실증기관 수요확인서 (민간만, 마감 前 제출)</li>
+          <li>중소기업확인서 + 사업자등록증명원</li>
+          <li>지급이행보증보험증권 (선정 후 30일 이내)</li>
+        </ul>
+        <h4>문의<span class="en">Contact</span></h4>
+        <ul>
+          <li>서울경제진흥원 서울R&amp;D지원센터: 02-2222-3813 / 3814</li>
+          <li>종합관리시스템: seoul.rnbd.kr</li>
+        </ul>
+      </div>
+    </details>
+  </section>
+
+  <footer class="doc-footer">
+    <div class="footer-brand">GROWTH<span class="apostrophe">'</span>HIGH — Scale-up Studio</div>
+    <div class="footer-meta">Source: 서울경제진흥원 · 서울R&amp;D지원센터<br>Issued: 2026.04.28 · v1.0 Standard</div>
+  </footer>
+  </div>
+</div>
+
+<!-- small-business-leap View -->
+<div class="view" id="view-small-business-leap">
+  <div class="back-bar">
+    <a href="#index" class="back-link" data-target="index">목록으로</a>
+  </div>
+  <div class="doc">
+<header class="brand-header">
+    <div class="logo">GROWTH<span class="apostrophe">'</span>HIGH<span class="tagline">Scale-up Studio</span></div>
+    <div class="doc-meta"><strong>지원사업 검토 서식</strong>v1.0 STANDARD · 2026.04.28</div>
+  </header>
+
+  <div class="title-block">
+    <div class="label-row">
+      <span class="label-tag">소상공인 · 사업화</span>
+      <span class="label-tag alt">통합공고</span>
+      <span class="label-tag alt">소상공인시장진흥공단</span>
+    </div>
+    <h1 class="doc-title">2026년 소상공인 도약 지원 사업<br>(로컬기업 + 강한소상공인 통합)</h1>
+    <div class="doc-subtitle">중소벤처기업부 · 소상공인시장진흥공단 통합공고</div>
+  </div>
+
+  <div class="dday-strip closed">
+    <div class="dday-badge">CLOSED</div>
+    <div class="dday-text"><strong>마감 완료</strong> · 26.4.1(수) 10시 ~ <strong>4.24(금) 16:00 종료</strong> · 사후 참고용 (4일 전 마감)</div>
+  </div>
+
+  <section>
+    <div class="section-header">
+      <div class="section-en"><span class="num">A</span>Project Overview</div>
+      <h2 class="section-title">사업 개요</h2>
+    </div>
+    <div class="meta-grid">
+      <div class="meta-cell"><div class="meta-label">대상 업종 / Industry</div><div class="meta-value">「소상공인기본법」제2조 소상공인</div></div>
+      <div class="meta-cell"><div class="meta-label">신청 형태 / Type</div><div class="meta-value">2개 사업 동시 신청 가능 (1개만 수행)</div></div>
+      <div class="meta-cell"><div class="meta-label">지원 한도 / Funding Cap</div><div class="meta-value">로컬 5천만 / 강한 1억원 + 성장지원 3백만</div></div>
+      <div class="meta-cell"><div class="meta-label">정부지원 비율 / Gov. Ratio</div><div class="meta-value">로컬 80% / <strong>강한 100% (자부담 0)</strong></div></div>
+      <div class="meta-cell"><div class="meta-label">사업 기간 / Period</div><div class="meta-value">협약체결일 ~ 26.12.31</div></div>
+      <div class="meta-cell"><div class="meta-label">선정 규모 / Awards</div><div class="meta-value">사업화 540개 + 성장지원 1,000개</div></div>
+    </div>
+    <div class="source-link">
+      <a href="https://www.sbiz24.kr" target="_blank">→ 공고문 원본 보기 (소상공인24)</a>
+      &nbsp; · &nbsp; 신청처: 소상공인24 (sbiz24.kr)
+    </div>
+  </section>
+
+  <section>
+    <div class="section-header">
+      <div class="section-en"><span class="num">B</span>Program Essentials</div>
+      <h2 class="section-title">사업 핵심</h2>
+    </div>
+    <div class="core-cards">
+      <div class="core-card">
+        <div class="card-num">B.01</div>
+        <div class="card-label">대상 기업 / Eligibility</div>
+        <div class="card-headline">소상공인기본법<br>소상공인</div>
+        <div class="card-body">신청일 현재 정상 영업中 소상공인. 공동대표는 주대표 1인만 신청 가능. 발표평가(오디션) 시 주대표 직접 참석 필수.</div>
+      </div>
+      <div class="core-card">
+        <div class="card-num">B.02</div>
+        <div class="card-label">지원 규모 / Scale</div>
+        <div class="card-headline">로컬 5천만<br>강한 1억원</div>
+        <div class="card-body">신제품 개발·BM 고도화·유형별 특화프로그램·홍보마케팅·팀빌딩. 성장지원자금 3백만원(멘토링·협업) 별도.</div>
+      </div>
+      <div class="core-card">
+        <div class="card-num">B.03</div>
+        <div class="card-label">신청 방식 / Method</div>
+        <div class="card-headline">통합공고 첫해<br>2개 동시신청 OK</div>
+        <div class="card-body">로컬기업+강한소상공인 동시 신청 가능, 단 2개 모두 선정 시 1개만 선택 수행. 로컬은 수도권 10%/지역 90% 권역 비율 적용.</div>
+      </div>
+    </div>
+
+    <div class="table-block">
+      <div class="block-header">
+        <div class="block-title">2개 사업 비교</div>
+        <div class="block-en">Program Comparison</div>
+      </div>
+      <table class="tracks">
+        <thead><tr><th>구분</th><th>(초기) 로컬기업 육성</th><th>(성장) 강한소상공인 (로컬)</th><th>(성장) 강한소상공인 (혁신)</th></tr></thead>
+        <tbody>
+          <tr><td class="track-name">사업화 한도</td><td>최대 5천만원</td><td>최대 1억원</td><td>최대 1억원</td></tr>
+          <tr><td class="track-name">국비 비율</td><td>80%</td><td><strong>100% (자부담 0)</strong></td><td><strong>100% (자부담 0)</strong></td></tr>
+          <tr><td class="track-name">선정규모</td><td>290개사</td><td>150개사</td><td>100개사</td></tr>
+          <tr><td class="track-name">파트너사 협업</td><td>—</td><td>권장</td><td>권장</td></tr>
+          <tr><td class="track-name">권역별 비율</td><td>수도권 10% / 지역 90%</td><td>수도권 10% / 지역 90%</td><td>제한 없음</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="highlight-box warning">
+      <div class="highlight-title">26년 통합공고 (1차)<span class="highlight-en">Integrated Notice</span></div>
+      <ul class="highlight-list">
+        <li>'26년부터 <strong>로컬크리에이터 육성 사업 + 강한소상공인 성장지원 사업 통합 운영</strong></li>
+        <li>성장단계별 다른 공고를 찾아야 하는 불편 해소 → 일관된 지원</li>
+        <li>2개 사업 <strong>동시 신청 가능</strong>, 단 동시 선정 시 원하는 사업 1개만 선택</li>
+        <li>발표평가(오디션) 시 주대표 직접 참석 필수 (공동대표 대참 불가)</li>
+      </ul>
+    </div>
+
+    <div class="highlight-box success">
+      <div class="highlight-title">강한소상공인 — 자부담 0%<span class="highlight-en">100% Subsidy</span></div>
+      <ul class="highlight-list">
+        <li>강한소상공인 성장지원 사업은 <strong>국비 100% (자부담 없음)</strong></li>
+        <li>로컬기업 육성과 비교 시 가장 큰 차별점</li>
+        <li>기업가·장인정신, 창의적 아이템 보유 기업 대상</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-header">
+      <div class="section-en"><span class="num">C</span>Eligibility Checklist</div>
+      <h2 class="section-title">자격 체크리스트</h2>
+    </div>
+
+    <div class="checklist-group">
+      <div class="group-title">공통 자격 / Common</div>
+      <ul class="checklist">
+        <li><span class="check"></span><span><strong>「소상공인기본법」제2조 소상공인</strong></span></li>
+        <li><span class="check"></span><span>신청일 현재 정상적으로 영업中</span></li>
+        <li><span class="check"></span><span>중소기업현황정보시스템에서 소상공인확인서 발급 가능</span></li>
+        <li><span class="check"></span><span>공동대표는 주대표 1인만 신청 (선정 후 공동참석 OK)</span></li>
+      </ul>
+    </div>
+
+    <div class="checklist-group">
+      <div class="group-title">로컬기업 추가 자격 / Local-specific</div>
+      <ul class="checklist">
+        <li><span class="check"></span><span>지역의 자원·문화 (역사전통·문화예술·자연·생활·지역특산물 등) 특성을 결합한 사업</span></li>
+        <li><span class="check"></span><span>사업적 가치 창출 (고용창출·관광객 유치 등)</span></li>
+      </ul>
+    </div>
+
+    <div class="checklist-group">
+      <div class="group-title">강한소상공인 추가 자격 / Strong-specific</div>
+      <ul class="checklist">
+        <li><span class="check"></span><span>기업가 정신 · 장인정신 · 창의적 아이템 보유</span></li>
+        <li><span class="check"></span><span>로컬 / 혁신 中 1개 트랙 선택</span></li>
+      </ul>
+    </div>
+
+    <div class="checklist-group">
+      <div class="group-title">지원 제외 / Exclusion</div>
+      <ul class="checklist">
+        <li><span class="check"></span><span>휴·폐업, 부도 상태</span></li>
+        <li><span class="check"></span><span>국세·지방세 체납</span></li>
+        <li><span class="check"></span><span>정부 지원사업 참여제한 中</span></li>
+        <li><span class="check"></span><span>지원제외 업종</span></li>
+      </ul>
+    </div>
+
+    <a href="#" class="pdf-link">→ 공고문 PDF 원본 보기</a>
+
+    <details class="more">
+      <summary>더보기 — 일정 / 지원내용 / 제출서류 / 문의</summary>
+      <div class="more-content">
+        <h4>일정<span class="en">Timeline</span></h4>
+        <ul>
+          <li>공고: 26.3.27</li>
+          <li>접수: 26.4.1(수) 10시 ~ 4.24(금) 16:00 (마감 완료)</li>
+          <li>사업기간: 협약체결일 ~ 26.12.31</li>
+        </ul>
+        <h4>지원내용<span class="en">Support</span></h4>
+        <ul>
+          <li><strong>사업화 자금</strong>: 신제품 개발 · BM 고도화 · 유형별 특화프로그램 · 홍보마케팅 · 팀빌딩</li>
+          <li><strong>성장지원자금</strong>: 멘토링·협업 (3백만원, 1,000개사 별도)</li>
+          <li>유형별 특화프로그램 참여 가능</li>
+        </ul>
+        <h4>제출서류<span class="en">Documents</span></h4>
+        <ul>
+          <li>소상공인24 온라인 사업신청서</li>
+          <li>사업계획서 (BM·성장전략)</li>
+          <li>소상공인확인서 (sminfo.mss.go.kr 발급)</li>
+          <li>발표평가(오디션) 시 주대표 참석</li>
+        </ul>
+        <h4>문의<span class="en">Contact</span></h4>
+        <ul>
+          <li>주관기관: 권역별 별도 (공고문 p17 문의처 참조)</li>
+          <li>소상공인시장진흥공단</li>
+          <li>소상공인24 (sbiz24.kr)</li>
+        </ul>
+      </div>
+    </details>
+  </section>
+
+  <footer class="doc-footer">
+    <div class="footer-brand">GROWTH<span class="apostrophe">'</span>HIGH — Scale-up Studio</div>
+    <div class="footer-meta">Source: 중소벤처기업부 · 소상공인시장진흥공단<br>Issued: 2026.04.28 · v1.0 Standard</div>
+  </footer>
+  </div>
+</div>
+
+<script>
+  function showView(viewId) {
+    document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+    const target = document.getElementById('view-' + viewId);
+    if (target) {
+      target.classList.add('active');
+      window.scrollTo(0, 0);
+    }
+  }
+
+  document.addEventListener('click', e => {
+    const link = e.target.closest('[data-target]');
+    if (link) {
+      e.preventDefault();
+      const target = link.getAttribute('data-target');
+      showView(target);
+      history.pushState(null, '', '#' + target);
+    }
+  });
+
+  function loadFromHash() {
+    const hash = window.location.hash.replace('#', '');
+    if (hash && document.getElementById('view-' + hash)) {
+      showView(hash);
+    } else {
+      showView('index');
+    }
+  }
+  loadFromHash();
+  window.addEventListener('popstate', loadFromHash);
+
+  document.querySelectorAll('.check').forEach(check => {
+    check.addEventListener('click', () => check.classList.toggle('checked'));
+  });
+
+  /* ───── D-day 자동 계산 ─────
+   * 매니저 메모: 사업 추가/수정 시 아래 DEADLINES만 손대면 됨.
+   * 형식: 'program-id': 'YYYY-MM-DDTHH:MM' (24시간제, 한국 시간 기준)
+   * program-id는 각 카드의 data-target 값과 동일해야 함.
+   */
+  const DEADLINES = {
+    'didimdol-rd':            '2026-04-29T18:00',
+    'tech-innovation':        '2025-05-21T18:00',
+    'startup-jump':           '2026-02-13T16:00',
+    'innovation-voucher':     '2025-12-02T18:00',
+    'small-craftsman-sales':  '2025-02-21T18:00',
+    'export-voucher':         '2026-05-06T17:00',
+    'testbed-seoul':          '2026-03-11T16:00',
+    'small-business-leap':    '2026-04-24T16:00'
+  };
+
+  function getDdayInfo(deadlineISO) {
+    const deadline = new Date(deadlineISO);
+    const now = new Date();
+
+    if (now > deadline) {
+      return { state: 'closed', dday: 'CLOSED', label: 'REF', dayDiff: -1 };
+    }
+
+    const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    const deadlineDay = new Date(deadline.getFullYear(), deadline.getMonth(), deadline.getDate());
+    const dayDiff = Math.floor((deadlineDay - todayStart) / 86400000);
+
+    if (dayDiff <= 3) {
+      return { state: 'urgent', dday: 'D−' + dayDiff, label: 'URGENT', dayDiff: dayDiff };
+    } else if (dayDiff <= 25) {
+      return { state: 'warning', dday: 'D−' + dayDiff, label: 'WARNING', dayDiff: dayDiff };
+    } else {
+      return { state: 'warning', dday: 'D−' + dayDiff, label: 'WARNING', dayDiff: dayDiff };
+    }
+  }
+
+  function applyDdayAutomation() {
+    /* 1. 인덱스 카드 갱신 */
+    const cards = document.querySelectorAll('#view-index .program-card');
+    const cardData = [];
+
+    cards.forEach(card => {
+      const programId = card.getAttribute('data-target');
+      const deadline = DEADLINES[programId];
+      if (!deadline) return;
+
+      const info = getDdayInfo(deadline);
+      const statusEl = card.querySelector('.card-status');
+      const ddayEl = card.querySelector('.card-dday');
+      const labelEl = card.querySelector('.card-status-label');
+
+      if (statusEl) {
+        statusEl.classList.remove('urgent', 'warning', 'closed');
+        statusEl.classList.add(info.state);
+      }
+      if (ddayEl) ddayEl.textContent = info.dday;
+      if (labelEl) labelEl.textContent = info.label;
+
+      cardData.push({ card: card, info: info, deadline: deadline });
+    });
+
+    /* 2. 카드 진행중/마감 섹션 재배치 */
+    const sections = document.querySelectorAll('#view-index section');
+    if (sections.length >= 2) {
+      const activeList = sections[0].querySelector('.program-list');
+      const closedList = sections[1].querySelector('.program-list');
+
+      if (activeList && closedList) {
+        /* 진행중: D-day 가까운 순 (오름차순) */
+        const active = cardData
+          .filter(d => d.info.state !== 'closed')
+          .sort((a, b) => a.info.dayDiff - b.info.dayDiff);
+        /* 마감: 최근 마감 → 오래된 마감 (내림차순) */
+        const closed = cardData
+          .filter(d => d.info.state === 'closed')
+          .sort((a, b) => new Date(b.deadline) - new Date(a.deadline));
+
+        activeList.innerHTML = '';
+        closedList.innerHTML = '';
+        active.forEach(d => activeList.appendChild(d.card));
+        closed.forEach(d => closedList.appendChild(d.card));
+
+        /* 3. 섹션 카운트 갱신 */
+        const activeEn = sections[0].querySelector('.list-en');
+        const closedEn = sections[1].querySelector('.list-en');
+        if (activeEn) activeEn.textContent = 'Active Programs · ' + active.length;
+        if (closedEn) closedEn.textContent = 'Closed · Reference · ' + closed.length;
+      }
+    }
+
+    /* 4. 각 상세 페이지 dday-strip 갱신 */
+    Object.keys(DEADLINES).forEach(programId => {
+      const view = document.getElementById('view-' + programId);
+      if (!view) return;
+
+      const strip = view.querySelector('.dday-strip');
+      const badge = view.querySelector('.dday-badge');
+      if (!strip || !badge) return;
+
+      const info = getDdayInfo(DEADLINES[programId]);
+      strip.classList.remove('urgent', 'warning', 'closed');
+      strip.classList.add(info.state);
+      badge.textContent = info.dday;
+    });
+  }
+
+  applyDdayAutomation();
+</script>
+
+</body>
+</html>
