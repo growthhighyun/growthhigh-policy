@@ -36,6 +36,7 @@
     border-bottom: 1px solid var(--line);
   }
   .brand-mark { display: flex; align-items: center; gap: 10px; }
+  .brand-mark .brand-logo { display: block; width: 28px; height: 28px; }
   .brand-mark svg { display: block; width: 26px; height: 26px; }
   .brand-mark .wordmark {
     font-family: 'Pretendard Variable', Pretendard, sans-serif;
@@ -344,6 +345,7 @@
 
   <header class="brand-header">
     <div class="brand-mark">
+      <img src="logo.svg" alt="GROWTH'HIGH" class="brand-logo" onerror="this.style.display='none'">
       <span class="wordmark">GROWTH<span class="apostrophe">'</span>HIGH</span>
       <span class="tagline">Scale-up Studio</span>
     </div>
