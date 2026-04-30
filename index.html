@@ -10,113 +10,108 @@
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 <style>
-  /* ─── Index – clean SaaS tone (white + accent blue + soft shadow cards) ─── */
+  /* ─── Index – pure white page + gray section containers (Growth Maker tone) ─── */
   :root {
     --accent: #2563EB;
     --accent-soft: #EEF4FF;
-    --line-soft: #EFEFEC;
-    --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.04);
-    --shadow-md: 0 6px 24px rgba(15, 23, 42, 0.06);
-    --shadow-lg: 0 12px 32px rgba(15, 23, 42, 0.08);
+    --accent-bg: #F4F8FF;
+    --bg-section: #F4F5F7;
+    --bg-section-hover: #EEF0F4;
+    --line-card: #E5E7EB;
+    --line-faint: #ECEEF1;
+    --ink-700: #1F2937;
+    --ink-500: #4B5563;
+    --ink-400: #6B7280;
+    --ink-300: #9CA3AF;
+    --shadow-card: 0 1px 2px rgba(15, 23, 42, 0.04), 0 2px 8px rgba(15, 23, 42, 0.04);
+    --shadow-card-hover: 0 4px 12px rgba(15, 23, 42, 0.08), 0 8px 24px rgba(15, 23, 42, 0.06);
   }
-  body { background: #FFFFFF; }
-  .doc { max-width: 1040px; padding: 40px 40px 96px; }
+  body { background: #FFFFFF; color: var(--ink-700); }
+  .doc { max-width: 1040px; padding: 32px 32px 96px; }
 
-  /* Brand header — logo only */
+  /* Brand header */
   .brand-header {
     display: flex; align-items: center;
-    padding: 0 0 24px;
-    margin-bottom: 56px;
-    border-bottom: 1px solid var(--line-soft);
+    padding: 0 0 20px;
+    margin-bottom: 64px;
+    border-bottom: 1px solid var(--line-faint);
   }
-  .brand-mark {
-    display: flex; align-items: center; gap: 10px;
-  }
-  .brand-mark svg { display: block; width: 24px; height: 24px; }
+  .brand-mark { display: flex; align-items: center; gap: 10px; }
+  .brand-mark svg { display: block; width: 26px; height: 26px; }
   .brand-mark .wordmark {
     font-family: 'Pretendard Variable', Pretendard, sans-serif;
-    font-size: 17px;
-    font-weight: 800;
-    letter-spacing: -0.04em;
-    color: var(--ink);
-    line-height: 1;
+    font-size: 17px; font-weight: 800;
+    letter-spacing: -0.04em; color: #0A0A0A; line-height: 1;
   }
   .brand-mark .apostrophe { color: var(--urgent); font-weight: 800; }
   .brand-mark .tagline {
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: -0.005em;
-    color: var(--ink-subtle);
-    padding-left: 12px;
-    margin-left: 4px;
-    border-left: 1px solid #E5E5E0;
-    line-height: 1;
+    font-size: 11px; font-weight: 500;
+    letter-spacing: -0.005em; color: var(--ink-300);
+    padding-left: 12px; margin-left: 4px;
+    border-left: 1px solid #E5E7EB; line-height: 1;
   }
 
-  /* Hero */
-  .hero { text-align: center; padding: 16px 0 56px; }
+  /* Hero (centered, like reference) */
+  .hero { text-align: center; padding: 8px 0 64px; }
   .hero-eyebrow {
     display: inline-block;
-    font-size: 13px; font-weight: 600;
+    font-size: 13px; font-weight: 700;
     color: var(--accent);
     margin-bottom: 18px;
     letter-spacing: -0.005em;
   }
   .hero-title {
-    font-size: 52px;
+    font-size: 48px;
     font-weight: 800;
-    line-height: 1.1;
-    letter-spacing: -0.045em;
+    line-height: 1.18;
+    letter-spacing: -0.04em;
     margin-bottom: 18px;
-    color: var(--ink);
+    color: #0A0A0A;
   }
   .hero-title .accent { color: var(--accent); }
   .hero-desc {
     font-size: 16px;
-    color: var(--ink-muted);
+    color: var(--ink-500);
     line-height: 1.6;
-    max-width: 620px;
+    max-width: 600px;
     margin: 0 auto;
     letter-spacing: -0.005em;
   }
   .hero-stats {
-    display: flex; gap: 20px; justify-content: center;
-    margin-top: 32px; flex-wrap: wrap;
+    display: flex; gap: 8px; justify-content: center;
+    margin-top: 28px; flex-wrap: wrap;
   }
-  .stat-cell {
+  .stat-pill {
     display: inline-flex; align-items: center; gap: 8px;
     padding: 8px 16px;
-    background: #F7F7F4;
+    background: var(--bg-section);
     border-radius: 999px;
     font-size: 13px; font-weight: 500;
-    color: var(--ink-muted);
+    color: var(--ink-500);
   }
   .stat-num {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 14px; font-weight: 700;
-    color: var(--ink);
-    letter-spacing: -0.02em;
+    font-size: 13px; font-weight: 700;
+    color: #0A0A0A; letter-spacing: -0.02em;
   }
 
-  /* Controls */
+  /* Controls — gray section container with white inner */
   .controls {
-    margin-bottom: 40px;
-    padding: 28px;
-    background: #FFFFFF;
-    border: 1px solid var(--line-soft);
+    margin-bottom: 32px;
+    padding: 24px;
+    background: var(--bg-section);
     border-radius: 20px;
-    box-shadow: var(--shadow-sm);
   }
-  .search-wrap { position: relative; margin-bottom: 22px; }
+  .search-wrap { position: relative; margin-bottom: 18px; }
   .search-input {
     width: 100%;
-    padding: 15px 44px 15px 20px;
+    padding: 14px 44px 14px 18px;
     font-family: inherit;
-    font-size: 15px;
+    font-size: 14.5px;
     background: #FFFFFF;
-    border: 1px solid #E5E5E0;
-    border-radius: 14px;
-    color: var(--ink);
+    border: 1px solid #E5E7EB;
+    border-radius: 12px;
+    color: var(--ink-700);
     transition: all 0.18s;
     letter-spacing: -0.005em;
   }
@@ -125,23 +120,23 @@
     border-color: var(--accent);
     box-shadow: 0 0 0 3px var(--accent-soft);
   }
-  .search-input::placeholder { color: #B5B5AC; }
+  .search-input::placeholder { color: var(--ink-300); }
   .search-clear {
     position: absolute; right: 14px; top: 50%;
     transform: translateY(-50%);
-    background: none; border: none; color: var(--ink-subtle);
+    background: none; border: none; color: var(--ink-300);
     cursor: pointer; padding: 4px 8px; font-size: 14px; line-height: 1;
     display: none; border-radius: 6px;
   }
   .search-clear.visible { display: block; }
-  .search-clear:hover { color: var(--ink); }
+  .search-clear:hover { color: var(--ink-700); }
 
-  .filter-group { margin-bottom: 16px; }
+  .filter-group { margin-bottom: 14px; }
   .filter-group:last-of-type { margin-bottom: 0; }
   .filter-label {
     font-size: 12px;
     font-weight: 600;
-    color: var(--ink-subtle);
+    color: var(--ink-400);
     margin-bottom: 10px;
     display: block;
     letter-spacing: -0.005em;
@@ -153,82 +148,87 @@
     font-weight: 500;
     padding: 7px 14px;
     background: #FFFFFF;
-    border: 1px solid #E5E5E0;
+    border: 1px solid #E5E7EB;
     border-radius: 10px;
-    color: var(--ink-muted);
+    color: var(--ink-500);
     cursor: pointer;
     transition: all 0.15s;
     letter-spacing: -0.005em;
     user-select: none;
   }
-  .chip:hover { border-color: var(--ink-muted); color: var(--ink); }
+  .chip:hover { border-color: var(--ink-400); color: var(--ink-700); }
   .chip.active {
-    background: var(--ink); border-color: var(--ink); color: #FFFFFF;
+    background: #0A0A0A; border-color: #0A0A0A; color: #FFFFFF;
   }
-  .chip.active:hover { background: #1A1A1A; border-color: #1A1A1A; }
 
   .controls-footer {
     display: flex; align-items: center; justify-content: space-between;
-    margin-top: 22px; padding-top: 18px;
-    border-top: 1px solid var(--line-soft);
+    margin-top: 18px; padding-top: 16px;
+    border-top: 1px solid #E5E7EB;
     flex-wrap: wrap; gap: 12px;
   }
-  .result-count { font-size: 13px; color: var(--ink-muted); letter-spacing: -0.005em; }
-  .result-count strong { color: var(--ink); font-weight: 700; }
+  .result-count { font-size: 13px; color: var(--ink-500); letter-spacing: -0.005em; }
+  .result-count strong { color: #0A0A0A; font-weight: 700; }
   .reset-btn {
     font-size: 12.5px; font-weight: 600;
-    color: var(--ink-subtle); background: none; border: none;
+    color: var(--ink-400); background: none; border: none;
     cursor: pointer; padding: 6px 10px; border-radius: 8px;
-    transition: all 0.15s;
-    letter-spacing: -0.005em;
+    transition: all 0.15s; letter-spacing: -0.005em;
   }
   .reset-btn:hover { color: var(--urgent); background: var(--urgent-soft); }
-  .reset-btn:disabled { opacity: 0.3; cursor: not-allowed; background: none; color: var(--ink-subtle); }
+  .reset-btn:disabled { opacity: 0.3; cursor: not-allowed; background: none; color: var(--ink-300); }
 
-  /* List headers */
-  .list-header {
+  /* Sections — wrapped in gray containers like reference */
+  .program-section {
+    background: var(--bg-section);
+    border-radius: 24px;
+    padding: 28px;
+    margin-bottom: 20px;
+  }
+  .program-section.closed-wrap { background: #F8F9FB; }
+  .section-header-row {
     display: flex; align-items: center; gap: 10px;
     margin-bottom: 18px; padding: 0 4px;
   }
-  .list-dot {
+  .section-dot {
     width: 8px; height: 8px; border-radius: 50%;
     background: var(--accent);
   }
-  .list-dot.closed { background: #B0B0AA; }
-  .list-title { font-size: 16px; font-weight: 700; letter-spacing: -0.02em; color: var(--ink); }
-  .list-count {
+  .closed-wrap .section-dot { background: #B0B0AA; }
+  .section-title { font-size: 16px; font-weight: 700; letter-spacing: -0.02em; color: #0A0A0A; }
+  .section-count {
     font-family: 'JetBrains Mono', monospace;
     font-size: 12px; font-weight: 600;
-    color: var(--ink-subtle);
+    color: var(--ink-400); margin-left: auto;
     letter-spacing: -0.005em;
-    margin-left: auto;
   }
 
-  /* Program cards */
-  .program-list { display: grid; gap: 14px; margin-bottom: 36px; }
+  /* Program cards — white inside gray section */
+  .program-list { display: grid; gap: 12px; }
   .program-card {
     display: block; text-decoration: none; color: inherit;
-    background: #FFFFFF; border: 1px solid var(--line-soft);
-    border-radius: 18px;
-    padding: 24px 28px;
+    background: #FFFFFF;
+    border: 1px solid var(--line-card);
+    border-radius: 16px;
+    padding: 22px 26px;
     transition: all 0.2s ease;
-    box-shadow: var(--shadow-sm);
+    box-shadow: var(--shadow-card);
   }
   .program-card:hover {
-    border-color: #DCDCD4;
     transform: translateY(-2px);
-    box-shadow: var(--shadow-md);
+    box-shadow: var(--shadow-card-hover);
+    border-color: #D1D5DB;
   }
   .card-row { display: flex; gap: 22px; align-items: flex-start; }
   .card-status {
     flex-shrink: 0; width: 78px; text-align: center;
     padding: 12px 8px;
-    border-radius: 14px;
-    background: #F7F7F4;
+    border-radius: 12px;
+    background: #F4F5F7;
   }
   .card-status.urgent { background: var(--urgent-soft); }
   .card-status.warning { background: var(--warning-soft); }
-  .card-status.closed { background: #F1F0EB; }
+  .card-status.closed { background: #ECEDEF; }
   .card-dday {
     font-family: 'JetBrains Mono', monospace;
     font-size: 22px; font-weight: 700;
@@ -254,68 +254,69 @@
     padding: 3px 9px; border-radius: 8px;
     letter-spacing: -0.005em;
   }
-  .card-tag.alt { background: #F4F2EC; color: var(--ink-muted); }
+  .card-tag.alt { background: #F3F4F6; color: var(--ink-500); }
   .card-title {
-    font-size: 19px; font-weight: 700;
+    font-size: 18px; font-weight: 700;
     letter-spacing: -0.03em; line-height: 1.32;
-    margin-bottom: 8px; color: var(--ink);
+    margin-bottom: 8px; color: #0A0A0A;
   }
   .card-summary {
-    font-size: 13.5px; color: var(--ink-muted);
+    font-size: 13.5px; color: var(--ink-500);
     line-height: 1.6; margin-bottom: 12px;
     letter-spacing: -0.005em;
   }
   .card-meta-list {
     display: flex; gap: 18px;
-    font-size: 12px; color: var(--ink-subtle);
+    font-size: 12px; color: var(--ink-400);
     letter-spacing: -0.005em; flex-wrap: wrap;
   }
-  .card-meta-list strong { color: var(--ink-muted); font-weight: 600; margin-right: 6px; }
+  .card-meta-list strong { color: var(--ink-500); font-weight: 600; margin-right: 6px; }
   .card-arrow {
     flex-shrink: 0; align-self: center;
-    font-size: 18px; color: var(--ink-subtle);
+    font-size: 18px; color: var(--ink-300);
     transition: all 0.2s;
   }
   .program-card:hover .card-arrow { color: var(--accent); transform: translateX(3px); }
 
   .empty-state {
     padding: 56px 24px;
-    background: #FFFFFF; border: 1px dashed #DEDBCF;
-    border-radius: 18px;
-    text-align: center; color: var(--ink-muted); font-size: 14px;
+    background: #FFFFFF; border: 1px dashed #D1D5DB;
+    border-radius: 16px;
+    text-align: center; color: var(--ink-500); font-size: 14px;
   }
   .empty-state strong {
-    display: block; color: var(--ink);
+    display: block; color: #0A0A0A;
     font-size: 16px; margin-bottom: 6px;
     font-weight: 700; letter-spacing: -0.015em;
   }
   .empty-state .hint {
-    font-size: 12px; color: var(--ink-subtle);
+    font-size: 12px; color: var(--ink-400);
     margin-top: 12px; letter-spacing: -0.005em;
   }
   .program-section.hidden { display: none; }
 
   /* Footer */
   .doc-footer {
-    margin-top: 64px; padding-top: 24px;
-    border-top: 1px solid var(--line-soft);
+    margin-top: 56px; padding-top: 24px;
+    border-top: 1px solid var(--line-faint);
     display: flex; justify-content: space-between; align-items: baseline;
     flex-wrap: wrap; gap: 12px;
   }
-  .footer-brand { font-size: 12px; font-weight: 700; color: var(--ink-muted); letter-spacing: -0.01em; }
+  .footer-brand { font-size: 12px; font-weight: 700; color: var(--ink-500); letter-spacing: -0.01em; }
+  .footer-brand .apostrophe { color: var(--urgent); }
   .footer-meta {
     font-family: 'JetBrains Mono', monospace;
     font-size: 10px; font-weight: 500;
-    color: var(--ink-subtle); letter-spacing: 0.04em;
+    color: var(--ink-400); letter-spacing: 0.04em;
     text-align: right; line-height: 1.6;
   }
 
   @media (max-width: 720px) {
-    .doc { padding: 24px 18px 60px; }
+    .doc { padding: 24px 16px 60px; }
     .hero-title { font-size: 32px; }
-    .hero-stats { gap: 8px; }
-    .controls { padding: 20px; }
-    .program-card { padding: 20px; }
+    .hero-stats { gap: 6px; }
+    .controls, .program-section { padding: 20px; border-radius: 18px; }
+    .program-card { padding: 18px; }
     .card-row { flex-direction: column; gap: 14px; }
     .card-status {
       width: 100%;
@@ -343,12 +344,12 @@
   </header>
 
   <div class="hero">
-    <div class="hero-eyebrow">● 그로스하이 큐레이션 · 매일 업데이트</div>
-    <h1 class="hero-title">2026 <span class="accent">정부지원사업</span><br>표준 양식으로 정리.</h1>
-    <p class="hero-desc">최신 공고문을 그로스하이 표준 양식으로 정리한 큐레이션 페이지. 업종·유형 필터로 상황에 맞는 사업을 빠르게 추려냅니다.</p>
+    <div class="hero-eyebrow">그로스하이 큐레이션</div>
+    <h1 class="hero-title">2026 <span class="accent">정부지원사업</span> 큐레이션</h1>
+    <p class="hero-desc">최신 공고문을 한 곳에 모아 핵심 정보로 정리. 업종·유형 필터로 상황에 맞는 사업을 빠르게 추립니다.</p>
     <div class="hero-stats">
-      <div class="stat-cell">검토 사업 <span class="stat-num" id="total-count">23</span></div>
-      <div class="stat-cell">진행 중 <span class="stat-num" id="active-count">21</span></div>
+      <div class="stat-pill">검토 사업 <span class="stat-num" id="total-count">23</span></div>
+      <div class="stat-pill">진행 중 <span class="stat-num" id="active-count">16</span></div>
     </div>
   </div>
 
@@ -372,19 +373,19 @@
   </div>
 
   <section class="program-section" id="active-section">
-    <div class="list-header">
-      <span class="list-dot"></span>
-      <div class="list-title">진행 중인 사업</div>
-      <div class="list-count" id="active-en">0</div>
+    <div class="section-header-row">
+      <span class="section-dot"></span>
+      <div class="section-title">진행 중인 사업</div>
+      <div class="section-count" id="active-en">0</div>
     </div>
     <div class="program-list" id="active-list"></div>
   </section>
 
-  <section class="program-section" id="closed-section">
-    <div class="list-header">
-      <span class="list-dot closed"></span>
-      <div class="list-title">마감 완료 사업</div>
-      <div class="list-count" id="closed-en">0</div>
+  <section class="program-section closed-wrap" id="closed-section">
+    <div class="section-header-row">
+      <span class="section-dot"></span>
+      <div class="section-title">마감 완료 사업</div>
+      <div class="section-count" id="closed-en">0</div>
     </div>
     <div class="program-list" id="closed-list"></div>
   </section>
@@ -396,7 +397,7 @@
   </div>
 
   <footer class="doc-footer">
-    <div class="footer-brand">GROWTH<span style="color:var(--urgent)">'</span>HIGH — Scale-up Studio</div>
+    <div class="footer-brand">GROWTH<span class="apostrophe">'</span>HIGH — Scale-up Studio</div>
     <div class="footer-meta">Curated by GROWTH'HIGH<br><span id="footer-updated">2026.04.30</span></div>
   </footer>
 
