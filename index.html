@@ -10,7 +10,6 @@
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 <style>
-  /* ─── Hero ─── */
   .hero { margin-bottom: 40px; padding: 48px 0; border-bottom: 1px solid var(--line); }
   .hero-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-subtle); margin-bottom: 14px; }
   .hero-eyebrow .num { color: var(--urgent); margin-right: 6px; }
@@ -20,8 +19,6 @@
   .stat-cell { display: flex; flex-direction: column; gap: 4px; }
   .stat-num { font-family: 'JetBrains Mono', monospace; font-size: 28px; font-weight: 700; letter-spacing: -0.03em; color: var(--ink); line-height: 1; }
   .stat-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-subtle); }
-
-  /* ─── Search & Filter ─── */
   .controls { margin-bottom: 40px; padding: 24px; background: var(--surface); border: 1px solid var(--line); }
   .search-wrap { position: relative; margin-bottom: 20px; }
   .search-input { width: 100%; padding: 14px 44px 14px 16px; font-family: inherit; font-size: 14px; background: var(--bg); border: 1px solid var(--line); color: var(--ink); transition: border-color 0.15s; letter-spacing: -0.005em; }
@@ -30,7 +27,6 @@
   .search-clear { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); background: none; border: none; color: var(--ink-subtle); cursor: pointer; padding: 4px 8px; font-size: 14px; line-height: 1; display: none; }
   .search-clear.visible { display: block; }
   .search-clear:hover { color: var(--ink); }
-
   .filter-group { margin-bottom: 14px; }
   .filter-group:last-child { margin-bottom: 0; }
   .filter-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-subtle); margin-bottom: 8px; display: block; }
@@ -39,15 +35,12 @@
   .chip:hover { border-color: var(--ink-muted); color: var(--ink); }
   .chip.active { background: var(--ink); border-color: var(--ink); color: var(--bg); }
   .chip.active:hover { background: var(--ink-muted); border-color: var(--ink-muted); }
-
   .controls-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--line); flex-wrap: wrap; gap: 12px; }
   .result-count { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--ink-muted); letter-spacing: 0.04em; }
   .result-count strong { color: var(--ink); font-weight: 700; }
   .reset-btn { font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-subtle); background: none; border: none; cursor: pointer; padding: 4px 0; transition: color 0.15s; }
   .reset-btn:hover { color: var(--urgent); }
   .reset-btn:disabled { opacity: 0.3; cursor: not-allowed; }
-
-  /* ─── Cards (re-used from skill spec) ─── */
   .program-list { display: grid; gap: 18px; }
   .program-card { display: block; text-decoration: none; color: inherit; background: var(--bg); border: 1px solid var(--line); padding: 28px 30px; transition: all 0.25s ease; position: relative; }
   .program-card:hover { border-color: var(--ink); transform: translateY(-2px); }
@@ -73,21 +66,13 @@
   .card-meta-list strong { color: var(--ink); font-weight: 600; margin-right: 4px; }
   .card-arrow { flex-shrink: 0; align-self: center; font-size: 18px; color: var(--ink-subtle); transition: all 0.2s; }
   .program-card:hover .card-arrow { color: var(--ink); transform: translateX(4px); }
-
-  /* ─── Section header ─── */
   .list-header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 24px; padding-bottom: 12px; border-bottom: 1px solid var(--ink); }
   .list-title { font-size: 18px; font-weight: 700; letter-spacing: -0.02em; }
   .list-en { font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500; color: var(--ink-subtle); letter-spacing: 0.12em; text-transform: uppercase; }
-
-  /* ─── Empty state ─── */
   .empty-state { padding: 48px 24px; background: var(--surface); border: 1px dashed var(--line-strong); text-align: center; color: var(--ink-muted); font-size: 14px; }
   .empty-state strong { display: block; color: var(--ink); font-size: 16px; margin-bottom: 6px; font-weight: 700; letter-spacing: -0.01em; }
   .empty-state .hint { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink-subtle); letter-spacing: 0.04em; margin-top: 10px; }
-
-  /* ─── Section visibility (when filtered) ─── */
   .program-section.hidden { display: none; }
-
-  /* ─── Mobile ─── */
   @media (max-width: 720px) {
     .hero-title { font-size: 32px; }
     .hero-stats { grid-template-columns: repeat(2, 1fr); gap: 16px; }
@@ -115,41 +100,30 @@
       그로스하이가 직접 검토한 2026년 정부지원사업 모음입니다. 사업명·키워드로 검색하거나 업종·유형 필터로 필요한 사업만 빠르게 추려보실 수 있습니다. 카드를 클릭하면 표준형 양식의 상세 검토서가 열립니다.
     </p>
     <div class="hero-stats">
-      <div class="stat-cell">
-        <div class="stat-num" id="total-count">14</div>
-        <div class="stat-label">검토 사업 / Programs</div>
-      </div>
-      <div class="stat-cell">
-        <div class="stat-num" id="active-count">12</div>
-        <div class="stat-label">진행 중 / Active</div>
-      </div>
+      <div class="stat-cell"><div class="stat-num" id="total-count">14</div><div class="stat-label">검토 사업 / Programs</div></div>
+      <div class="stat-cell"><div class="stat-num" id="active-count">12</div><div class="stat-label">진행 중 / Active</div></div>
     </div>
   </div>
 
-  <!-- ─── Controls (search + filter) ─── -->
   <div class="controls">
     <div class="search-wrap">
       <input type="text" id="search-input" class="search-input" placeholder="사업명, 키워드, 운영기관 검색..." autocomplete="off">
       <button id="search-clear" class="search-clear" title="검색어 지우기">✕</button>
     </div>
-
     <div class="filter-group">
       <label class="filter-label">업종 / Industry</label>
       <div class="filter-chips" id="industry-chips"></div>
     </div>
-
     <div class="filter-group">
       <label class="filter-label">유형 / Type</label>
       <div class="filter-chips" id="type-chips"></div>
     </div>
-
     <div class="controls-footer">
       <div class="result-count" id="result-count">전체 <strong>14</strong>개 표시</div>
       <button id="reset-btn" class="reset-btn" disabled>↺ 전체 해제</button>
     </div>
   </div>
 
-  <!-- ─── Active Programs ─── -->
   <section class="program-section" id="active-section">
     <div class="list-header">
       <div class="list-title">진행 중인 사업</div>
@@ -158,7 +132,6 @@
     <div class="program-list" id="active-list"></div>
   </section>
 
-  <!-- ─── Closed Programs ─── -->
   <section class="program-section" id="closed-section">
     <div class="list-header">
       <div class="list-title">마감 완료 사업</div>
@@ -167,7 +140,6 @@
     <div class="program-list" id="closed-list"></div>
   </section>
 
-  <!-- ─── Empty state ─── -->
   <div class="empty-state" id="empty-state" style="display:none;">
     <strong>검색 결과가 없습니다</strong>
     검색어를 변경하거나 필터를 해제해 보세요.
@@ -184,173 +156,80 @@
 <script>
 (() => {
   'use strict';
+  let state = { programs: [], filters: { industries: [], types: [] }, selected: { industries: new Set(), types: new Set() }, search: '' };
 
-  let state = {
-    programs: [],
-    filters: { industries: [], types: [] },
-    selected: { industries: new Set(), types: new Set() },
-    search: ''
-  };
-
-  // ─── D-day & status calculation (KST 날짜 기준) ───
   function calcDday(isoStr) {
-    // 마감일과 오늘을 모두 한국 시간(Asia/Seoul) "날짜"로 변환 후 일수 차이 계산
-    // 시:분 무시 → 마감일 당일은 D-0, 그 다음날 마감이면 D-1
-    const fmt = new Intl.DateTimeFormat('en-CA', {
-      timeZone: 'Asia/Seoul',
-      year: 'numeric', month: '2-digit', day: '2-digit'
-    });
-    const toUTC = (s) => {
-      const [y, m, d] = s.split('-').map(Number);
-      return Date.UTC(y, m - 1, d);
-    };
+    const fmt = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Seoul', year: 'numeric', month: '2-digit', day: '2-digit' });
+    const toUTC = (s) => { const [y, m, d] = s.split('-').map(Number); return Date.UTC(y, m - 1, d); };
     const dlMs = toUTC(fmt.format(new Date(isoStr)));
     const nowMs = toUTC(fmt.format(new Date()));
     return Math.round((dlMs - nowMs) / 86400000);
   }
-  function getStatus(dday) {
-    if (dday < 0) return 'closed';
-    if (dday <= 3) return 'urgent';
-    return 'warning';
-  }
-  function getStatusLabel(dday, status) {
-    if (status === 'closed') return 'REF';
-    if (status === 'urgent') return 'URGENT';
-    if (dday <= 7) return 'WARNING';
-    return 'ACTIVE';
-  }
-  function formatDday(dday, status) {
-    if (status === 'closed') return 'CLOSED';
-    if (dday === 0) return 'D−0';
-    return `D−${dday}`;
-  }
+  function getStatus(dday) { if (dday < 0) return 'closed'; if (dday <= 3) return 'urgent'; return 'warning'; }
+  function getStatusLabel(dday, status) { if (status === 'closed') return 'REF'; if (status === 'urgent') return 'URGENT'; if (dday <= 7) return 'WARNING'; return 'ACTIVE'; }
+  function formatDday(dday, status) { if (status === 'closed') return 'CLOSED'; if (dday === 0) return 'D−0'; return 'D−' + dday; }
+  function esc(s) { return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
 
-  // ─── HTML escape ───
-  function esc(s) {
-    return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-  }
-
-  // ─── Card render ───
   function renderCard(p) {
     const dday = calcDday(p.deadline_iso);
     const status = getStatus(dday);
     const statusLabel = getStatusLabel(dday, status);
     const ddayText = formatDday(dday, status);
-
-    const tagsHtml = p.tags.map((t, i) =>
-      `<span class="card-tag${i === 0 ? '' : ' alt'}">${esc(t)}</span>`
-    ).join('');
-
-    const metaHtml = Object.entries(p.meta).map(([k, v]) =>
-      `<span><strong>${esc(k)}</strong>${esc(v)}</span>`
-    ).join('');
-
-    return `
-      <a href="${esc(p.file)}" class="program-card">
-        <div class="card-row">
-          <div class="card-status ${status}">
-            <div class="card-dday">${ddayText}</div>
-            <div class="card-status-label">${statusLabel}</div>
-          </div>
-          <div class="card-body-wrap">
-            <div class="card-tags">${tagsHtml}</div>
-            <h3 class="card-title">${esc(p.title)}</h3>
-            <p class="card-summary">${esc(p.summary)}</p>
-            <div class="card-meta-list">${metaHtml}</div>
-          </div>
-          <div class="card-arrow">→</div>
-        </div>
-      </a>
-    `;
+    const tagsHtml = p.tags.map((t, i) => '<span class="card-tag' + (i === 0 ? '' : ' alt') + '">' + esc(t) + '</span>').join('');
+    const metaHtml = Object.entries(p.meta).map(([k, v]) => '<span><strong>' + esc(k) + '</strong>' + esc(v) + '</span>').join('');
+    return '<a href="' + esc(p.file) + '" class="program-card"><div class="card-row"><div class="card-status ' + status + '"><div class="card-dday">' + ddayText + '</div><div class="card-status-label">' + statusLabel + '</div></div><div class="card-body-wrap"><div class="card-tags">' + tagsHtml + '</div><h3 class="card-title">' + esc(p.title) + '</h3><p class="card-summary">' + esc(p.summary) + '</p><div class="card-meta-list">' + metaHtml + '</div></div><div class="card-arrow">→</div></div></a>';
   }
 
-  // ─── Filter logic ───
   function matchesSearch(p, q) {
     if (!q) return true;
-    const haystack = [p.title, p.summary, ...p.tags, ...(p.industries || []), ...(p.types || [])]
-      .join(' ').toLowerCase();
+    const haystack = [p.title, p.summary, ...(p.tags || []), ...(p.industries || []), ...(p.types || [])].join(' ').toLowerCase();
     return q.toLowerCase().split(/\s+/).every(term => haystack.includes(term));
   }
-  function matchesIndustry(p, selected) {
-    if (selected.size === 0) return true;
-    return p.industries.some(i => selected.has(i));
-  }
-  function matchesType(p, selected) {
-    if (selected.size === 0) return true;
-    return p.types.some(t => selected.has(t));
-  }
+  function matchesIndustry(p, selected) { if (selected.size === 0) return true; return p.industries.some(i => selected.has(i)); }
+  function matchesType(p, selected) { if (selected.size === 0) return true; return p.types.some(t => selected.has(t)); }
 
-  // ─── Render filter chips ───
   function renderChips() {
     const industryEl = document.getElementById('industry-chips');
     const typeEl = document.getElementById('type-chips');
-    industryEl.innerHTML = state.filters.industries.map(i =>
-      `<button class="chip" data-group="industries" data-value="${esc(i)}">${esc(i)}</button>`
-    ).join('');
-    typeEl.innerHTML = state.filters.types.map(t =>
-      `<button class="chip" data-group="types" data-value="${esc(t)}">${esc(t)}</button>`
-    ).join('');
-    document.querySelectorAll('.chip').forEach(chip => {
-      chip.addEventListener('click', () => toggleChip(chip));
-    });
+    industryEl.innerHTML = state.filters.industries.map(i => '<button class="chip" data-group="industries" data-value="' + esc(i) + '">' + esc(i) + '</button>').join('');
+    typeEl.innerHTML = state.filters.types.map(t => '<button class="chip" data-group="types" data-value="' + esc(t) + '">' + esc(t) + '</button>').join('');
+    document.querySelectorAll('.chip').forEach(chip => chip.addEventListener('click', () => toggleChip(chip)));
   }
 
   function toggleChip(chip) {
     const group = chip.dataset.group;
     const value = chip.dataset.value;
     const set = state.selected[group];
-    if (set.has(value)) {
-      set.delete(value);
-      chip.classList.remove('active');
-    } else {
-      set.add(value);
-      chip.classList.add('active');
-    }
+    if (set.has(value)) { set.delete(value); chip.classList.remove('active'); }
+    else { set.add(value); chip.classList.add('active'); }
     render();
   }
 
-  // ─── Main render ───
   function render() {
-    const filtered = state.programs.filter(p =>
-      matchesSearch(p, state.search) &&
-      matchesIndustry(p, state.selected.industries) &&
-      matchesType(p, state.selected.types)
-    );
-
+    const filtered = state.programs.filter(p => matchesSearch(p, state.search) && matchesIndustry(p, state.selected.industries) && matchesType(p, state.selected.types));
     const active = filtered.filter(p => getStatus(calcDday(p.deadline_iso)) !== 'closed');
     const closed = filtered.filter(p => getStatus(calcDday(p.deadline_iso)) === 'closed');
-
-    // sort: active by dday asc, closed by dday desc (most recent first)
     active.sort((a, b) => calcDday(a.deadline_iso) - calcDday(b.deadline_iso));
     closed.sort((a, b) => calcDday(b.deadline_iso) - calcDday(a.deadline_iso));
-
     document.getElementById('active-list').innerHTML = active.map(renderCard).join('');
     document.getElementById('closed-list').innerHTML = closed.map(renderCard).join('');
-    document.getElementById('active-en').textContent = `Active Programs · ${active.length}`;
-    document.getElementById('closed-en').textContent = `Closed · Reference · ${closed.length}`;
+    document.getElementById('active-en').textContent = 'Active Programs · ' + active.length;
+    document.getElementById('closed-en').textContent = 'Closed · Reference · ' + closed.length;
     document.getElementById('active-section').classList.toggle('hidden', active.length === 0);
     document.getElementById('closed-section').classList.toggle('hidden', closed.length === 0);
     document.getElementById('empty-state').style.display = filtered.length === 0 ? 'block' : 'none';
-
-    // counter
     const total = state.programs.length;
     const filteredCount = filtered.length;
     const activeAll = state.programs.filter(p => getStatus(calcDday(p.deadline_iso)) !== 'closed').length;
     document.getElementById('active-count').textContent = activeAll;
     document.getElementById('total-count').textContent = total;
     const counterEl = document.getElementById('result-count');
-    if (filteredCount === total) {
-      counterEl.innerHTML = `전체 <strong>${total}</strong>개 표시`;
-    } else {
-      counterEl.innerHTML = `<strong>${total}</strong>개 中 <strong>${filteredCount}</strong>개 표시`;
-    }
-
-    // reset button enable state
+    if (filteredCount === total) counterEl.innerHTML = '전체 <strong>' + total + '</strong>개 표시';
+    else counterEl.innerHTML = '<strong>' + total + '</strong>개 中 <strong>' + filteredCount + '</strong>개 표시';
     const hasFilter = state.search || state.selected.industries.size || state.selected.types.size;
     document.getElementById('reset-btn').disabled = !hasFilter;
   }
 
-  // ─── Events ───
   function bindEvents() {
     const searchInput = document.getElementById('search-input');
     const searchClear = document.getElementById('search-clear');
@@ -366,26 +245,15 @@
     searchInput.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') { searchInput.value = ''; state.search = ''; searchClear.classList.remove('visible'); render(); }
     });
-    searchClear.addEventListener('click', () => {
-      searchInput.value = '';
-      state.search = '';
-      searchClear.classList.remove('visible');
-      searchInput.focus();
-      render();
-    });
-
+    searchClear.addEventListener('click', () => { searchInput.value = ''; state.search = ''; searchClear.classList.remove('visible'); searchInput.focus(); render(); });
     document.getElementById('reset-btn').addEventListener('click', () => {
-      searchInput.value = '';
-      state.search = '';
-      searchClear.classList.remove('visible');
-      state.selected.industries.clear();
-      state.selected.types.clear();
+      searchInput.value = ''; state.search = ''; searchClear.classList.remove('visible');
+      state.selected.industries.clear(); state.selected.types.clear();
       document.querySelectorAll('.chip.active').forEach(c => c.classList.remove('active'));
       render();
     });
   }
 
-  // ─── Init ───
   async function init() {
     try {
       const res = await fetch('data.json?v=' + Date.now());
@@ -393,4 +261,21 @@
       state.programs = data.programs;
       state.filters = data.filters;
       document.getElementById('updated-at').textContent = data.updated_at.replace(/-/g, '.');
-      document.getElementById('footer-u
+      document.getElementById('footer-updated').textContent = data.updated_at.replace(/-/g, '.');
+      renderChips();
+      bindEvents();
+      render();
+    } catch (err) {
+      console.error('Failed to load data:', err);
+      document.getElementById('active-list').innerHTML = '<div class="empty-state"><strong>데이터를 불러올 수 없습니다</strong>잠시 후 다시 시도해 주세요.</div>';
+    }
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
+</script>
+
+</body>
+</html>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
