@@ -698,13 +698,10 @@ details.more p {
 
 .footer-brand .apostrophe { color: var(--urgent); }
 
-.footer-meta {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
-  font-weight: 500;
-  color: var(--ink-faint);
-  letter-spacing: 0.04em;
-  text-align: right;
+.footer-meta { display: none; }
+
+.doc-footer {
+  justify-content: center;
 }
 
 /* ─── Mobile ─── */
