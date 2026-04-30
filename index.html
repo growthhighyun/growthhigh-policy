@@ -3,84 +3,327 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>2026 정부지원사업 검토 — GROWTH'HIGH</title>
+<title>2026 정부지원사업 큐레이션 — GROWTH'HIGH</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 <style>
-  .brand-header { margin-bottom: 24px; }
-  .hero { margin-bottom: 40px; padding: 16px 0 48px; border-bottom: 1px solid var(--line); }
-  .hero-eyebrow { font-family: 'Pretendard Variable', Pretendard, sans-serif; font-size: 15px; font-weight: 600; letter-spacing: -0.005em; color: var(--ink-muted); margin-bottom: 16px; }
-  .hero-eyebrow .num { color: var(--urgent); margin-right: 8px; font-size: 14px; }
-  .hero-title { font-size: 48px; font-weight: 700; line-height: 1.1; letter-spacing: -0.04em; margin-bottom: 18px; color: var(--ink); }
-  .hero-desc { font-size: 16px; color: var(--ink-muted); line-height: 1.65; max-width: 680px; }
-  .hero-stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 36px; padding-top: 28px; border-top: 1px solid var(--line); }
-  .stat-cell { display: flex; flex-direction: column; gap: 4px; }
-  .stat-num { font-family: 'JetBrains Mono', monospace; font-size: 28px; font-weight: 700; letter-spacing: -0.03em; color: var(--ink); line-height: 1; }
-  .stat-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-subtle); }
-  .controls { margin-bottom: 40px; padding: 24px; background: var(--surface); border: 1px solid var(--line); }
-  .search-wrap { position: relative; margin-bottom: 20px; }
-  .search-input { width: 100%; padding: 14px 44px 14px 16px; font-family: inherit; font-size: 14px; background: var(--bg); border: 1px solid var(--line); color: var(--ink); transition: border-color 0.15s; letter-spacing: -0.005em; }
-  .search-input:focus { outline: none; border-color: var(--ink); }
+  /* ─── Index page – softer, rounder tone ─── */
+  body { background: #FAF9F5; }
+  .doc { max-width: 960px; padding: 56px 40px 96px; }
+
+  /* Brand header (logo only, no right-side meta) */
+  .brand-header {
+    display: flex;
+    align-items: center;
+    padding: 0 0 28px;
+    margin-bottom: 40px;
+    border-bottom: 1px solid #ECEAE0;
+  }
+  .brand-header .logo {
+    font-family: 'Pretendard Variable', Pretendard, sans-serif;
+    font-size: 19px;
+    font-weight: 800;
+    letter-spacing: -0.045em;
+    color: var(--ink);
+    line-height: 1;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+  .brand-header .logo .apostrophe { color: var(--urgent); }
+  .brand-header .logo .tagline {
+    display: inline-block;
+    margin-top: 0;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-subtle);
+    padding-left: 12px;
+    border-left: 1px solid #DEDBCF;
+  }
+
+  /* Hero */
+  .hero { margin-bottom: 44px; padding: 8px 0 0; }
+  .hero-eyebrow {
+    font-family: 'Pretendard Variable', Pretendard, sans-serif;
+    font-size: 13.5px;
+    font-weight: 600;
+    letter-spacing: -0.005em;
+    color: var(--ink-muted);
+    margin-bottom: 18px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    background: #FFFFFF;
+    border: 1px solid #ECEAE0;
+    border-radius: 999px;
+  }
+  .hero-eyebrow .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--urgent);
+    display: inline-block;
+  }
+  .hero-title {
+    font-size: 52px;
+    font-weight: 700;
+    line-height: 1.08;
+    letter-spacing: -0.045em;
+    margin-bottom: 20px;
+    color: var(--ink);
+  }
+  .hero-desc {
+    font-size: 16.5px;
+    color: var(--ink-muted);
+    line-height: 1.6;
+    max-width: 620px;
+    letter-spacing: -0.01em;
+  }
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    margin-top: 36px;
+  }
+  .stat-cell {
+    background: #FFFFFF;
+    border: 1px solid #ECEAE0;
+    border-radius: 14px;
+    padding: 18px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .stat-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: -0.005em;
+    color: var(--ink-subtle);
+  }
+
+  /* Controls */
+  .controls {
+    margin-bottom: 36px;
+    padding: 24px 26px;
+    background: #FFFFFF;
+    border: 1px solid #ECEAE0;
+    border-radius: 16px;
+  }
+  .search-wrap { position: relative; margin-bottom: 18px; }
+  .search-input {
+    width: 100%;
+    padding: 14px 44px 14px 18px;
+    font-family: inherit;
+    font-size: 14.5px;
+    background: #FAF9F5;
+    border: 1px solid #ECEAE0;
+    border-radius: 12px;
+    color: var(--ink);
+    transition: all 0.18s;
+    letter-spacing: -0.005em;
+  }
+  .search-input:focus { outline: none; border-color: var(--ink); background: #FFFFFF; }
   .search-input::placeholder { color: var(--ink-subtle); }
-  .search-clear { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); background: none; border: none; color: var(--ink-subtle); cursor: pointer; padding: 4px 8px; font-size: 14px; line-height: 1; display: none; }
+  .search-clear {
+    position: absolute; right: 14px; top: 50%;
+    transform: translateY(-50%);
+    background: none; border: none; color: var(--ink-subtle);
+    cursor: pointer; padding: 4px 8px; font-size: 14px; line-height: 1;
+    display: none; border-radius: 6px;
+  }
   .search-clear.visible { display: block; }
-  .search-clear:hover { color: var(--ink); }
+  .search-clear:hover { color: var(--ink); background: #F4F2EC; }
+
   .filter-group { margin-bottom: 14px; }
-  .filter-group:last-child { margin-bottom: 0; }
-  .filter-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-subtle); margin-bottom: 8px; display: block; }
+  .filter-group:last-of-type { margin-bottom: 0; }
+  .filter-label {
+    font-size: 11.5px;
+    font-weight: 600;
+    letter-spacing: -0.005em;
+    color: var(--ink-subtle);
+    margin-bottom: 10px;
+    display: block;
+  }
   .filter-chips { display: flex; flex-wrap: wrap; gap: 6px; }
-  .chip { font-family: inherit; font-size: 12px; font-weight: 500; padding: 6px 12px; background: var(--bg); border: 1px solid var(--line); color: var(--ink-muted); cursor: pointer; transition: all 0.15s; letter-spacing: -0.005em; user-select: none; }
-  .chip:hover { border-color: var(--ink-muted); color: var(--ink); }
-  .chip.active { background: var(--ink); border-color: var(--ink); color: var(--bg); }
-  .chip.active:hover { background: var(--ink-muted); border-color: var(--ink-muted); }
-  .controls-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--line); flex-wrap: wrap; gap: 12px; }
-  .result-count { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--ink-muted); letter-spacing: 0.04em; }
+  .chip {
+    font-family: inherit;
+    font-size: 12.5px;
+    font-weight: 500;
+    padding: 7px 14px;
+    background: #FAF9F5;
+    border: 1px solid #ECEAE0;
+    border-radius: 999px;
+    color: var(--ink-muted);
+    cursor: pointer;
+    transition: all 0.15s;
+    letter-spacing: -0.005em;
+    user-select: none;
+  }
+  .chip:hover { border-color: #C8C4B5; color: var(--ink); }
+  .chip.active { background: var(--ink); border-color: var(--ink); color: #FFFFFF; }
+  .chip.active:hover { background: #1A1A1A; border-color: #1A1A1A; }
+
+  .controls-footer {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-top: 18px; padding-top: 16px; border-top: 1px solid #ECEAE0;
+    flex-wrap: wrap; gap: 12px;
+  }
+  .result-count { font-size: 12.5px; color: var(--ink-muted); letter-spacing: -0.005em; }
   .result-count strong { color: var(--ink); font-weight: 700; }
-  .reset-btn { font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-subtle); background: none; border: none; cursor: pointer; padding: 4px 0; transition: color 0.15s; }
-  .reset-btn:hover { color: var(--urgent); }
-  .reset-btn:disabled { opacity: 0.3; cursor: not-allowed; }
-  .program-list { display: grid; gap: 18px; }
-  .program-card { display: block; text-decoration: none; color: inherit; background: var(--bg); border: 1px solid var(--line); padding: 28px 30px; transition: all 0.25s ease; position: relative; }
-  .program-card:hover { border-color: var(--ink); transform: translateY(-2px); }
-  .program-card::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--ink); transform-origin: top; transform: scaleY(0); transition: transform 0.25s ease; }
-  .program-card:hover::before { transform: scaleY(1); }
-  .card-row { display: flex; gap: 24px; align-items: flex-start; }
-  .card-status { flex-shrink: 0; width: 80px; text-align: center; }
-  .card-dday { font-family: 'JetBrains Mono', monospace; font-size: 22px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; }
+  .reset-btn {
+    font-size: 12px; font-weight: 600; letter-spacing: -0.005em;
+    color: var(--ink-subtle); background: none; border: none;
+    cursor: pointer; padding: 6px 10px; border-radius: 8px;
+    transition: all 0.15s;
+  }
+  .reset-btn:hover { color: var(--urgent); background: #FBEAE7; }
+  .reset-btn:disabled { opacity: 0.3; cursor: not-allowed; background: none; }
+
+  /* List header */
+  .list-header {
+    display: flex; align-items: baseline; justify-content: space-between;
+    margin-bottom: 18px; padding: 0 4px;
+  }
+  .list-title { font-size: 16px; font-weight: 700; letter-spacing: -0.025em; color: var(--ink); }
+  .list-en {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; font-weight: 500;
+    color: var(--ink-subtle); letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  /* Program cards */
+  .program-list { display: grid; gap: 12px; margin-bottom: 32px; }
+  .program-card {
+    display: block; text-decoration: none; color: inherit;
+    background: #FFFFFF; border: 1px solid #ECEAE0;
+    border-radius: 16px;
+    padding: 24px 28px;
+    transition: all 0.2s ease;
+    position: relative;
+  }
+  .program-card:hover {
+    border-color: #C8C4B5;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(10, 10, 10, 0.04);
+  }
+  .card-row { display: flex; gap: 22px; align-items: flex-start; }
+  .card-status {
+    flex-shrink: 0; width: 76px; text-align: center;
+    padding: 12px 8px;
+    border-radius: 12px;
+    background: #FAF9F5;
+  }
+  .card-status.urgent { background: #FBEAE7; }
+  .card-status.warning { background: #FAF3E0; }
+  .card-status.closed { background: #F0EFEA; }
+  .card-dday {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 22px; font-weight: 700;
+    letter-spacing: -0.02em; line-height: 1.1;
+  }
   .card-status.urgent .card-dday { color: var(--urgent); }
   .card-status.warning .card-dday { color: var(--warning); }
   .card-status.closed .card-dday { color: var(--closed); }
-  .card-status-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; margin-top: 4px; }
+  .card-status-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px; font-weight: 600;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    margin-top: 4px;
+  }
   .card-status.urgent .card-status-label { color: var(--urgent); }
   .card-status.warning .card-status-label { color: var(--warning); }
   .card-status.closed .card-status-label { color: var(--closed); }
   .card-body-wrap { flex: 1; min-width: 0; }
-  .card-tags { display: flex; gap: 6px; margin-bottom: 8px; flex-wrap: wrap; }
-  .card-tag { font-family: 'JetBrains Mono', monospace; font-size: 9px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--brand); background: var(--brand-soft); padding: 3px 8px; border-radius: 2px; }
-  .card-tag.alt { background: var(--surface-alt); color: var(--ink-muted); }
-  .card-title { font-size: 20px; font-weight: 700; letter-spacing: -0.025em; line-height: 1.3; margin-bottom: 8px; color: var(--ink); }
-  .card-summary { font-size: 13.5px; color: var(--ink-muted); line-height: 1.6; margin-bottom: 14px; }
-  .card-meta-list { display: flex; gap: 20px; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink-subtle); letter-spacing: 0.04em; flex-wrap: wrap; }
-  .card-meta-list strong { color: var(--ink); font-weight: 600; margin-right: 4px; }
-  .card-arrow { flex-shrink: 0; align-self: center; font-size: 18px; color: var(--ink-subtle); transition: all 0.2s; }
-  .program-card:hover .card-arrow { color: var(--ink); transform: translateX(4px); }
-  .list-header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 24px; padding-bottom: 12px; border-bottom: 1px solid var(--ink); }
-  .list-title { font-size: 18px; font-weight: 700; letter-spacing: -0.02em; }
-  .list-en { font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500; color: var(--ink-subtle); letter-spacing: 0.12em; text-transform: uppercase; }
-  .empty-state { padding: 48px 24px; background: var(--surface); border: 1px dashed var(--line-strong); text-align: center; color: var(--ink-muted); font-size: 14px; }
-  .empty-state strong { display: block; color: var(--ink); font-size: 16px; margin-bottom: 6px; font-weight: 700; letter-spacing: -0.01em; }
-  .empty-state .hint { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink-subtle); letter-spacing: 0.04em; margin-top: 10px; }
+  .card-tags { display: flex; gap: 6px; margin-bottom: 10px; flex-wrap: wrap; }
+  .card-tag {
+    font-size: 11px; font-weight: 600;
+    letter-spacing: -0.005em;
+    color: var(--brand); background: var(--brand-soft);
+    padding: 3px 9px; border-radius: 999px;
+  }
+  .card-tag.alt { background: #F4F2EC; color: var(--ink-muted); }
+  .card-title {
+    font-size: 19px; font-weight: 700;
+    letter-spacing: -0.03em; line-height: 1.32;
+    margin-bottom: 8px; color: var(--ink);
+  }
+  .card-summary {
+    font-size: 13.5px; color: var(--ink-muted);
+    line-height: 1.6; margin-bottom: 12px;
+    letter-spacing: -0.005em;
+  }
+  .card-meta-list {
+    display: flex; gap: 18px;
+    font-size: 12px; color: var(--ink-subtle);
+    letter-spacing: -0.005em; flex-wrap: wrap;
+  }
+  .card-meta-list strong { color: var(--ink-muted); font-weight: 600; margin-right: 6px; }
+  .card-arrow {
+    flex-shrink: 0; align-self: center;
+    font-size: 18px; color: var(--ink-subtle);
+    transition: all 0.2s;
+  }
+  .program-card:hover .card-arrow { color: var(--ink); transform: translateX(3px); }
+
+  .empty-state {
+    padding: 56px 24px;
+    background: #FFFFFF; border: 1px dashed #DEDBCF;
+    border-radius: 16px;
+    text-align: center; color: var(--ink-muted); font-size: 14px;
+  }
+  .empty-state strong {
+    display: block; color: var(--ink);
+    font-size: 16px; margin-bottom: 6px;
+    font-weight: 700; letter-spacing: -0.015em;
+  }
+  .empty-state .hint {
+    font-size: 12px; color: var(--ink-subtle);
+    letter-spacing: -0.005em; margin-top: 12px;
+  }
   .program-section.hidden { display: none; }
+
+  /* Footer */
+  .doc-footer {
+    margin-top: 64px; padding-top: 24px;
+    border-top: 1px solid #ECEAE0;
+    display: flex; justify-content: space-between; align-items: baseline;
+    flex-wrap: wrap; gap: 12px;
+  }
+  .footer-brand { font-size: 12px; font-weight: 700; color: var(--ink-muted); letter-spacing: -0.01em; }
+  .footer-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; font-weight: 500;
+    color: var(--ink-subtle); letter-spacing: 0.04em;
+    text-align: right; line-height: 1.6;
+  }
+
   @media (max-width: 720px) {
-    .hero-title { font-size: 32px; }
-    .hero-stats { grid-template-columns: repeat(2, 1fr); gap: 16px; }
-    .stat-num { font-size: 22px; }
+    .doc { padding: 32px 20px 60px; }
+    .hero-title { font-size: 34px; }
+    .hero-stats { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .stat-num { font-size: 24px; }
+    .stat-cell { padding: 14px 16px; }
     .controls { padding: 18px; }
-    .card-row { flex-direction: column; gap: 16px; }
-    .card-status { width: 100%; text-align: left; display: flex; gap: 10px; align-items: center; }
+    .program-card { padding: 20px; }
+    .card-row { flex-direction: column; gap: 14px; }
+    .card-status {
+      width: 100%;
+      display: flex; gap: 12px; align-items: center; justify-content: flex-start;
+      padding: 10px 14px;
+    }
     .card-status-label { margin-top: 0; }
     .card-arrow { display: none; }
   }
@@ -91,18 +334,15 @@
 
   <header class="brand-header">
     <div class="logo">GROWTH<span class="apostrophe">'</span>HIGH<span class="tagline">Scale-up Studio</span></div>
-    <div class="doc-meta"><strong>2026 정부지원사업 검토</strong><span id="updated-at">2026.04.30</span></div>
   </header>
 
   <div class="hero">
-    <div class="hero-eyebrow"><span class="num">★</span>그로스하이 매니저용 · 매일 업데이트</div>
-    <h1 class="hero-title">2026<br>정부지원사업 검토</h1>
-    <p class="hero-desc">
-      그로스하이 매니저들이 클라이언트 미팅과 사업 상담에서 빠르게 활용하기 위한 사내 자료실입니다. 신규 공고가 등록되는 즉시 표준형 양식으로 정리되며, 업종·유형 필터와 키워드 검색으로 클라이언트 상황에 맞는 사업을 30초 안에 추려낼 수 있습니다.
-    </p>
+    <div class="hero-eyebrow"><span class="dot"></span>그로스하이 큐레이션 · 매일 업데이트</div>
+    <h1 class="hero-title">2026<br>정부지원사업 큐레이션</h1>
+    <p class="hero-desc">매니저들이 클라이언트 미팅에서 빠르게 활용하는 사내 자료실.</p>
     <div class="hero-stats">
-      <div class="stat-cell"><div class="stat-num" id="total-count">14</div><div class="stat-label">검토 사업 / Programs</div></div>
-      <div class="stat-cell"><div class="stat-num" id="active-count">12</div><div class="stat-label">진행 중 / Active</div></div>
+      <div class="stat-cell"><div class="stat-num" id="total-count">24</div><div class="stat-label">검토 사업 / Programs</div></div>
+      <div class="stat-cell"><div class="stat-num" id="active-count">22</div><div class="stat-label">진행 중 / Active</div></div>
     </div>
   </div>
 
@@ -112,15 +352,15 @@
       <button id="search-clear" class="search-clear" title="검색어 지우기">✕</button>
     </div>
     <div class="filter-group">
-      <label class="filter-label">업종 / Industry</label>
+      <label class="filter-label">업종</label>
       <div class="filter-chips" id="industry-chips"></div>
     </div>
     <div class="filter-group">
-      <label class="filter-label">유형 / Type</label>
+      <label class="filter-label">유형</label>
       <div class="filter-chips" id="type-chips"></div>
     </div>
     <div class="controls-footer">
-      <div class="result-count" id="result-count">전체 <strong>14</strong>개 표시</div>
+      <div class="result-count" id="result-count">전체 <strong>24</strong>개 표시</div>
       <button id="reset-btn" class="reset-btn" disabled>↺ 전체 해제</button>
     </div>
   </div>
@@ -128,7 +368,7 @@
   <section class="program-section" id="active-section">
     <div class="list-header">
       <div class="list-title">진행 중인 사업</div>
-      <div class="list-en" id="active-en">Active Programs · 0</div>
+      <div class="list-en" id="active-en">Active · 0</div>
     </div>
     <div class="program-list" id="active-list"></div>
   </section>
@@ -136,7 +376,7 @@
   <section class="program-section" id="closed-section">
     <div class="list-header">
       <div class="list-title">마감 완료 사업</div>
-      <div class="list-en" id="closed-en">Closed · Reference · 0</div>
+      <div class="list-en" id="closed-en">Closed · 0</div>
     </div>
     <div class="program-list" id="closed-list"></div>
   </section>
@@ -144,12 +384,12 @@
   <div class="empty-state" id="empty-state" style="display:none;">
     <strong>검색 결과가 없습니다</strong>
     검색어를 변경하거나 필터를 해제해 보세요.
-    <div class="hint">Hint · 필터 칩을 클릭해 해제하거나 우측 상단 "전체 해제" 사용</div>
+    <div class="hint">필터 칩을 다시 클릭하거나 우측 "전체 해제" 사용</div>
   </div>
 
   <footer class="doc-footer">
-    <div class="footer-brand">GROWTH<span class="apostrophe">'</span>HIGH — Scale-up Studio</div>
-    <div class="footer-meta">2026 정부지원사업 검토 · v1.0 STANDARD<br>Curated by GROWTH'HIGH · <span id="footer-updated">2026.04.30</span></div>
+    <div class="footer-brand">GROWTH<span class="apostrophe" style="color:var(--urgent)">'</span>HIGH — Scale-up Studio</div>
+    <div class="footer-meta">Curated by GROWTH'HIGH<br><span id="footer-updated">2026.04.30</span></div>
   </footer>
 
 </div>
@@ -214,8 +454,8 @@
     closed.sort((a, b) => calcDday(b.deadline_iso) - calcDday(a.deadline_iso));
     document.getElementById('active-list').innerHTML = active.map(renderCard).join('');
     document.getElementById('closed-list').innerHTML = closed.map(renderCard).join('');
-    document.getElementById('active-en').textContent = 'Active Programs · ' + active.length;
-    document.getElementById('closed-en').textContent = 'Closed · Reference · ' + closed.length;
+    document.getElementById('active-en').textContent = 'Active · ' + active.length;
+    document.getElementById('closed-en').textContent = 'Closed · ' + closed.length;
     document.getElementById('active-section').classList.toggle('hidden', active.length === 0);
     document.getElementById('closed-section').classList.toggle('hidden', closed.length === 0);
     document.getElementById('empty-state').style.display = filtered.length === 0 ? 'block' : 'none';
@@ -261,8 +501,8 @@
       const data = await res.json();
       state.programs = data.programs;
       state.filters = data.filters;
-      document.getElementById('updated-at').textContent = data.updated_at.replace(/-/g, '.');
-      document.getElementById('footer-updated').textContent = data.updated_at.replace(/-/g, '.');
+      const footerEl = document.getElementById('footer-updated');
+      if (footerEl) footerEl.textContent = data.updated_at.replace(/-/g, '.');
       renderChips();
       bindEvents();
       render();
