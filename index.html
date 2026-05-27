@@ -399,7 +399,7 @@
       <div class="section-count" id="today-en">0</div>
     </div>
     <div class="program-list" id="today-list"></div>
-    <div class="today-empty" id="today-empty" style="display:none;">오늘 추가된 검토서가 없습니다.</div>
+    <div class="today-empty" id="today-empty" style="display:none;">큐레이션 사업이 없습니다.</div>
   </section>
 
   <section class="program-section" id="active-section">
@@ -487,11 +487,11 @@
 
   function render() {
     const filtered = state.programs.filter(p => matchesSearch(p, state.search) && matchesIndustry(p, state.selected.industries) && matchesType(p, state.selected.types));
-    const isToday = p => state.updated_at && p.added_at === state.updated_at && getStatus(calcDday(p.deadline_iso)) !== 'closed';
-    const today = filtered.filter(isToday);
-    const active = filtered.filter(p => getStatus(calcDday(p.deadline_iso)) !== 'closed' && !isToday(p));
+    const isCurated = p => typeof p.curated === 'number' && getStatus(calcDday(p.deadline_iso)) !== 'closed';
+    const today = filtered.filter(isCurated);
+    const active = filtered.filter(p => getStatus(calcDday(p.deadline_iso)) !== 'closed' && !isCurated(p));
     const closed = filtered.filter(p => getStatus(calcDday(p.deadline_iso)) === 'closed');
-    today.sort((a, b) => calcDday(a.deadline_iso) - calcDday(b.deadline_iso));
+    today.sort((a, b) => (a.curated || 99) - (b.curated || 99));
     active.sort((a, b) => calcDday(a.deadline_iso) - calcDday(b.deadline_iso));
     closed.sort((a, b) => calcDday(b.deadline_iso) - calcDday(a.deadline_iso));
     document.getElementById('today-list').innerHTML = today.map(renderCard).join('');
