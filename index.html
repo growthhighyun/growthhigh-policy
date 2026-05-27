@@ -308,6 +308,18 @@
   }
   .program-section.hidden { display: none; }
 
+  /* Today's curation — accent-highlighted top section */
+  .today-wrap .section-dot { background: var(--accent); }
+  .today-wrap .section-title { color: var(--accent); }
+  .today-wrap .program-card { border-color: #DCE7FE; box-shadow: var(--shadow-md); }
+  .today-wrap .program-card:hover { border-color: var(--accent); box-shadow: var(--shadow-lg); }
+  .today-wrap .section-count { color: var(--accent); background: var(--accent-soft); border-color: #DCE7FE; }
+  .today-empty {
+    padding: 18px 20px; border: 1px dashed var(--line-card);
+    border-radius: 12px; background: #FAFBFC;
+    font-size: 13px; color: var(--ink-400); letter-spacing: -0.01em;
+  }
+
   /* Footer */
   .doc-footer {
     margin-top: 56px; padding-top: 24px;
@@ -380,6 +392,16 @@
     </div>
   </div>
 
+  <section class="program-section today-wrap" id="today-section">
+    <div class="section-header-row">
+      <span class="section-dot"></span>
+      <div class="section-title">오늘의 큐레이션</div>
+      <div class="section-count" id="today-en">0</div>
+    </div>
+    <div class="program-list" id="today-list"></div>
+    <div class="today-empty" id="today-empty" style="display:none;">오늘 추가된 검토서가 없습니다.</div>
+  </section>
+
   <section class="program-section" id="active-section">
     <div class="section-header-row">
       <span class="section-dot"></span>
@@ -414,7 +436,7 @@
 <script>
 (() => {
   'use strict';
-  let state = { programs: [], filters: { industries: [], types: [] }, selected: { industries: new Set(), types: new Set() }, search: '' };
+  let state = { programs: [], filters: { industries: [], types: [] }, selected: { industries: new Set(), types: new Set() }, search: '', updated_at: '' };
 
   function calcDday(isoStr) {
     const fmt = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Seoul', year: 'numeric', month: '2-digit', day: '2-digit' });
@@ -465,14 +487,25 @@
 
   function render() {
     const filtered = state.programs.filter(p => matchesSearch(p, state.search) && matchesIndustry(p, state.selected.industries) && matchesType(p, state.selected.types));
-    const active = filtered.filter(p => getStatus(calcDday(p.deadline_iso)) !== 'closed');
+    const isToday = p => state.updated_at && p.added_at === state.updated_at && getStatus(calcDday(p.deadline_iso)) !== 'closed';
+    const today = filtered.filter(isToday);
+    const active = filtered.filter(p => getStatus(calcDday(p.deadline_iso)) !== 'closed' && !isToday(p));
     const closed = filtered.filter(p => getStatus(calcDday(p.deadline_iso)) === 'closed');
+    today.sort((a, b) => calcDday(a.deadline_iso) - calcDday(b.deadline_iso));
     active.sort((a, b) => calcDday(a.deadline_iso) - calcDday(b.deadline_iso));
     closed.sort((a, b) => calcDday(b.deadline_iso) - calcDday(a.deadline_iso));
+    document.getElementById('today-list').innerHTML = today.map(renderCard).join('');
     document.getElementById('active-list').innerHTML = active.map(renderCard).join('');
     document.getElementById('closed-list').innerHTML = closed.map(renderCard).join('');
+    document.getElementById('today-en').textContent = today.length;
     document.getElementById('active-en').textContent = active.length;
     document.getElementById('closed-en').textContent = closed.length;
+    const hasFilter = state.search || state.selected.industries.size || state.selected.types.size;
+    // 오늘 섹션: 필터 없을 때만 노출. 필터 사용 중이면 숨김.
+    const showToday = !hasFilter;
+    document.getElementById('today-section').classList.toggle('hidden', !showToday);
+    document.getElementById('today-list').style.display = today.length > 0 ? '' : 'none';
+    document.getElementById('today-empty').style.display = today.length === 0 ? 'block' : 'none';
     document.getElementById('active-section').classList.toggle('hidden', active.length === 0);
     document.getElementById('closed-section').classList.toggle('hidden', closed.length === 0);
     document.getElementById('empty-state').style.display = filtered.length === 0 ? 'block' : 'none';
@@ -484,7 +517,6 @@
     const counterEl = document.getElementById('result-count');
     if (filteredCount === total) counterEl.innerHTML = '전체 <strong>' + total + '</strong>개 표시';
     else counterEl.innerHTML = '<strong>' + total + '</strong>개 中 <strong>' + filteredCount + '</strong>개 표시';
-    const hasFilter = state.search || state.selected.industries.size || state.selected.types.size;
     document.getElementById('reset-btn').disabled = !hasFilter;
   }
 
@@ -518,6 +550,7 @@
       const data = await res.json();
       state.programs = data.programs;
       state.filters = data.filters;
+      state.updated_at = data.updated_at || '';
       const footerEl = document.getElementById('footer-updated');
       if (footerEl) footerEl.textContent = data.updated_at.replace(/-/g, '.');
       renderChips();
