@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>소상공인 지원사업 큐레이션 — GROWTH'HIGH</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  :root {
+    --accent: #2563EB;
+    --accent-soft: #EEF4FF;
+    --line: #EEF0F2;
+    --line-card: #E8EAEE;
+    --ink-900: #0A0A0A;
+    --ink-700: #1F2937;
+    --ink-500: #4B5563;
+    --ink-400: #6B7280;
+    --ink-300: #9CA3AF;
+    --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.04);
+    --shadow-md: 0 2px 8px rgba(15, 23, 42, 0.06), 0 1px 2px rgba(15, 23, 42, 0.04);
+    --shadow-lg: 0 8px 24px rgba(15, 23, 42, 0.08), 0 2px 6px rgba(15, 23, 42, 0.04);
+  }
+  body { background: #FFFFFF; color: var(--ink-700); }
+  .doc { max-width: 1040px; padding: 32px 32px 96px; }
+  .brand-header { display: flex; align-items: center; padding: 0 0 20px; margin-bottom: 56px; border-bottom: 1px solid var(--line); }
+  .brand-mark { display: flex; align-items: center; gap: 10px; }
+  .brand-mark .wordmark { font-family: 'Pretendard Variable', Pretendard, sans-serif; font-size: 17px; font-weight: 800; letter-spacing: -0.04em; color: var(--ink-900); line-height: 1; }
+  .brand-mark .apostrophe { color: var(--urgent); font-weight: 800; }
+  .brand-mark .tagline { font-size: 11px; font-weight: 500; letter-spacing: -0.005em; color: var(--ink-300); padding-left: 12px; margin-left: 4px; border-left: 1px solid #E5E7EB; line-height: 1; }
+  .hero { text-align: center; padding: 24px 0 64px; }
+  .hero-badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; background: var(--accent-soft); color: var(--accent); font-size: 12.5px; font-weight: 600; border-radius: 999px; letter-spacing: -0.005em; margin-bottom: 20px; }
+  .hero-title { font-size: 52px; font-weight: 800; line-height: 1.12; letter-spacing: -0.045em; margin-bottom: 20px; color: var(--ink-900); }
+  .hero-title .accent { color: var(--accent); }
+  .hero-desc { font-size: 16px; color: var(--ink-500); line-height: 1.65; max-width: 600px; margin: 0 auto; letter-spacing: -0.005em; }
+  .hero-stats { display: flex; gap: 8px; justify-content: center; margin-top: 32px; flex-wrap: wrap; }
+  .stat-pill { display: inline-flex; align-items: center; gap: 8px; padding: 9px 18px; background: #FFFFFF; border: 1px solid var(--line-card); border-radius: 999px; font-size: 13px; font-weight: 500; color: var(--ink-500); box-shadow: var(--shadow-sm); }
+  .stat-num { font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 700; color: var(--ink-900); letter-spacing: -0.02em; }
+  .program-section { margin-bottom: 40px; }
+  .section-header-row { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; padding: 0 4px; }
+  .section-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+  .closed-wrap .section-dot { background: var(--ink-300); }
+  .section-title { font-size: 16px; font-weight: 700; letter-spacing: -0.02em; color: var(--ink-900); }
+  .closed-wrap .section-title { color: var(--ink-500); }
+  .section-count { font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 600; color: var(--ink-400); margin-left: auto; letter-spacing: -0.005em; }
+  .program-list { display: grid; gap: 12px; }
+  .program-card { display: block; text-decoration: none; color: inherit; background: #FFFFFF; border: 1px solid var(--line-card); border-radius: 16px; padding: 22px 26px; transition: all 0.2s ease; box-shadow: var(--shadow-sm); }
+  .program-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); border-color: #D1D5DB; }
+  .closed-wrap .program-card { background: #FAFBFC; opacity: 0.85; }
+  .closed-wrap .program-card:hover { opacity: 1; background: #FFFFFF; }
+  .card-row { display: flex; gap: 22px; align-items: flex-start; }
+  .card-status { flex-shrink: 0; width: 78px; text-align: center; padding: 12px 8px; border-radius: 12px; background: #F4F5F7; }
+  .card-status.urgent { background: var(--urgent-soft); }
+  .card-status.warning { background: var(--warning-soft); }
+  .card-status.closed { background: #ECEDEF; }
+  .card-dday { font-family: 'JetBrains Mono', monospace; font-size: 22px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; }
+  .card-status.urgent .card-dday { color: var(--urgent); }
+  .card-status.warning .card-dday { color: var(--warning); }
+  .card-status.closed .card-dday { color: var(--closed); font-size: 13px; font-weight: 700; line-height: 1.2; padding-top: 4px; }
+  .card-status-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; margin-top: 4px; }
+  .card-status.urgent .card-status-label { color: var(--urgent); }
+  .card-status.warning .card-status-label { color: var(--warning); }
+  .card-status.closed .card-status-label { color: var(--closed); }
+  .card-body-wrap { flex: 1; min-width: 0; }
+  .card-tags { display: flex; gap: 6px; margin-bottom: 10px; flex-wrap: wrap; }
+  .card-tag { font-size: 11px; font-weight: 600; color: var(--accent); background: var(--accent-soft); padding: 3px 9px; border-radius: 8px; letter-spacing: -0.005em; }
+  .card-tag.alt { background: #F3F4F6; color: var(--ink-500); }
+  .card-title { font-size: 18px; font-weight: 700; letter-spacing: -0.03em; line-height: 1.32; margin-bottom: 8px; color: var(--ink-900); }
+  .card-summary { font-size: 13.5px; color: var(--ink-500); line-height: 1.6; margin-bottom: 12px; letter-spacing: -0.005em; }
+  .card-meta-list { display: flex; gap: 18px; font-size: 12px; color: var(--ink-400); letter-spacing: -0.005em; flex-wrap: wrap; }
+  .card-meta-list strong { color: var(--ink-500); font-weight: 600; margin-right: 6px; }
+  .card-arrow { flex-shrink: 0; align-self: center; font-size: 18px; color: var(--ink-300); transition: all 0.2s; }
+  .program-card:hover .card-arrow { color: var(--accent); transform: translateX(3px); }
+  .doc-footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 12px; }
+  .footer-brand { font-size: 12px; font-weight: 700; color: var(--ink-500); letter-spacing: -0.01em; }
+  .footer-brand .apostrophe { color: var(--urgent); }
+  .footer-meta { display: none; }
+  @media (max-width: 720px) {
+    .doc { padding: 24px 16px 60px; }
+    .hero-title { font-size: 32px; }
+    .program-card { padding: 18px; }
+    .card-row { flex-direction: column; gap: 14px; }
+    .card-status { width: 100%; display: flex; gap: 12px; align-items: center; justify-content: flex-start; padding: 10px 14px; }
+    .card-status-label { margin-top: 0; }
+    .card-arrow { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="doc">
+  <header class="brand-header">
+    <div class="brand-mark">
+      <span class="wordmark">GROWTH<span class="apostrophe">'</span>HIGH</span>
+      <span class="tagline">Scale-up Studio</span>
+    </div>
+  </header>
+
+  <div class="hero">
+    <div class="hero-badge">소상공인 큐레이션 · 2026.06.01</div>
+    <h1 class="hero-title">2026 <span class="accent">소상공인</span> 지원사업</h1>
+    <p class="hero-desc">소상공인·소공인 대상 정부지원사업을 한 곳에 모아 정리한 큐레이션 페이지.</p>
+    <div class="hero-stats">
+      <div class="stat-pill">검토 사업 <span class="stat-num">9</span></div>
+      <div class="stat-pill">진행 중 <span class="stat-num">4</span></div>
+      <div class="stat-pill">마감 완료 <span class="stat-num">5</span></div>
+    </div>
+  </div>
+
+  <section class="program-section">
+    <div class="section-header-row">
+      <span class="section-dot"></span>
+      <div class="section-title">소상공인 지원사업 (9건)</div>
+      <div class="section-count">전체</div>
+    </div>
+    <div class="program-list">
+      <a href="63-sogongin-channel.html" class="program-card">
+      <div class="card-row">
+        <div class="card-status warning">
+          <div class="card-dday">D−4</div>
+          <div class="card-status-label">WARNING</div>
+        </div>
+        <div class="card-body-wrap">
+          <div class="card-tags"><span class="card-tag">소공인 · 판로</span><span class="card-tag alt">협업기관 매칭</span><span class="card-tag alt">중소벤처기업부</span></div>
+          <h3 class="card-title">2026 소공인 판로개척지원사업</h3>
+          <p class="card-summary">유망 소공인 판로개척. Track Ⅰ(뷰티·패션·푸드 협업형 120) / Ⅱ(전 제조업 10인 미만 100). 소공인당 30백만원 (국비 70%·자부담 30%).</p>
+          <div class="card-meta-list"><span><strong>지원</strong>최대 30백만원(3천만)</span><span><strong>대상</strong>Ⅰ뷰티패션푸드 / Ⅱ전제조업</span><span><strong>마감</strong>6.5(금) 18시</span></div>
+        </div>
+        <div class="card-arrow">→</div>
+      </div>
+    </a>
+<a href="64-sme-life-culture.html" class="program-card">
+      <div class="card-row">
+        <div class="card-status warning">
+          <div class="card-dday">D−7</div>
+          <div class="card-status-label">WARNING</div>
+        </div>
+        <div class="card-body-wrap">
+          <div class="card-tags"><span class="card-tag">소상공인 · 혁신</span><span class="card-tag alt">생활문화 부가가치</span><span class="card-tag alt">중소벤처기업부</span></div>
+          <h3 class="card-title">2026 소상공인 생활문화 혁신지원</h3>
+          <p class="card-summary">지역 소상공인 제품·서비스 개선으로 부가가치 제고. 400개사. 최대 1억원 (다수 공동 신청 시 최대 3억). 기업부담 10%.</p>
+          <div class="card-meta-list"><span><strong>지원</strong>최대 1억(공동 3억)</span><span><strong>대상</strong>지역 소상공인</span><span><strong>마감</strong>6.8(월) 17시</span></div>
+        </div>
+        <div class="card-arrow">→</div>
+      </div>
+    </a>
+<a href="67-sme-online-channel-2nd.html" class="program-card">
+      <div class="card-row">
+        <div class="card-status warning">
+          <div class="card-dday">D−9</div>
+          <div class="card-status-label">ACTIVE</div>
+        </div>
+        <div class="card-body-wrap">
+          <div class="card-tags"><span class="card-tag">소상공인 · 온라인 판로</span><span class="card-tag alt">2차 모집 · 메뉴판</span><span class="card-tag alt">한국중소벤처기업유통원</span></div>
+          <h3 class="card-title">2026 소상공인 온라인판로 지원사업 2차 모집</h3>
+          <p class="card-summary">8개 세부사업 메뉴판 통합신청. 기업당 최대 600만원 (국비 합산). 총 6,410개사. 한국중소벤처기업유통원.</p>
+          <div class="card-meta-list"><span><strong>지원</strong>최대 600만원</span><span><strong>대상</strong>소상공인</span><span><strong>마감</strong>6.10(수) 18시</span></div>
+        </div>
+        <div class="card-arrow">→</div>
+      </div>
+    </a>
+<a href="23-lips.html" class="program-card">
+      <div class="card-row">
+        <div class="card-status warning">
+          <div class="card-dday">D−213</div>
+          <div class="card-status-label">ACTIVE</div>
+        </div>
+        <div class="card-body-wrap">
+          <div class="card-tags"><span class="card-tag">소상공인 · 투자유치</span><span class="card-tag alt">LIPS Ⅰ·Ⅱ</span><span class="card-tag alt">소진공</span></div>
+          <h3 class="card-title">2026년 소상공인 LIPS 프로그램</h3>
+          <p class="card-summary">민간 운영사 투자 받은 업력 1년+ 소상공인. LIPSⅠ 매칭융자 5억 / LIPSⅡ 시드립스 1억·스케일업 2억.</p>
+          <div class="card-meta-list"><span><strong>지원</strong>LIPSⅠ 5억 / LIPSⅡ 2억</span><span><strong>예산</strong>660억원</span><span><strong>마감</strong>예산 소진시까지</span></div>
+        </div>
+        <div class="card-arrow">→</div>
+      </div>
+    </a>
+<a href="50-seoul-musinsa-kfashion.html" class="program-card">
+      <div class="card-row">
+        <div class="card-status closed">
+          <div class="card-dday">CLOSED</div>
+          <div class="card-status-label">REF</div>
+        </div>
+        <div class="card-body-wrap">
+          <div class="card-tags"><span class="card-tag">패션 · 유통협업</span><span class="card-tag alt">K-패션</span><span class="card-tag alt">서울패션허브</span></div>
+          <h3 class="card-title">2026 서울 × 무신사 라이징 K-패션 브랜드</h3>
+          <p class="card-summary">서울패션허브 운영. 서울시·무신사 공동 육성. 라이징 K-패션 브랜드 30개사 모집.</p>
+          <div class="card-meta-list"><span><strong>지원</strong>무신사 입점·육성</span><span><strong>대상</strong>K-패션 브랜드</span><span><strong>마감</strong>3.8 종료</span></div>
+        </div>
+        <div class="card-arrow">→</div>
+      </div>
+    </a>
+<a href="65-tops-brand-sme.html" class="program-card">
+      <div class="card-row">
+        <div class="card-status closed">
+          <div class="card-dday">CLOSED</div>
+          <div class="card-status-label">REF</div>
+        </div>
+        <div class="card-body-wrap">
+          <div class="card-tags"><span class="card-tag">소상공인 · 온라인 브랜딩</span><span class="card-tag alt">TOPS 본 사업</span><span class="card-tag alt">중소벤처기업부</span></div>
+          <h3 class="card-title">2026 온라인 브랜드 소상공인 육성사업 (TOPS 프로그램)</h3>
+          <p class="card-summary">TOPS 본 사업. 식품/홈·리빙/패션/뷰티 4대 분야 1단계 3,500 → 2단계 700 → 3단계 30개사 단계별 선별. 민·관 1:1 매칭. 점프업(#62) 후속 가점.</p>
+          <div class="card-meta-list"><span><strong>지원</strong>정부+플랫폼 매칭</span><span><strong>대상</strong>4대 분야 온라인 소상공인</span><span><strong>마감</strong>4.2 종료</span></div>
+        </div>
+        <div class="card-arrow">→</div>
+      </div>
+    </a>
+<a href="02-small-business-leap.html" class="program-card">
+      <div class="card-row">
+        <div class="card-status closed">
+          <div class="card-dday">CLOSED</div>
+          <div class="card-status-label">REF</div>
+        </div>
+        <div class="card-body-wrap">
+          <div class="card-tags"><span class="card-tag">소상공인</span><span class="card-tag alt">통합공고</span><span class="card-tag alt">소진공</span></div>
+          <h3 class="card-title">2026년 소상공인 도약 지원 사업</h3>
+          <p class="card-summary">로컬기업 육성 + 강한소상공인 성장지원 통합. 강한 혁신 유형은 국비 100% (자부담 0). 사업화 1억원 한도.</p>
+          <div class="card-meta-list"><span><strong>지원</strong>최대 1억원</span><span><strong>비율</strong>80~100%</span><span><strong>마감</strong>5.6(수) 16:00</span></div>
+        </div>
+        <div class="card-arrow">→</div>
+      </div>
+    </a>
+<a href="11-k-soshangoeng.html" class="program-card">
+      <div class="card-row">
+        <div class="card-status closed">
+          <div class="card-dday">CLOSED</div>
+          <div class="card-status-label">REF</div>
+        </div>
+        <div class="card-body-wrap">
+          <div class="card-tags"><span class="card-tag">소상공인 · 수출</span><span class="card-tag alt">글로벌 진출</span><span class="card-tag alt">소진공</span></div>
+          <h3 class="card-title">2026년 글로벌 소상공인 (K-소상공인)</h3>
+          <p class="card-summary">4대 소비재(식품·화장품·패션·생활용품) 100개사. 旣 지원/민간 투자/수출 3만달러 中 1개. 글로벌 오디션 차등.</p>
+          <div class="card-meta-list"><span><strong>지원</strong>최대 1억원</span><span><strong>형태</strong>로컬+혁신 트랙</span><span><strong>마감</strong>5.15(금) 16:00</span></div>
+        </div>
+        <div class="card-arrow">→</div>
+      </div>
+    </a>
+<a href="62-brand-sme-jumpup.html" class="program-card">
+      <div class="card-row">
+        <div class="card-status closed">
+          <div class="card-dday">CLOSED</div>
+          <div class="card-status-label">REF</div>
+        </div>
+        <div class="card-body-wrap">
+          <div class="card-tags"><span class="card-tag">소상공인 · 브랜딩</span><span class="card-tag alt">프리미엄 브랜드</span><span class="card-tag alt">중소벤처기업부</span></div>
+          <h3 class="card-title">2026 브랜드 소상공인 점프업</h3>
+          <p class="card-summary">TOPS 후속 고도화 시범사업. 온라인 중심 소상공인 30개사 프리미엄 브랜드 단계별 육성. 자부담 300만원. 판판대로 신청.</p>
+          <div class="card-meta-list"><span><strong>지원</strong>전문대행사 매칭</span><span><strong>대상</strong>온라인 소상공인</span><span><strong>마감</strong>5.29(금) 18시</span></div>
+        </div>
+        <div class="card-arrow">→</div>
+      </div>
+    </a>
+    </div>
+  </section>
+
+  <footer class="doc-footer">
+    <div class="footer-brand">GROWTH<span class="apostrophe">'</span>HIGH — Scale-up Studio</div>
+  </footer>
+</div>
+</body>
+</html>
